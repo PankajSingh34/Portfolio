@@ -1,47 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-@layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background-color: #111827; /* gray-900 */
-    color: #ffffff;
-  }
+@import "tailwindcss";
 
-  /* Dark theme base styles */
-  .dark {
-    color-scheme: dark;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #111827; /* gray-900 */
+  color: #ffffff;
+}
+
+/* Dark theme base styles */
+.dark {
+  color-scheme: dark;
+}
+
+/* Custom component classes */
+.btn-primary {
+  background-color: rgb(37 99 235);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  transform: scale(1);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+.btn-primary:hover {
+  background-color: rgb(29 78 216);
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border: 2px solid rgb(96 165 250);
+  color: rgb(96 165 250);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s;
+  transform: scale(1);
+}
+
+.btn-secondary:hover {
+  background-color: rgb(96 165 250);
+  color: rgb(17 24 39);
+  transform: scale(1.05);
+}
+
+.section-padding {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl;
-  }
-  
-  .btn-secondary {
-    @apply bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900 font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105;
-  }
-  
+@media (min-width: 1024px) {
   .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
-  
-  .container-custom {
-    @apply max-w-7xl mx-auto;
-  }
-  
-  .gradient-text {
-    @apply bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent;
-  }
-  
-  .card-hover {
-    @apply transition-all duration-300 transform hover:scale-105 hover:shadow-2xl;
-  }
+}
+
+.container-custom {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, rgb(96 165 250), rgb(168 85 247));
+  background-clip: text;
+  color: transparent;
+}
+
+.card-hover {
+  transition: all 0.3s;
+  transform: scale(1);
+}
+
+.card-hover:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
