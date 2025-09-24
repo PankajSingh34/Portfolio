@@ -1,108 +1,167 @@
 import { motion } from "framer-motion";
 import {
-  Code,
-  Database,
-  Cloud,
-  Smartphone,
-  Globe,
-  Palette,
-} from "lucide-react";
+  containerVariants,
+  itemVariants,
+  useScrollAnimation,
+} from "../utils/animations";
 
 const Skills = () => {
-  const skillCategories = [
+  const scrollAnimationProps = useScrollAnimation();
+
+  // Exact technologies from your screenshot in the same order
+  const technologies = [
+    // Row 1
     {
-      icon: Code,
-      title: "Frontend",
-      skills: ["React", "HTML", "JavaScript", "Tailwind CSS"],
-      bgColor: "bg-blue-900/20",
-      iconColor: "text-blue-400",
+      name: "CSS3",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+      color: "#1572B6",
     },
     {
-      icon: Database,
-      title: "Backend",
-      skills: ["Node.js", "Python", "Express"],
-      bgColor: "bg-green-900/20",
-      iconColor: "text-green-400",
+      name: ".NET",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg",
+      color: "#512BD4",
     },
     {
-      icon: Database,
-      title: "Database",
-      skills: ["MongoDB", "SQL", "Redis"],
-      bgColor: "bg-purple-900/20",
-      iconColor: "text-purple-400",
+      name: "Express",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+      color: "#000000",
     },
     {
-      icon: Cloud,
-      title: "DevOps",
-      skills: ["AWS", "Git"],
-      bgColor: "bg-orange-900/20",
-      iconColor: "text-orange-400",
+      name: "Git",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+      color: "#F05032",
     },
     {
-      icon: Smartphone,
-      title: "Mobile",
-      skills: ["React Native"],
-      bgColor: "bg-blue-900/20",
-      iconColor: "text-blue-400",
+      name: "GitHub",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+      color: "#181717",
     },
     {
-      icon: Globe,
-      title: "Other",
-      skills: ["Testing"],
-      bgColor: "bg-indigo-900/20",
-      iconColor: "text-indigo-400",
+      name: "HTML5",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+      color: "#E34F26",
+    },
+    {
+      name: "JavaScript",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+      color: "#F7DF1E",
+    },
+    // Row 2
+    {
+      name: "MongoDB",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+      color: "#47A248",
+    },
+    {
+      name: "Linux",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+      color: "#FCC624",
+    },
+    {
+      name: "Java",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+      color: "#007396",
+    },
+    {
+      name: "Azure",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+      color: "#0078D4",
+    },
+    {
+      name: "Node.js",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+      color: "#339933",
+    },
+    {
+      name: "React",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+      color: "#61DAFB",
+    },
+    // Row 3
+    {
+      name: "AWS",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
+      color: "#FF9900",
+    },
+    {
+      name: "Unity",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg",
+      color: "#000000",
+    },
+    {
+      name: "RStudio",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg",
+      color: "#75AADB",
+    },
+    {
+      name: "Tailwind CSS",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+      color: "#06B6D4",
+    },
+    {
+      name: "TypeScript",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+      color: "#3178C6",
     },
   ];
 
   return (
-    <section id="skills" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
-      <div className="max-w-7xl mx-auto">
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          {...scrollAnimationProps}
+          variants={containerVariants}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Skills & Technologies
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+          >
+            My Skills
+          </motion.h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
+        {/* Technologies Grid - 7 columns to match your screenshot */}
+        <motion.div
+          {...scrollAnimationProps}
+          variants={containerVariants}
+          className="grid grid-cols-7 gap-6 mb-16"
+        >
+          {technologies.map((tech, index) => (
             <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-gray-900 rounded-xl p-6 shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl border border-gray-700"
+              key={`${tech.name}-${index}`}
+              variants={itemVariants}
+              custom={index}
+              className="group relative"
             >
-              <div className="flex items-center mb-4">
-                <div
-                  className={`w-12 h-12 ${category.bgColor} rounded-lg flex items-center justify-center mr-4 border border-gray-700`}
-                >
-                  <category.icon className={category.iconColor} size={24} />
-                </div>
-                <h3 className="text-xl font-semibold text-white">
-                  {category.title}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1 bg-gray-800 text-gray-300 rounded-full text-sm font-medium border border-gray-600"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <motion.div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-sm border border-gray-300/20 flex items-center justify-center transition-all duration-300">
+                <img
+                  src={tech.icon}
+                  alt={tech.name}
+                  className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                  style={{
+                    filter:
+                      tech.name === "Express" ||
+                      tech.name === "GitHub" ||
+                      tech.name === "Unity"
+                        ? "invert(0.8)"
+                        : "none",
+                  }}
+                />
+              </motion.div>
+
+              {/* Tooltip */}
+              <motion.div
+                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10"
+                initial={{ opacity: 0, y: 10 }}
+                whileHover={{ opacity: 1, y: 0 }}
+              >
+                {tech.name}
+              </motion.div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

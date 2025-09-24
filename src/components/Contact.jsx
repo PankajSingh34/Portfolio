@@ -24,7 +24,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
+    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -36,7 +36,7 @@ const Contact = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
             Get In Touch
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto"></div>
+          <div className="w-24 h-1 bg-green-400 mx-auto"></div>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
@@ -61,14 +61,13 @@ const Contact = () => {
                   <a
                     key={info.label}
                     href={info.link}
-                    target={info.label !== "Email" ? "_blank" : undefined}
-                    rel={
-                      info.label !== "Email" ? "noopener noreferrer" : undefined
-                    }
-                    className="flex items-center space-x-3 text-gray-300 hover:text-blue-400 transition-colors"
+                    className="flex items-center gap-4 p-4 bg-gray-800 rounded-lg transition-colors"
                   >
-                    <info.icon size={20} />
-                    <span>{info.value}</span>
+                    <info.icon size={24} className="text-green-400" />
+                    <div>
+                      <p className="font-medium text-white">{info.label}</p>
+                      <p className="text-gray-300 text-sm">{info.value}</p>
+                    </div>
                   </a>
                 ))}
               </div>
@@ -79,56 +78,30 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
+              className="bg-gray-800 p-8 rounded-xl"
             >
-              <form className="space-y-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-gray-900 text-white placeholder-gray-400"
-                    placeholder="Your name"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors bg-gray-900 text-white placeholder-gray-400"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={4}
-                    className="w-full px-4 py-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none bg-gray-900 text-white placeholder-gray-400"
-                    placeholder="Your message..."
-                  ></textarea>
-                </div>
-
+              <h3 className="text-xl font-semibold mb-6 text-white">
+                Send a Message
+              </h3>
+              <form className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                />
+                <textarea
+                  rows={4}
+                  placeholder="Your Message"
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+                ></textarea>
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
                 >
                   Send Message
                 </button>

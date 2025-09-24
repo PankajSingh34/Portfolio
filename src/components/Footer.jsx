@@ -22,7 +22,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+        <div className="text-2xl font-bold text-green-400 mb-4">
           Pankaj Singh
         </div>
         <p className="text-gray-400 mb-6">
