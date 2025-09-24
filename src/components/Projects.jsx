@@ -18,7 +18,7 @@ const ProjectCard = ({ project, index }) => {
     <motion.div
       variants={itemVariants}
       custom={index}
-      className="bg-gray-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-gray-700/50 hover:border-green-400 shadow-xl transition-all duration-300"
+      className="backdrop-blur-sm rounded-2xl overflow-hidden border hover:border-green-400 shadow-xl transition-all duration-300"
     >
       {/* Project Image */}
       <div className="relative h-64 overflow-hidden">

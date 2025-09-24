@@ -12,7 +12,7 @@ const experienceData = [
     title: "Software Developer Intern",
     company: "Brown Spark Digital",
     location: "Remote",
-    duration: "Oct 2022 - Sept 2023",
+    duration: "Oct 2025 - Sept 2025",
     type: "Internship",
     description: [
       "Developed and maintained full-stack web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js) for client projects.",
@@ -35,9 +35,9 @@ const experienceData = [
   {
     id: 2,
     title: "Software Developer Intern",
-    company: "Mojhay infotech",
+    company: "MohJay Infotech",
     location: "Remote",
-    duration: "Oct 2023 - Jan 2024",
+    duration: "Oct 2025 - Jan 2025",
     type: "part-time",
     description: [
       "Worked full time as an employee and actively participated in discussions to resolve product bugs and enhance features.",

@@ -23,7 +23,7 @@ export const projectsData = [
     github: "https://github.com/PankajSingh34/notesummarizer.git",
     featured: true,
     status: "Completed",
-    year: "2024",
+    year: "2025",
   },
 ];
 

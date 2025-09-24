@@ -58,11 +58,7 @@ const Contact = () => {
 
               <div className="space-y-4">
                 {contactInfo.map((info) => (
-                  <a
-                    key={info.label}
-                    href={info.link}
-                    className="flex items-center gap-4 p-4 bg-gray-800 rounded-lg transition-colors"
-                  >
+                  <a key={info.label} href={info.link}>
                     <info.icon size={24} className="text-green-400" />
                     <div>
                       <p className="font-medium text-white">{info.label}</p>
@@ -78,7 +74,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-gray-800 p-8 rounded-xl"
+              className="p-8 rounded-xl"
             >
               <h3 className="text-xl font-semibold mb-6 text-white">
                 Send a Message
@@ -87,17 +83,17 @@ const Contact = () => {
                 <input
                   type="text"
                   placeholder="Your Name"
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
                 <input
                   type="email"
                   placeholder="Your Email"
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
                 <textarea
                   rows={4}
                   placeholder="Your Message"
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
                 ></textarea>
                 <button
                   type="submit"
