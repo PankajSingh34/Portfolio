@@ -221,11 +221,29 @@ const Navbar = () => {
   }, []);
 
   const scrollToSection = (sectionId) => {
+    console.log(`Scrolling to section: ${sectionId}`);
     const element = document.getElementById(sectionId);
+    
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      console.log(`Element found for ${sectionId}`);
+      
+      // Close mobile menu first
+      setIsMenuOpen(false);
+      
+      // Use a timeout to ensure menu closes before scrolling
+      setTimeout(() => {
+        const elementPosition = element.offsetTop;
+        const offsetPosition = elementPosition - 80; // Account for fixed navbar
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }, 100);
+    } else {
+      console.log(`Element not found for ${sectionId}`);
+      setIsMenuOpen(false);
     }
-    setIsMenuOpen(false);
   };
 
   return (
@@ -252,7 +270,7 @@ const Navbar = () => {
               <motion.button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`relative px-3 py-2 transition-colors duration-300 ${
+                className={`relative px-3 py-2 transition-colors duration-300 cursor-pointer ${
                   activeSection === item.id
                     ? "text-green-400 font-semibold"
                     : "text-gray-300 hover:text-green-400"
@@ -290,30 +308,52 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/80 backdrop-blur-md border-t border-gray-800"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
-              {navItems.map((item) => (
-                <motion.button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left py-3 px-4 rounded-lg transition-colors duration-300 ${
-                    activeSection === item.id
-                      ? "bg-green-900/20 text-green-400 font-semibold"
-                      : "text-gray-300 hover:bg-gray-800/50"
-                  }`}
-                  whileHover={{ x: 5 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {item.label}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50 z-40 md:hidden"
+              onClick={() => setIsMenuOpen(false)}
+            />
+
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-black/95 backdrop-blur-md border-t border-gray-800 relative z-50"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-2">
+                {navItems.map((item) => (
+                  <motion.button
+                    key={item.id}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      console.log(`Mobile nav clicked: ${item.id}`);
+                      scrollToSection(item.id);
+                    }}
+                    onTouchStart={(e) => e.preventDefault()}
+                    className={`block w-full text-left py-4 px-4 rounded-lg transition-all duration-300 cursor-pointer select-none touch-manipulation ${
+                      activeSection === item.id
+                        ? "bg-green-900/20 text-green-400 font-semibold"
+                        : "text-gray-300 hover:bg-gray-800/50 hover:text-green-400 active:bg-gray-700"
+                    }`}
+                    whileHover={{ x: 5 }}
+                    whileTap={{ scale: 0.98, backgroundColor: "rgba(75, 85, 99, 0.8)" }}
+                    style={{ 
+                      WebkitTapHighlightColor: 'transparent',
+                      touchAction: 'manipulation'
+                    }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </motion.nav>

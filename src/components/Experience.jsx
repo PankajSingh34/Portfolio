@@ -42,6 +42,7 @@ const experienceData = [
     description: [
       "Worked full time as an employee and actively participated in discussions to resolve product bugs and enhance features.",
       "Developed and integrated an SFTP feature into the product utilizing rebex and renci libraries as requested by the management.",
+      "Learned and gained expertise in modern web development technologies including HTML, CSS, JavaScript, React.js, Node.js, Tailwind CSS, and MongoDB through hands-on project development.",
       "Collaborated with cross-functional teams to deliver high-quality software solutions.",
     ],
     technologies: ["javaScript", "Redux", "MongoDB", "React.js", "tailwindCSS"],
