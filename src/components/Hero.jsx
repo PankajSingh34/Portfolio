@@ -27,10 +27,10 @@ const Hero = () => {
 
   const downloadResume = () => {
     try {
-      const resumeUrl = "/PSRESUME.pdf";
+      const resumeUrl = "/PSRESUME2.pdf";
       const link = document.createElement("a");
       link.href = resumeUrl;
-      link.download = "PSRESUME.pdf";
+      link.download = "PSRESUME2.pdf";
       link.target = "_blank"; // Open in new tab as fallback
       document.body.appendChild(link);
       link.click();
@@ -38,7 +38,7 @@ const Hero = () => {
     } catch (error) {
       console.error("Error downloading resume:", error);
       // Fallback: open resume in new tab
-      window.open("/PSRESUME.pdf", "_blank");
+      window.open("/PSRESUME2.pdf", "_blank");
     }
   };
 
