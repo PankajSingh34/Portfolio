@@ -26,14 +26,20 @@ const Hero = () => {
   };
 
   const downloadResume = () => {
-    // Replace with your actual resume URL
-    const resumeUrl = "/resume.pdf";
-    const link = document.createElement("a");
-    link.href = resumeUrl;
-    link.download = "Pankaj_Singh_Resume.pdf";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+      const resumeUrl = "/PSRESUME.pdf";
+      const link = document.createElement("a");
+      link.href = resumeUrl;
+      link.download = "PSRESUME.pdf";
+      link.target = "_blank"; // Open in new tab as fallback
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Error downloading resume:", error);
+      // Fallback: open resume in new tab
+      window.open("/PSRESUME.pdf", "_blank");
+    }
   };
 
   return (

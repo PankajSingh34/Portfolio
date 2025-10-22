@@ -135,18 +135,24 @@ const About = () => {
             <div>
               <div className=" rounded-2xl p-8">
                 <h3 className="text-2xl font-semibold mb-4 text-white">
-                  Who I Am
+                  Who I Am ?
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  I'm a dedicated developer with a passion for creating
-                  innovative solutions. With expertise in modern web
-                  technologies, I bring ideas to life through clean code and
-                  intuitive design.
+                  Hi, I’m Pankaj Singh, a Computer Science Engineering student
+                  at Veer Madho Singh Bhandari Uttarakhand Technical University.
+                  I’m passionate about building impactful web applications and
+                  creating innovative tech solutions that make a difference. I
+                  specialize in full-stack development — particularly the MERN
+                  stack — and enjoy turning ideas into responsive,
+                  user-friendly, and scalable products.
                 </p>
                 <p className="text-gray-300 leading-relaxed">
-                  When I'm not coding, you can find me exploring new
-                  technologies, contributing to open source projects, or sharing
-                  knowledge with the developer community.
+                  Outside of academics, I serve as the Athletics Secretary of my
+                  college, actively leading and participating in football and
+                  gym activities. These experiences keep me disciplined,
+                  energetic, and motivated. My ultimate goal is to work in a
+                  product-based organization where I can contribute to building
+                  technology that truly matters.
                 </p>
               </div>
             </div>

@@ -18,7 +18,7 @@ const ProjectCard = ({ project, index }) => {
     <motion.div
       variants={itemVariants}
       custom={index}
-      className="backdrop-blur-sm rounded-2xl overflow-hidden border hover:border-green-400 shadow-xl transition-all duration-300"
+      className="backdrop-blur-sm rounded-2xl overflow-hidden border hover:border-green-400 shadow-xl transition-all duration-300 flex flex-col h-full"
     >
       {/* Project Image */}
       <div className="relative h-64 overflow-hidden">
@@ -78,7 +78,7 @@ const ProjectCard = ({ project, index }) => {
       </div>
 
       {/* Project Info */}
-      <div className="p-6">
+      <div className="p-6 flex flex-col flex-1">
         {/* Category */}
         <div className="mb-3">
           <span className="text-xs font-medium text-green-400 bg-green-500/10 px-2 py-1 rounded">
@@ -90,7 +90,7 @@ const ProjectCard = ({ project, index }) => {
         <h3 className="text-xl font-bold mb-3 text-white">{project.title}</h3>
 
         {/* Description */}
-        <p className="text-gray-300 mb-4 text-sm leading-relaxed line-clamp-3">
+        <p className="text-gray-300 mb-4 text-sm leading-relaxed line-clamp-3 flex-1">
           {project.description}
         </p>
 
@@ -112,12 +112,12 @@ const ProjectCard = ({ project, index }) => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex gap-3">
+        <div className="flex gap-3 mt-auto">
           <a
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white font-medium py-2 px-4 rounded-lg"
+            className="flex-1 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
           >
             <ExternalLink size={16} />
             Live Demo
@@ -127,7 +127,7 @@ const ProjectCard = ({ project, index }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-gray-700 text-white font-medium py-2 px-4 rounded-lg"
+            className="flex-1 flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-medium py-3 px-4 rounded-lg transition-colors"
           >
             <Github size={16} />
             Code

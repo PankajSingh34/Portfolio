@@ -223,21 +223,21 @@ const Navbar = () => {
   const scrollToSection = (sectionId) => {
     console.log(`Scrolling to section: ${sectionId}`);
     const element = document.getElementById(sectionId);
-    
+
     if (element) {
       console.log(`Element found for ${sectionId}`);
-      
+
       // Close mobile menu first
       setIsMenuOpen(false);
-      
+
       // Use a timeout to ensure menu closes before scrolling
       setTimeout(() => {
         const elementPosition = element.offsetTop;
         const offsetPosition = elementPosition - 80; // Account for fixed navbar
-        
+
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth"
+          behavior: "smooth",
         });
       }, 100);
     } else {
@@ -342,10 +342,13 @@ const Navbar = () => {
                         : "text-gray-300 hover:bg-gray-800/50 hover:text-green-400 active:bg-gray-700"
                     }`}
                     whileHover={{ x: 5 }}
-                    whileTap={{ scale: 0.98, backgroundColor: "rgba(75, 85, 99, 0.8)" }}
-                    style={{ 
-                      WebkitTapHighlightColor: 'transparent',
-                      touchAction: 'manipulation'
+                    whileTap={{
+                      scale: 0.98,
+                      backgroundColor: "rgba(75, 85, 99, 0.8)",
+                    }}
+                    style={{
+                      WebkitTapHighlightColor: "transparent",
+                      touchAction: "manipulation",
                     }}
                   >
                     {item.label}

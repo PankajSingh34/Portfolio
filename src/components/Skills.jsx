@@ -17,9 +17,9 @@ const Skills = () => {
       color: "#1572B6",
     },
     {
-      name: ".NET",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg",
-      color: "#512BD4",
+      name: "MySQL",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+      color: "#4479A1",
     },
     {
       name: "Express",
@@ -63,11 +63,6 @@ const Skills = () => {
       color: "#007396",
     },
     {
-      name: "Azure",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
-      color: "#0078D4",
-    },
-    {
       name: "Node.js",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
       color: "#339933",
@@ -84,16 +79,6 @@ const Skills = () => {
       color: "#FF9900",
     },
     {
-      name: "Unity",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg",
-      color: "#000000",
-    },
-    {
-      name: "RStudio",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-original.svg",
-      color: "#75AADB",
-    },
-    {
       name: "Tailwind CSS",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
       color: "#06B6D4",
@@ -102,6 +87,31 @@ const Skills = () => {
       name: "TypeScript",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
       color: "#3178C6",
+    },
+    {
+      name: "C++",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+      color: "#00599C",
+    },
+    {
+      name: "C",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+      color: "#A8B9CC",
+    },
+    {
+      name: "Socket.io",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
+      color: "#010101",
+    },
+    {
+      name: "JWT",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jsonwebtokens/jsonwebtokens-original.svg",
+      color: "#000000",
+    },
+    {
+      name: "Vite",
+      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg",
+      color: "#646CFF",
     },
   ];
 
@@ -133,9 +143,13 @@ const Skills = () => {
               key={`${tech.name}-${index}`}
               variants={itemVariants}
               custom={index}
-              className="group relative"
+              className="group relative flex flex-col items-center"
             >
-              <motion.div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-sm border border-gray-300/20 flex items-center justify-center transition-all duration-300">
+              <motion.div 
+                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-sm border border-gray-300/20 flex items-center justify-center transition-all duration-300 hover:border-green-400 hover:shadow-lg cursor-pointer"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <img
                   src={tech.icon}
                   alt={tech.name}
@@ -144,21 +158,22 @@ const Skills = () => {
                     filter:
                       tech.name === "Express" ||
                       tech.name === "GitHub" ||
-                      tech.name === "Unity"
+                      tech.name === "Socket.io" ||
+                      tech.name === "JWT"
                         ? "invert(0.8)"
                         : "none",
                   }}
                 />
               </motion.div>
 
-              {/* Tooltip */}
-              <motion.div
-                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap z-10"
-                initial={{ opacity: 0, y: 10 }}
-                whileHover={{ opacity: 1, y: 0 }}
-              >
-                {tech.name}
-              </motion.div>
+              {/* Enhanced Tooltip */}
+              <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
+                <div className="bg-gray-900 border border-green-400/50 text-green-400 text-xs font-medium px-3 py-2 rounded-lg shadow-lg whitespace-nowrap">
+                  {tech.name}
+                  {/* Tooltip Arrow */}
+                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 border-l border-t border-green-400/50 rotate-45"></div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </motion.div>

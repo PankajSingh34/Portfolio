@@ -25,9 +25,34 @@ export const projectsData = [
     status: "Completed",
     year: "2025",
   },
+  {
+    id: 2,
+    title: "Convo",
+    description:
+      "A modern real-time chat application with secure authentication and seamless messaging experience.",
+    longDescription:
+      "Convo is a full-stack real-time chat application built with modern web technologies. It features secure user authentication with sign up/sign in functionality, real-time messaging capabilities, and a sleek, responsive user interface. The application provides a seamless chatting experience with instant message delivery and user-friendly design.",
+    image: "/images/convo-screenshot.png",
+    tags: [
+      "React",
+      "Node.js",
+      "Socket.io",
+      "Express",
+      "MongoDB",
+      "JWT",
+      "Real-time",
+    ],
+    category: "Full Stack",
+    link: "https://convo-sxwb.onrender.com/",
+    demo: "https://convo-sxwb.onrender.com/",
+    github: "https://github.com/PankajSingh34/Convo",
+    featured: true,
+    status: "Completed",
+    year: "2025",
+  },
 ];
 
-export const categories = ["All", "AI/ML"];
+export const categories = ["All", "AI/ML", "Full Stack"];
 
 export const technologies = [
   "React",
@@ -37,4 +62,8 @@ export const technologies = [
   "NLP",
   "OpenAI",
   "Speech Recognition",
+  "Socket.io",
+  "MongoDB",
+  "JWT",
+  "Real-time",
 ];
