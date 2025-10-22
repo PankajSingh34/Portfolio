@@ -50,9 +50,32 @@ export const projectsData = [
     status: "Completed",
     year: "2025",
   },
+  {
+    id: 3,
+    title: "NASA Space Biology Engine",
+    description:
+      "A hackathon project built during the NASA Hackathon that models and visualizes space biology data with a web interface.",
+    longDescription:
+      "NASA Space Biology Engine is a hackathon prototype that aggregates biological datasets, provides analysis pipelines, and visualizes results in an interactive dashboard. Built for rapid prototyping during the NASA Hackathon.",
+    image: "/images/nasa-screenshot.png",
+    tags: [
+      "React",
+      "Node.js",
+      "APIs",
+      "Data Visualization",
+      "Hackathon",
+    ],
+    category: "Hackathon",
+    link: "https://nasa-hackathon-lftj.onrender.com/",
+    demo: "https://nasa-hackathon-lftj.onrender.com/",
+    github: "https://github.com/PankajSingh34/NASA-hackathon.git",
+    featured: false,
+    status: "Completed",
+    year: "2025",
+  },
 ];
 
-export const categories = ["All", "AI/ML", "Full Stack"];
+export const categories = ["All", "AI/ML", "Full Stack", "Hackathon"];
 
 export const technologies = [
   "React",
@@ -66,4 +89,6 @@ export const technologies = [
   "MongoDB",
   "JWT",
   "Real-time",
+  "APIs",
+  "Data Visualization",
 ];
