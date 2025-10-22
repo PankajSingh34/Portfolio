@@ -105,7 +105,7 @@ const Skills = () => {
     },
     {
       name: "JWT",
-      icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jsonwebtokens/jsonwebtokens-original.svg",
+      icon: "/images/jwt.svg",
       color: "#000000",
     },
     {
