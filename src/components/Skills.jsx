@@ -145,7 +145,7 @@ const Skills = () => {
               custom={index}
               className="group relative flex flex-col items-center"
             >
-              <motion.div 
+              <motion.div
                 className="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-sm border border-gray-300/20 flex items-center justify-center transition-all duration-300 hover:border-green-400 hover:shadow-lg cursor-pointer"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}

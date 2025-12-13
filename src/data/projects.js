@@ -58,13 +58,7 @@ export const projectsData = [
     longDescription:
       "NASA Space Biology Engine is a hackathon prototype that aggregates biological datasets, provides analysis pipelines, and visualizes results in an interactive dashboard. Built for rapid prototyping during the NASA Hackathon.",
     image: "/images/nasa-screenshot.png",
-    tags: [
-      "React",
-      "Node.js",
-      "APIs",
-      "Data Visualization",
-      "Hackathon",
-    ],
+    tags: ["React", "Node.js", "APIs", "Data Visualization", "Hackathon"],
     category: "Hackathon",
     link: "https://nasa-hackathon-lftj.onrender.com/",
     demo: "https://nasa-hackathon-lftj.onrender.com/",

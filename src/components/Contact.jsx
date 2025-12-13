@@ -6,16 +6,16 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -26,23 +26,24 @@ const Contact = () => {
 
     try {
       // Create mailto link with form data
-      const subject = encodeURIComponent(`Portfolio Contact: Message from ${formData.name}`);
+      const subject = encodeURIComponent(
+        `Portfolio Contact: Message from ${formData.name}`
+      );
       const body = encodeURIComponent(
         `Name: ${formData.name}\n` +
-        `Email: ${formData.email}\n\n` +
-        `Message:\n${formData.message}`
+          `Email: ${formData.email}\n\n` +
+          `Message:\n${formData.message}`
       );
-      
+
       // Open default email client
       window.location.href = `mailto:singhps588@gmail.com?subject=${subject}&body=${body}`;
-      
+
       // Show success message and reset form
-      setSubmitStatus('success');
+      setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      
     } catch (error) {
-      console.error('Error sending message:', error);
-      setSubmitStatus('error');
+      console.error("Error sending message:", error);
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
@@ -157,19 +158,21 @@ const Contact = () => {
                   required
                   className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
                 ></textarea>
-                
+
                 {/* Status Messages */}
-                {submitStatus === 'success' && (
+                {submitStatus === "success" && (
                   <div className="p-3 bg-green-600/20 border border-green-500/30 rounded-lg text-green-400 text-sm">
-                    ✅ Message sent successfully! Your email client should open shortly.
+                    ✅ Message sent successfully! Your email client should open
+                    shortly.
                   </div>
                 )}
-                {submitStatus === 'error' && (
+                {submitStatus === "error" && (
                   <div className="p-3 bg-red-600/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
-                    ❌ Error sending message. Please try again or contact me directly.
+                    ❌ Error sending message. Please try again or contact me
+                    directly.
                   </div>
                 )}
-                
+
                 <button
                   type="submit"
                   disabled={isSubmitting}
