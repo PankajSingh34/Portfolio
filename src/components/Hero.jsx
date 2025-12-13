@@ -98,8 +98,6 @@ const Hero = () => {
             <motion.button
               onClick={scrollToProjects}
               className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               <span className="flex items-center justify-center gap-2">
                 <Eye size={20} />
@@ -109,8 +107,6 @@ const Hero = () => {
             <motion.button
               onClick={downloadResume}
               className="bg-transparent border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
               <span className="flex items-center justify-center gap-2">
                 <Download size={20} />

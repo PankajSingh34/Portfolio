@@ -5,9 +5,12 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
+import Blog from "./components/Blog";
+import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
+import BackToTop from "./components/BackToTop";
 
 function App() {
   return (
@@ -20,8 +23,11 @@ function App() {
         <Skills />
         <Experience />
         <Projects />
+        <Blog />
+        <Testimonials />
         <Contact />
         <Footer />
+        <BackToTop />
       </div>
     </ThemeProvider>
   );

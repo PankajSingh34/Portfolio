@@ -25,25 +25,52 @@ const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      // Create mailto link with form data
+      // Using Web3Forms - Free form submission service
+      // To set up: Go to https://web3forms.com and get your access key
+      // Replace YOUR_ACCESS_KEY_HERE with your actual key
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "YOUR_ACCESS_KEY_HERE", // Get free key at web3forms.com
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `Portfolio Contact: Message from ${formData.name}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        // Fallback to mailto if Web3Forms fails
+        const subject = encodeURIComponent(
+          `Portfolio Contact: Message from ${formData.name}`
+        );
+        const body = encodeURIComponent(
+          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        );
+        window.location.href = `mailto:singhps588@gmail.com?subject=${subject}&body=${body}`;
+        setSubmitStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      // Fallback to mailto
       const subject = encodeURIComponent(
         `Portfolio Contact: Message from ${formData.name}`
       );
       const body = encodeURIComponent(
-        `Name: ${formData.name}\n` +
-          `Email: ${formData.email}\n\n` +
-          `Message:\n${formData.message}`
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       );
-
-      // Open default email client
       window.location.href = `mailto:singhps588@gmail.com?subject=${subject}&body=${body}`;
-
-      // Show success message and reset form
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
-    } catch (error) {
-      console.error("Error sending message:", error);
-      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }

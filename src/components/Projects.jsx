@@ -140,8 +140,18 @@ const ProjectCard = ({ project, index }) => {
 
 const Projects = () => {
   const [loading, setLoading] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const scrollAnimationProps = useScrollAnimation();
+
+  // Get unique categories from projects
+  const categories = ["All", ...new Set(projectsData.map((p) => p.category))];
+
+  // Filter projects based on selected category
+  const filteredProjects =
+    activeCategory === "All"
+      ? projectsData
+      : projectsData.filter((project) => project.category === activeCategory);
 
   return (
     <section
@@ -183,6 +193,26 @@ const Projects = () => {
             variants={itemVariants}
             className="w-24 h-1 bg-green-400 mx-auto mb-6"
           />
+
+          {/* Category Filter */}
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center gap-3 mt-8"
+          >
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeCategory === category
+                    ? "bg-green-600 text-white shadow-lg shadow-green-500/25"
+                    : "bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-white border border-gray-700"
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </motion.div>
         </motion.div>
 
         {/* Projects Grid */}
@@ -191,13 +221,15 @@ const Projects = () => {
           variants={containerVariants}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {projectsData.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
-          ))}
+          <AnimatePresence mode="wait">
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </AnimatePresence>
         </motion.div>
 
         {/* Show All Projects Button */}
-        {projectsData.length >= 6 && (
+        {filteredProjects.length >= 6 && (
           <motion.div
             {...scrollAnimationProps}
             variants={itemVariants}
