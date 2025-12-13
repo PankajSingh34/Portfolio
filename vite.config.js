@@ -6,6 +6,5 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   // Set base for GitHub Pages project site (https://<user>.github.io/Portfolio/)
-  // base: "/Portfolio/",
-  base: "./",
+  base: "/Portfolio/",
 });
