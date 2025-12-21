@@ -1,123 +1,8 @@
 import React from "react";
-
-// Icon components (you'll need to import these from lucide-react or define them)
-const Code = ({ className, size = 24 }) => (
-  <svg
-    className={className}
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <polyline points="16,18 22,12 16,6"></polyline>
-    <polyline points="8,6 2,12 8,18"></polyline>
-  </svg>
-);
-
-const Palette = ({ className, size = 24 }) => (
-  <svg
-    className={className}
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <circle cx="13.5" cy="6.5" r=".5"></circle>
-    <circle cx="17.5" cy="10.5" r=".5"></circle>
-    <circle cx="8.5" cy="7.5" r=".5"></circle>
-    <circle cx="6.5" cy="12.5" r=".5"></circle>
-    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
-  </svg>
-);
-
-const Smartphone = ({ className, size = 24 }) => (
-  <svg
-    className={className}
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-    <line x1="12" y1="18" x2="12.01" y2="18"></line>
-  </svg>
-);
-
-const Database = ({ className, size = 24 }) => (
-  <svg
-    className={className}
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-    <path d="m3 5v14c0 3 4 6 9 6s9-3 9-6V5"></path>
-    <path d="m3 12c0 3 4 6 9 6s9-3 9-6"></path>
-  </svg>
-);
-
-const Cloud = ({ className, size = 24 }) => (
-  <svg
-    className={className}
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
-  </svg>
-);
-
-const Globe = ({ className, size = 24 }) => (
-  <svg
-    className={className}
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-  >
-    <circle cx="12" cy="12" r="10"></circle>
-    <line x1="2" y1="12" x2="22" y2="12"></line>
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-  </svg>
-);
+import { Code, Palette, Smartphone } from "lucide-react";
 
 const About = () => {
-  const features = [
-    {
-      icon: Code,
-      title: "Full Stack Development",
-      description: "Building complete web applications",
-
-      iconColor: "text-green-400",
-    },
-    {
-      icon: Palette,
-      title: "UI/UX Design",
-      description: "Creating beautiful user experiences",
-
-      iconColor: "text-green-400",
-    },
-    {
-      icon: Smartphone,
-      title: "Mobile Development",
-      description: "Cross-platform mobile solutions",
-      iconColor: "text-green-400",
-    },
-  ];
+  const features = [];
 
   return (
     <div>
@@ -131,28 +16,20 @@ const About = () => {
             <div className="w-24 h-1 bg-green-400 mx-auto"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="w-full">
             <div>
-              <div className=" rounded-2xl p-8">
+              <div className="w-full rounded-2xl p-8">
                 <h3 className="text-2xl font-semibold mb-4 text-white">
-                  Who I Am ?
+                  My Story
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Hi, I’m Pankaj Singh, a Computer Science Engineering student
-                  at Veer Madho Singh Bhandari Uttarakhand Technical University.
-                  I’m passionate about building impactful web applications and
-                  creating innovative tech solutions that make a difference. I
-                  specialize in full-stack development — particularly the MERN
-                  stack — and enjoy turning ideas into responsive,
-                  user-friendly, and scalable products.
+                  Hey! I’m <span className="text-green-400 font-semibold">Pankaj Singh</span>—a builder, a problem solver, and a lifelong learner. My journey in tech started with curiosity and a knack for tinkering, but quickly grew into a passion for creating things that make life easier, smarter, and more fun.
                 </p>
-                <p className="text-gray-300 leading-relaxed">
-                  Outside of academics, I serve as the Athletics Secretary of my
-                  college, actively leading and participating in football and
-                  gym activities. These experiences keep me disciplined,
-                  energetic, and motivated. My ultimate goal is to work in a
-                  product-based organization where I can contribute to building
-                  technology that truly matters.
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  I’m currently pursuing Computer Science Engineering at Veer Madho Singh Bhandari Uttarakhand Technical University. Whether it’s a hackathon project, a freelance gig, or a personal experiment, I love the thrill of turning ideas into real, working products. My favorite playground? The MERN stack—where I get to blend logic, creativity, and a bit of magic.
+                </p>
+                <p className="text-gray-300 leading-relaxed mb-6">
+                  Beyond the screen, I’m the Athletics Secretary at my college, a football enthusiast, and a gym regular. Sports have taught me discipline, teamwork, and how to push through challenges—skills I bring to every line of code I write.
                 </p>
               </div>
             </div>

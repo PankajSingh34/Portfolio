@@ -158,7 +158,7 @@ const Experience = () => {
         >
           <motion.div variants={itemVariants} className="mb-4">
             <span className="inline-block px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium">
-              💼 Professional Journey
+              Professional Journey
             </span>
           </motion.div>
 

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Calendar, Code, Star } from "lucide-react";
+import { ExternalLink, Github, Calendar, Code } from "lucide-react";
 import { projectsData } from "../data/projects";
 import {
   fadeInUp,
@@ -15,26 +15,23 @@ const ProjectCard = ({ project, index }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <motion.div
+    <motion.article
       variants={itemVariants}
       custom={index}
-      className="backdrop-blur-sm rounded-2xl overflow-hidden border hover:border-green-400 shadow-xl transition-all duration-300 flex flex-col h-full"
+      className="group bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 flex flex-col h-full"
     >
-      {/* Project Image */}
-      <div className="relative h-64 overflow-hidden">
+      {/* Image */}
+      <div className="relative h-48 overflow-hidden">
         {!imageLoaded && !imageError && (
           <div className="absolute inset-0 bg-gray-700 animate-pulse flex items-center justify-center">
             <Code className="w-12 h-12 text-gray-500" />
           </div>
         )}
-
         {!imageError ? (
           <img
             src={project.image}
             alt={project.title}
-            className={`w-full h-full object-cover ${
-              imageLoaded ? "opacity-100" : "opacity-0"
-            }`}
+            className={`w-full h-full object-cover ${imageLoaded ? "opacity-100" : "opacity-0"}`}
             onLoad={() => setImageLoaded(true)}
             onError={() => setImageError(true)}
           />
@@ -43,75 +40,36 @@ const ProjectCard = ({ project, index }) => {
             <Code className="w-16 h-16 text-gray-400" />
           </div>
         )}
-
-        {/* Overlay - Removed hover effect */}
-
-        {/* Status Badge */}
-        <div className="absolute top-4 left-4">
-          <span
-            className={`px-3 py-1 rounded-full text-xs font-medium ${
-              project.status === "Completed"
-                ? "bg-green-500/20 text-green-400 border border-green-500/30"
-                : project.status === "In Progress"
-                ? "bg-yellow-500/20 text-yellow-400 border border-yellow-500/30"
-                : "bg-green-500/20 text-green-400 border border-green-500/30"
-            }`}
-          >
-            {project.status}
-          </span>
-        </div>
-
-        {/* Featured Badge */}
-        {project.featured && (
-          <div className="absolute top-4 right-4">
-            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-          </div>
-        )}
-
-        {/* Year */}
-        <div className="absolute bottom-4 right-4">
-          <span className="flex items-center gap-1 text-white text-sm bg-black/50 px-2 py-1 rounded">
-            <Calendar className="w-3 h-3" />
-            {project.year}
+        <div className="absolute bottom-4 left-4">
+          <span className="px-3 py-1 bg-green-600/80 text-white text-xs font-medium rounded-full">
+            {project.category}
           </span>
         </div>
       </div>
 
-      {/* Project Info */}
+      {/* Content */}
       <div className="p-6 flex flex-col flex-1">
-        {/* Category */}
-        <div className="mb-3">
-          <span className="text-xs font-medium text-green-400 bg-green-500/10 px-2 py-1 rounded">
-            {project.category}
-          </span>
+        {/* Content area with flex-grow to push tags and buttons to the bottom */}
+        <div className="flex flex-col flex-1">
+          <h3 className="text-lg font-bold text-white mb-3 group-hover:text-green-400 transition-colors line-clamp-2">
+            {project.title}
+          </h3>
+          <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+            {project.description}
+          </p>
+          <div className="flex-1" />
+          {/* Tag row absolutely anchored at the bottom of content area */}
+          <div className="flex flex-wrap gap-2 mb-4 min-h-[40px] items-center">
+            {project.tags.slice(0, 3).map((tag) => (
+              <span
+                key={tag}
+                className="flex items-center gap-1 px-2 py-1 bg-gray-800 text-gray-400 text-xs rounded"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
         </div>
-
-        {/* Title */}
-        <h3 className="text-xl font-bold mb-3 text-white">{project.title}</h3>
-
-        {/* Description */}
-        <p className="text-gray-300 mb-4 text-sm leading-relaxed line-clamp-3 flex-1">
-          {project.description}
-        </p>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tags.slice(0, 4).map((tag) => (
-            <span
-              key={tag}
-              className="px-2 py-1 bg-gray-700/50 text-gray-300 rounded text-xs font-medium border border-gray-600/50"
-            >
-              {tag}
-            </span>
-          ))}
-          {project.tags.length > 4 && (
-            <span className="px-2 py-1 text-gray-400 text-xs">
-              +{project.tags.length - 4} more
-            </span>
-          )}
-        </div>
-
-        {/* Action Buttons */}
         <div className="flex gap-3 mt-auto">
           <a
             href={project.demo}
@@ -122,7 +80,6 @@ const ProjectCard = ({ project, index }) => {
             <ExternalLink size={16} />
             Live Demo
           </a>
-
           <a
             href={project.github}
             target="_blank"
@@ -134,7 +91,7 @@ const ProjectCard = ({ project, index }) => {
           </a>
         </div>
       </div>
-    </motion.div>
+    </motion.article>
   );
 };
 
@@ -145,13 +102,25 @@ const Projects = () => {
   const scrollAnimationProps = useScrollAnimation();
 
   // Get unique categories from projects
-  const categories = ["All", ...new Set(projectsData.map((p) => p.category))];
+  // Map button labels to data categories
+  const categoryMap = {
+    All: "All",
+    AIML: "AI/ML",
+    "AI/ML": "AI/ML",
+    Fullstack: "Full Stack",
+    "Full Stack": "Full Stack",
+    Hackathon: "Hackathon",
+  };
+  // Button labels to display
+  const categories = ["All", "AIML", "Fullstack", "Hackathon"];
 
   // Filter projects based on selected category
   const filteredProjects =
-    activeCategory === "All"
+    categoryMap[activeCategory] === "All"
       ? projectsData
-      : projectsData.filter((project) => project.category === activeCategory);
+      : projectsData.filter((project) => project.category === categoryMap[activeCategory]);
+
+
 
   return (
     <section
@@ -178,7 +147,7 @@ const Projects = () => {
         >
           <motion.div variants={itemVariants} className="mb-4">
             <span className="inline-block px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium">
-              💼 My Work
+              My Work
             </span>
           </motion.div>
 
@@ -193,29 +162,9 @@ const Projects = () => {
             variants={itemVariants}
             className="w-24 h-1 bg-green-400 mx-auto mb-6"
           />
-
-          {/* Category Filter */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-3 mt-8"
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                  activeCategory === category
-                    ? "bg-green-600 text-white shadow-lg shadow-green-500/25"
-                    : "bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-white border border-gray-700"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Projects Grid (restored) */}
         <motion.div
           {...scrollAnimationProps}
           variants={containerVariants}
@@ -227,23 +176,6 @@ const Projects = () => {
             ))}
           </AnimatePresence>
         </motion.div>
-
-        {/* Show All Projects Button */}
-        {filteredProjects.length >= 6 && (
-          <motion.div
-            {...scrollAnimationProps}
-            variants={itemVariants}
-            className="text-center mt-12"
-          >
-            <motion.button
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View All Projects
-            </motion.button>
-          </motion.div>
-        )}
       </div>
     </section>
   );

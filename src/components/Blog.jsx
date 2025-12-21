@@ -273,27 +273,7 @@ const Blog = () => {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-gray-400 mb-4">
-            Want to read more? Follow me on social media for the latest updates.
-          </p>
-          <div className="flex justify-center gap-4">
-            <a
-              href="https://github.com/PankajSingh34"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/yourprofile"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
-            >
-              LinkedIn
-            </a>
-          </div>
+          {/* Social media section removed as requested */}
         </motion.div>
       </div>
     </section>

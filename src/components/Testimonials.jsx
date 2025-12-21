@@ -8,7 +8,8 @@ const testimonials = [
     name: "Tech Lead",
     role: "Senior Developer",
     company: "Project Collaboration",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
     text: "Pankaj demonstrated exceptional problem-solving skills while working on our AI project. His ability to quickly grasp complex concepts and deliver clean, efficient code is impressive.",
     rating: 5,
   },
@@ -17,7 +18,8 @@ const testimonials = [
     name: "Project Manager",
     role: "Team Lead",
     company: "Freelance Project",
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face",
     text: "Working with Pankaj was a great experience. He delivered the chat application ahead of schedule with excellent quality. Highly recommend for any full-stack development work.",
     rating: 5,
   },
@@ -26,7 +28,8 @@ const testimonials = [
     name: "Fellow Developer",
     role: "Software Engineer",
     company: "Open Source",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     text: "Pankaj's contributions to our open-source project were invaluable. His code is well-documented, and he's always willing to help others understand the codebase.",
     rating: 5,
   },
@@ -40,7 +43,9 @@ const Testimonials = () => {
   };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
   };
 
   return (

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown, Download, Eye } from "lucide-react";
+import { ChevronDown, Download, Eye, Zap, Code2, Rocket } from "lucide-react";
 import { useTypingAnimation } from "../hooks";
 import {
   containerVariants,
@@ -9,13 +9,7 @@ import {
 } from "../utils/animations";
 
 const Hero = () => {
-  const roles = [
-    "Full Stack Developer",
-    "Frontend Specialist",
-    "Backend Engineer",
-    "UI/UX Enthusiast",
-    "Problem Solver",
-  ];
+  const roles = ["Full Stack Developer", "Problem Solver"];
 
   const typedRole = useTypingAnimation(roles, 100, 2000);
 
@@ -31,22 +25,30 @@ const Hero = () => {
       const link = document.createElement("a");
       link.href = resumeUrl;
       link.download = "PSRESUME2.pdf";
-      link.target = "_blank"; // Open in new tab as fallback
+      link.target = "_blank";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
     } catch (error) {
       console.error("Error downloading resume:", error);
-      // Fallback: open resume in new tab
       window.open("/PSRESUME2.pdf", "_blank");
     }
   };
+
+  const stats = [
+    { number: "1+", label: "Years Experience", icon: Zap },
+    { number: "3+", label: "Projects Completed", icon: Rocket },
+    { number: "8+", label: "Technologies", icon: Code2 },
+    { number: "100%", label: "Client Satisfaction", icon: Zap },
+  ];
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
     >
+      {/* Gradient Orbs removed for a cleaner background */}
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           variants={containerVariants}
@@ -55,11 +57,12 @@ const Hero = () => {
           className="max-w-4xl mx-auto"
         >
           {/* Main Heading */}
+          {/* Main Heading */}
           <motion.h1
             variants={textVariants}
             className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
           >
-            {["Hi,", "I'm", "a"].map((word, index) => (
+            {["Hi,", "I'm"].map((word, index) => (
               <motion.span
                 key={index}
                 variants={letterVariants}
@@ -97,46 +100,48 @@ const Hero = () => {
           >
             <motion.button
               onClick={scrollToProjects}
-              className="bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300"
+              className="bg-green-400 text-white font-semibold py-4 px-8 rounded-xl"
             >
               <span className="flex items-center justify-center gap-2">
                 <Eye size={20} />
                 View My Work
               </span>
             </motion.button>
-            <motion.button
-              onClick={downloadResume}
-              className="bg-transparent border-2 border-green-400 text-green-400 hover:bg-green-400 hover:text-black font-semibold py-4 px-8 rounded-xl transition-all duration-300"
+            <a
+              href="/PSRESUME2.pdf"
+              download
+              className="bg-transparent border-2 border-green-400 text-green-400 font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-2"
             >
-              <span className="flex items-center justify-center gap-2">
-                <Download size={20} />
-                Download Resume
-              </span>
-            </motion.button>
+              <Download size={20} />
+              Download Resume
+            </a>
           </motion.div>
 
           {/* Stats Grid */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
           >
-            {[
-              { number: "1+", label: "Years Experience" },
-              { number: "3+", label: "Projects Completed" },
-              { number: "8+", label: "Technologies" },
-              { number: "100%", label: "Client Satisfaction" },
-            ].map((stat, index) => (
+            {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="text-center"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className="group relative p-6 rounded-2xl bg-gray-900 border border-gray-700 hover:border-green-400 transition-all duration-300"
               >
-                <div className="text-3xl md:text-4xl font-bold text-green-400 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-sm md:text-base text-gray-400">
-                  {stat.label}
+                <div className="absolute inset-0 bg-green-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="relative">
+                  <div className="flex items-center justify-center mb-3">
+                    <div className="p-2 rounded-lg bg-green-500/10 group-hover:bg-green-500/20 transition-colors duration-300">
+                      <stat.icon size={20} className="text-green-400" />
+                    </div>
+                  </div>
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-1">
+                    {stat.number}
+                  </div>
+                  <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                    {stat.label}
+                  </div>
                 </div>
               </motion.div>
             ))}

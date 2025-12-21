@@ -33,7 +33,7 @@ const BeyondCode = () => {
           className="text-center mb-16"
         >
           <span className="inline-block px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium mb-4">
-            🏃 Beyond Code
+            Beyond Code
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             My <span className="text-green-400">Journey</span>
@@ -63,18 +63,8 @@ const BeyondCode = () => {
                     "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80";
                 }}
               />
-              {/* Overlay Badge */}
-              <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-sm px-4 py-2 rounded-full border border-green-400/50">
-                <span className="text-green-400 font-semibold flex items-center gap-2">
-                  <Trophy size={18} />
-                  Athletic Secretary
-                </span>
-              </div>
+              {/* Overlay Badge and Decorative Elements removed as requested */}
             </div>
-
-            {/* Decorative Elements */}
-            <div className="absolute -top-4 -right-4 w-24 h-24 bg-green-500/20 rounded-full blur-2xl" />
-            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-yellow-500/20 rounded-full blur-2xl" />
           </motion.div>
 
           {/* Journey Blog Section */}
