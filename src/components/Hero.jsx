@@ -45,7 +45,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden pt-24 sm:pt-0"
     >
       {/* Gradient Orbs removed for a cleaner background */}
 
