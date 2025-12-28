@@ -4,12 +4,14 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: #111827; /* gray-900 */
   color: #ffffff;
+  overflow-x: hidden;
 }
 
 /* Dark theme base styles */

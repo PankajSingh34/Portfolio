@@ -117,7 +117,6 @@ const Hero = () => {
             </a>
           </motion.div>
 
-
           {/* Scroll Indicator */}
           <motion.div
             variants={itemVariants}
