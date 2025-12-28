@@ -36,10 +36,10 @@ const Hero = () => {
   };
 
   const stats = [
-    { number: "1+", label: "Years Experience", icon: Zap },
-    { number: "3+", label: "Projects Completed", icon: Rocket },
-    { number: "8+", label: "Technologies", icon: Code2 },
-    { number: "100%", label: "Client Satisfaction", icon: Zap },
+    { number: "2", label: "Hackathons Won", icon: Rocket },
+    { number: "5+", label: "Open Source PRs", icon: Code2 },
+    { number: "10+", label: "Team Projects", icon: Zap },
+    { number: "∞", label: "Cups of Coffee", icon: Rocket },
   ];
 
   return (
@@ -117,35 +117,6 @@ const Hero = () => {
             </a>
           </motion.div>
 
-          {/* Stats Grid */}
-          <motion.div
-            variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16"
-          >
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -5 }}
-                className="group relative p-6 rounded-2xl bg-gray-900 border border-gray-700 hover:border-green-400 transition-all duration-300"
-              >
-                <div className="absolute inset-0 bg-green-400/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="relative">
-                  <div className="flex items-center justify-center mb-3">
-                    <div className="p-2 rounded-lg bg-green-500/10 group-hover:bg-green-500/20 transition-colors duration-300">
-                      <stat.icon size={20} className="text-green-400" />
-                    </div>
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent mb-1">
-                    {stat.number}
-                  </div>
-                  <div className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
-                    {stat.label}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
 
           {/* Scroll Indicator */}
           <motion.div

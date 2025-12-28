@@ -26,24 +26,6 @@ export const projectsData = [
     year: "2025",
   },
   {
-    id: 4,
-    title: "CollabAuditAI",
-    description:
-      "A collaborative AI-powered auditing platform for teams to review, annotate, and improve code quality together.",
-    longDescription:
-      "CollabAuditAI enables real-time code review and auditing with AI assistance. Teams can leave comments, get automated suggestions, and track improvements collaboratively. Features include multi-user sessions, AI-driven code analysis, and seamless integration with popular version control systems.",
-    image:
-      "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800&q=80",
-    tags: ["React", "Node.js", "AI/ML", "Collaboration", "Code Review"],
-    category: "Full Stack",
-    link: "https://collabauditai-demo.com/",
-    demo: "https://collabauditai-demo.com/",
-    github: "https://github.com/PankajSingh34/CollabAuditAI",
-    featured: true,
-    status: "Completed",
-    year: "2025",
-  },
-  {
     id: 2,
     title: "Convo",
     description:
