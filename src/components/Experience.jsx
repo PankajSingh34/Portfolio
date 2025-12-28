@@ -167,12 +167,8 @@ const Experience = () => {
             className="text-4xl md:text-6xl font-bold mb-6 text-white"
           >
             Work <span className="text-green-400">Experience</span>
+            <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
           </motion.h2>
-
-          <motion.div
-            variants={itemVariants}
-            className="w-24 h-1 bg-green-400 mx-auto mb-6"
-          />
 
           <motion.p
             variants={itemVariants}

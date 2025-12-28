@@ -32,7 +32,7 @@ export const projectsData = [
       "A modern real-time chat application with secure authentication and seamless messaging experience.",
     longDescription:
       "Convo is a full-stack real-time chat application built with modern web technologies. It features secure user authentication with sign up/sign in functionality, real-time messaging capabilities, and a sleek, responsive user interface. The application provides a seamless chatting experience with instant message delivery and user-friendly design.",
-  image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80",
     tags: [
       "React",
       "Node.js",

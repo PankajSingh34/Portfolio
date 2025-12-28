@@ -37,6 +37,7 @@ const BeyondCode = () => {
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             My <span className="text-green-400">Journey</span>
+            <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Life is more than just code. Here's a glimpse into my athletic

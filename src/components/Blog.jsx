@@ -33,6 +33,7 @@ const Blog = () => {
         >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Blog & <span className="text-green-400">Articles</span>
+            <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
             Sharing my knowledge and experiences in web development, AI, and

@@ -129,6 +129,7 @@ const Skills = () => {
             className="text-4xl md:text-5xl font-bold mb-6 text-white"
           >
             My Skills
+            <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
           </motion.h2>
         </motion.div>
 
