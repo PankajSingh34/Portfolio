@@ -6,7 +6,6 @@ import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Blog from "./components/Blog";
-import BeyondCode from "./components/BeyondCode";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollProgress from "./components/ScrollProgress";
@@ -24,7 +23,7 @@ function App() {
         <Experience />
         <Projects />
         <Blog />
-        <BeyondCode />
+        {/* <BeyondCode /> section removed as requested */}
         <Contact />
         <Footer />
         <BackToTop />
