@@ -45,7 +45,16 @@ const experienceData = [
       "Designed scalable backend APIs and integrated third-party services for enhanced audit capabilities.",
       "Worked closely with product managers and users to deliver impactful features and improvements.",
     ],
-    technologies: ["React.js", "Node.js", "Socket.io", "MongoDB", "Express.js", "Tailwind CSS", "JWT", "REST APIs"],
+    technologies: [
+      "React.js",
+      "Node.js",
+      "Socket.io",
+      "MongoDB",
+      "Express.js",
+      "Tailwind CSS",
+      "JWT",
+      "REST APIs",
+    ],
     color: "from-green-400 to-emerald-400",
   },
 ];

@@ -23,13 +23,28 @@ const About = () => {
                   My Story
                 </h3>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Hey! I’m <span className="text-green-400 font-semibold">Pankaj Singh</span>—a builder, a problem solver, and a lifelong learner. My journey in tech started with curiosity and a knack for tinkering, but quickly grew into a passion for creating things that make life easier, smarter, and more fun.
+                  Hey! I’m{" "}
+                  <span className="text-green-400 font-semibold">
+                    Pankaj Singh
+                  </span>
+                  —a builder, a problem solver, and a lifelong learner. My
+                  journey in tech started with curiosity and a knack for
+                  tinkering, but quickly grew into a passion for creating things
+                  that make life easier, smarter, and more fun.
                 </p>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  I’m currently pursuing Computer Science Engineering at Veer Madho Singh Bhandari Uttarakhand Technical University. Whether it’s a hackathon project, a freelance gig, or a personal experiment, I love the thrill of turning ideas into real, working products. My favorite playground? The MERN stack—where I get to blend logic, creativity, and a bit of magic.
+                  I’m currently pursuing Computer Science Engineering at Veer
+                  Madho Singh Bhandari Uttarakhand Technical University. Whether
+                  it’s a hackathon project, a freelance gig, or a personal
+                  experiment, I love the thrill of turning ideas into real,
+                  working products. My favorite playground? The MERN stack—where
+                  I get to blend logic, creativity, and a bit of magic.
                 </p>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Beyond the screen, I’m the Athletics Secretary at my college, a football enthusiast, and a gym regular. Sports have taught me discipline, teamwork, and how to push through challenges—skills I bring to every line of code I write.
+                  Beyond the screen, I’m the Athletics Secretary at my college,
+                  a football enthusiast, and a gym regular. Sports have taught
+                  me discipline, teamwork, and how to push through
+                  challenges—skills I bring to every line of code I write.
                 </p>
               </div>
             </div>

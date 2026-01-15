@@ -1,13 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Calendar, Code } from "lucide-react";
 import { projectsData } from "../data/projects";
-import {
-  fadeInUp,
-  containerVariants,
-  itemVariants,
-  useScrollAnimation,
-} from "../utils/animations";
 import Loading from "./Loading";
 
 const ProjectCard = ({ project, index }) => {
@@ -15,9 +8,7 @@ const ProjectCard = ({ project, index }) => {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <motion.article
-      variants={itemVariants}
-      custom={index}
+    <article
       className="group bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 flex flex-col h-full"
     >
       {/* Image */}
@@ -31,7 +22,9 @@ const ProjectCard = ({ project, index }) => {
           <img
             src={project.image}
             alt={project.title}
-            className={`w-full h-full object-cover ${imageLoaded ? "opacity-100" : "opacity-0"}`}
+            className={`w-full h-full object-cover ${
+              imageLoaded ? "opacity-100" : "opacity-0"
+            }`}
             onLoad={() => setImageLoaded(true)}
             onError={() => setImageError(true)}
           />
@@ -91,15 +84,13 @@ const ProjectCard = ({ project, index }) => {
           </a>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 };
 
 const Projects = () => {
   const [loading, setLoading] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
-
-  const scrollAnimationProps = useScrollAnimation();
 
   // Get unique categories from projects
   // Map button labels to data categories
@@ -118,9 +109,9 @@ const Projects = () => {
   const filteredProjects =
     categoryMap[activeCategory] === "All"
       ? projectsData
-      : projectsData.filter((project) => project.category === categoryMap[activeCategory]);
-
-
+      : projectsData.filter(
+          (project) => project.category === categoryMap[activeCategory]
+        );
 
   return (
     <section
@@ -140,42 +131,26 @@ const Projects = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
-        <motion.div
-          {...scrollAnimationProps}
-          variants={containerVariants}
-          className="text-center mb-16"
-        >
-          <motion.div variants={itemVariants} className="mb-4">
+        <div className="text-center mb-16">
+          <div className="mb-4">
             <span className="inline-block px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium">
               My Work
             </span>
-          </motion.div>
+          </div>
 
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
-          >
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
             Featured <span className="text-green-400">Projects</span>
-          </motion.h2>
+          </h2>
 
-          <motion.div
-            variants={itemVariants}
-            className="w-24 h-1 bg-green-400 mx-auto mb-6"
-          />
-        </motion.div>
+          <div className="w-24 h-1 bg-green-400 mx-auto mb-6" />
+        </div>
 
         {/* Projects Grid (restored) */}
-        <motion.div
-          {...scrollAnimationProps}
-          variants={containerVariants}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          <AnimatePresence mode="wait">
-            {filteredProjects.map((project, index) => (
-              <ProjectCard key={project.id} project={project} index={index} />
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   );

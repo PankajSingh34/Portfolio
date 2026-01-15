@@ -24,13 +24,7 @@ const Blog = () => {
     <section id="blog" className="py-20 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Blog & <span className="text-green-400">Articles</span>
             <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
@@ -39,16 +33,10 @@ const Blog = () => {
             Sharing my knowledge and experiences in web development, AI, and
             software engineering.
           </p>
-        </motion.div>
+        </div>
 
         {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {blogCategories.map((category) => (
             <button
               key={category}
@@ -62,17 +50,11 @@ const Blog = () => {
               {category}
             </button>
           ))}
-        </motion.div>
+        </div>
 
         {/* Featured Blog */}
         {activeCategory === "All" && (
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
+          <div className="mb-12">
             {blogsData
               .filter((blog) => blog.featured)
               .slice(0, 1)
@@ -165,7 +147,7 @@ const Blog = () => {
                   </div>
                 </div>
               ))}
-          </motion.div>
+          </div>
         )}
 
         {/* Blog Grid */}
@@ -175,12 +157,8 @@ const Blog = () => {
               activeCategory === "All" ? !blog.featured : true
             )
             .map((blog, index) => (
-              <motion.article
+              <article
                 key={blog.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
                 className="group bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10"
               >
                 {/* Image */}
@@ -262,20 +240,14 @@ const Blog = () => {
                     </motion.div>
                   )}
                 </div>
-              </motion.article>
+              </article>
             ))}
         </div>
 
         {/* Call to Action */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-16"
-        >
+        <div className="text-center mt-16">
           {/* Social media section removed as requested */}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
