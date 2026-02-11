@@ -63,18 +63,6 @@ const achievementsData = {
       icon: Award,
       color: "from-green-400 to-teal-400",
     },
-    {
-      id: 2,
-      title: "Campus Hero",
-      organization: "Coding Blocks",
-      description:
-        "Selected as a Campus Hero for Coding Blocks to bridge the gap between industry requirements and campus learning. Leading tech initiatives and promoting coding culture in the campus community.",
-      issueDate: "January 22, 2026",
-      year: "2026",
-      type: "Leadership & Community",
-      icon: Users,
-      color: "from-purple-400 to-pink-400",
-    },
   ],
   recognition: [
     {
