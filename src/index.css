@@ -129,7 +129,13 @@ h1, h2, h3, h4, h5, h6 {
   padding: 4px;
   background-color: var(--text-primary);
   border-radius: 1.5rem;
-  box-shadow: 10px 10px 0px #000000;
+  box-shadow: 6px 6px 0px #000000;
+}
+
+@media (min-width: 768px) {
+  .double-border-frame {
+    box-shadow: 10px 10px 0px #000000;
+  }
 }
 
 .double-border-frame-inner {
@@ -141,6 +147,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .double-border-frame-inner img {
   border-radius: 1.25rem;
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* ========================================
