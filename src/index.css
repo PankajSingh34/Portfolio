@@ -126,16 +126,21 @@ h1, h2, h3, h4, h5, h6 {
    DOUBLE BORDER PROFILE FRAME
    ======================================== */
 .double-border-frame {
-  padding: 6px;
+  padding: 4px;
   background-color: var(--text-primary);
   border-radius: 1.5rem;
+  box-shadow: 10px 10px 0px #000000;
 }
 
 .double-border-frame-inner {
-  padding: 4px;
-  background-color: var(--bg-primary);
+  padding: 0;
+  background-color: transparent;
   border-radius: 1.25rem;
   overflow: hidden;
+}
+
+.double-border-frame-inner img {
+  border-radius: 1.25rem;
 }
 
 /* ========================================

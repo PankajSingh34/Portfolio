@@ -107,45 +107,127 @@ const AchievementCard = ({ achievement, type, index }) => {
 
   return (
     <div
-      className="group relative card-brutal rounded-2xl p-6 theme-transition"
+      className="group relative card-brutal rounded-2xl p-4 theme-transition"
       style={{
         backgroundColor: "var(--bg-card)",
         borderColor: "var(--border-color)",
       }}
     >
       {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
+      <div className="flex items-start justify-between mb-3">
+        <div className="flex items-center gap-2.5 flex-1">
           <div
-            className="p-3 rounded-xl"
+            className="p-2 rounded-xl"
             style={{ backgroundColor: "var(--bg-secondary)" }}
           >
-            <Icon className="w-6 h-6" style={{ color: "var(--accent)" }} />
+            <Icon className="w-5 h-5" style={{ color: "var(--accent)" }} />
           </div>
-          <div>
-            <h3
-              className="text-xl font-bold"
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                color: "var(--text-primary)",
-              }}
-            >
-              {achievement.title}
-            </h3>
-            {achievement.organization && (
-              <p className="font-medium" style={{ color: "var(--accent)" }}>
-                {achievement.organization}
-              </p>
-            )}
-            {achievement.achievement && (
-              <p className="font-medium" style={{ color: "var(--accent)" }}>
-                {achievement.achievement}
-              </p>
-            )}
+          <div className="flex-1">
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <h3
+                  className="text-lg font-bold"
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    color: "var(--text-primary)",
+                  }}
+                >
+                  {achievement.title}
+                </h3>
+                {achievement.organization && (
+                  <p
+                    className="text-sm font-medium"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    {achievement.organization}
+                  </p>
+                )}
+                {achievement.achievement && (
+                  <p
+                    className="text-sm font-medium"
+                    style={{ color: "var(--accent)" }}
+                  >
+                    {achievement.achievement}
+                  </p>
+                )}
+              </div>
+              {/* Buttons inline with title for hackathons */}
+              {type === "hackathons" &&
+                (achievement.link || achievement.github) && (
+                  <div className="flex gap-2 shrink-0">
+                    {achievement.link && (
+                      <a
+                        href={achievement.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 text-xs py-1.5 px-3 rounded-full border transition-all duration-300 font-semibold"
+                        style={{
+                          borderColor: isDark ? "#ffffff" : "#000000",
+                          backgroundColor: isDark ? "#ffffff" : "#000000",
+                          color: isDark ? "#000000" : "#ffffff",
+                          fontFamily: "'Montserrat', sans-serif",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor =
+                            "var(--accent)";
+                          e.currentTarget.style.borderColor = "var(--accent)";
+                          e.currentTarget.style.color = "#ffffff";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = isDark
+                            ? "#ffffff"
+                            : "#000000";
+                          e.currentTarget.style.borderColor = isDark
+                            ? "#ffffff"
+                            : "#000000";
+                          e.currentTarget.style.color = isDark
+                            ? "#000000"
+                            : "#ffffff";
+                        }}
+                      >
+                        <ExternalLink size={14} />
+                        Live Demo
+                      </a>
+                    )}
+                    {achievement.github && (
+                      <a
+                        href={achievement.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-1.5 text-xs py-1.5 px-3 rounded-full border transition-all duration-300 font-semibold"
+                        style={{
+                          borderColor: isDark ? "#ffffff" : "#000000",
+                          backgroundColor: "transparent",
+                          color: isDark ? "#ffffff" : "#000000",
+                          fontFamily: "'Montserrat', sans-serif",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.backgroundColor =
+                            "var(--accent)";
+                          e.currentTarget.style.borderColor = "var(--accent)";
+                          e.currentTarget.style.color = "#ffffff";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.backgroundColor = "transparent";
+                          e.currentTarget.style.borderColor = isDark
+                            ? "#ffffff"
+                            : "#000000";
+                          e.currentTarget.style.color = isDark
+                            ? "#ffffff"
+                            : "#000000";
+                        }}
+                      >
+                        <Github size={14} />
+                        Code
+                      </a>
+                    )}
+                  </div>
+                )}
+            </div>
           </div>
         </div>
         <span
-          className="px-3 py-1 rounded-lg text-xs font-bold theme-transition"
+          className="px-2.5 py-1 rounded-lg text-xs font-bold theme-transition shrink-0 ml-3"
           style={{
             backgroundColor: "var(--bg-secondary)",
             color: "var(--text-muted)",
@@ -158,7 +240,7 @@ const AchievementCard = ({ achievement, type, index }) => {
 
       {/* Description */}
       <p
-        className="text-sm leading-relaxed mb-4"
+        className="text-sm leading-snug mb-3"
         style={{ color: "var(--text-secondary)" }}
       >
         {achievement.description}
@@ -166,14 +248,14 @@ const AchievementCard = ({ achievement, type, index }) => {
 
       {/* Special content based on type */}
       {type === "openSource" && achievement.badge && (
-        <div className="mb-4">
+        <div className="mb-3">
           <div
-            className="flex items-center gap-2 text-sm mb-2"
+            className="flex items-center gap-2 text-xs mb-1.5"
             style={{ color: "var(--text-muted)" }}
           >
             <span className="font-medium">Authenticity Key:</span>
             <span
-              className="font-mono px-2 py-1 rounded-md"
+              className="font-mono px-2 py-0.5 rounded-md text-xs"
               style={{
                 backgroundColor: "var(--bg-secondary)",
                 color: "var(--green-accent)",
@@ -220,8 +302,8 @@ const AchievementCard = ({ achievement, type, index }) => {
       )}
 
       {type === "hackathons" && achievement.tech && (
-        <div className="mb-4">
-          <div className="flex flex-wrap gap-2">
+        <div className="mb-3">
+          <div className="flex flex-wrap gap-1.5">
             {achievement.tech.map((tech) => (
               <span
                 key={tech}
@@ -241,7 +323,7 @@ const AchievementCard = ({ achievement, type, index }) => {
 
       {/* Certification details */}
       {type === "certifications" && achievement.issueDate && (
-        <div className="mb-4">
+        <div className="mb-3">
           <div
             className="flex items-center gap-2 text-sm mb-2"
             style={{ color: "var(--text-muted)" }}
@@ -297,15 +379,15 @@ const AchievementCard = ({ achievement, type, index }) => {
         </div>
       )}
 
-      {/* Action Links */}
-      {(achievement.link || achievement.github) && (
-        <div className="flex gap-3">
+      {/* Action Links - Only for non-hackathon types */}
+      {type !== "hackathons" && (achievement.link || achievement.github) && (
+        <div className="flex gap-2">
           {achievement.link && (
             <a
               href={achievement.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-xl border-2 transition-all duration-300 font-semibold hover:scale-105"
+              className="flex-1 flex items-center justify-center gap-1.5 text-xs py-2 px-3 rounded-full border transition-all duration-300 font-semibold"
               style={{
                 borderColor: isDark ? "#ffffff" : "#000000",
                 backgroundColor: isDark ? "#ffffff" : "#000000",
@@ -327,7 +409,7 @@ const AchievementCard = ({ achievement, type, index }) => {
                 e.currentTarget.style.color = isDark ? "#000000" : "#ffffff";
               }}
             >
-              <ExternalLink size={16} />
+              <ExternalLink size={14} />
               Live Demo
             </a>
           )}
@@ -336,7 +418,7 @@ const AchievementCard = ({ achievement, type, index }) => {
               href={achievement.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-xl border-2 transition-all duration-300 font-semibold hover:scale-105"
+              className="flex-1 flex items-center justify-center gap-1.5 text-xs py-2 px-3 rounded-full border transition-all duration-300 font-semibold"
               style={{
                 borderColor: isDark ? "#ffffff" : "#000000",
                 backgroundColor: "transparent",
@@ -356,7 +438,7 @@ const AchievementCard = ({ achievement, type, index }) => {
                 e.currentTarget.style.color = isDark ? "#ffffff" : "#000000";
               }}
             >
-              <Github size={16} />
+              <Github size={14} />
               Code
             </a>
           )}
@@ -367,11 +449,11 @@ const AchievementCard = ({ achievement, type, index }) => {
 };
 
 const SectionHeader = ({ title, description, icon: Icon }) => (
-  <div className="mb-8">
-    <div className="flex items-center gap-3 mb-3">
-      <Icon className="w-6 h-6" style={{ color: "var(--accent)" }} />
+  <div className="mb-6">
+    <div className="flex items-center gap-2.5 mb-2">
+      <Icon className="w-5 h-5" style={{ color: "var(--accent)" }} />
       <h3
-        className="text-2xl font-bold"
+        className="text-xl font-bold"
         style={{
           fontFamily: "'Montserrat', sans-serif",
           color: "var(--text-primary)",
@@ -380,7 +462,7 @@ const SectionHeader = ({ title, description, icon: Icon }) => (
         {title}
       </h3>
     </div>
-    <p style={{ color: "var(--text-muted)" }} className="leading-relaxed">
+    <p style={{ color: "var(--text-muted)" }} className="text-sm leading-snug">
       {description}
     </p>
   </div>
@@ -393,7 +475,7 @@ const Achievements = () => {
   return (
     <section
       id="achievements"
-      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden theme-transition"
+      className="py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden theme-transition"
       style={{ backgroundColor: "var(--bg-secondary)" }}
     >
       {/* Background Pattern */}
@@ -412,11 +494,11 @@ const Achievements = () => {
         <motion.div
           {...scrollAnimationProps}
           variants={containerVariants}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-black mb-6"
+            className="text-4xl md:text-5xl font-black mb-4"
             style={{
               fontFamily: "'Montserrat', sans-serif",
               color: "var(--text-primary)",
@@ -425,21 +507,22 @@ const Achievements = () => {
             My <span style={{ color: "var(--accent)" }}>Achievements</span>
           </motion.h2>
           <div
-            className="w-24 h-1 mx-auto mb-6"
+            className="w-24 h-1 mx-auto mb-4"
             style={{ backgroundColor: "var(--accent)" }}
           />
 
           <motion.p
             variants={itemVariants}
-            className="text-xl max-w-3xl mx-auto"
+            className="text-lg max-w-3xl mx-auto"
             style={{ color: "var(--text-secondary)" }}
           >
-            A showcase of my certifications, hackathon victories, and community recognition.
+            A showcase of my certifications, hackathon victories, and community
+            recognition.
           </motion.p>
         </motion.div>
 
         {/* Certifications Section */}
-        <div className="mb-16">
+        <div className="mb-10">
           <SectionHeader
             title="Certifications & Professional Recognition"
             description="Industry-recognized certifications and professional achievements demonstrating technical expertise and leadership."
@@ -447,7 +530,7 @@ const Achievements = () => {
           />
           <motion.div
             variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-1 gap-8"
+            className="grid md:grid-cols-2 gap-6"
           >
             {achievementsData.certifications.map((achievement, index) => (
               <AchievementCard
@@ -461,7 +544,7 @@ const Achievements = () => {
         </div>
 
         {/* Hackathons Section */}
-        <div className="mb-16">
+        <div className="mb-10">
           <SectionHeader
             title="Hackathons & Competitions"
             description="Building innovative solutions under pressure and collaborating with talented teams worldwide."
@@ -469,7 +552,7 @@ const Achievements = () => {
           />
           <motion.div
             variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-1 gap-8"
+            className="grid md:grid-cols-2 gap-6"
           >
             {achievementsData.hackathons.map((achievement, index) => (
               <AchievementCard
@@ -482,16 +565,16 @@ const Achievements = () => {
           </motion.div>
         </div>
 
-        {/* Extracurricular - Beyond Code Section */}
+        {/* Professional Recognition & Extracurricular Section */}
         <div>
           <SectionHeader
-            title="Extracurricular - Beyond Code"
-            description="Achievements in sports, athletics, and leadership roles beyond the coding world."
+            title="Professional Recognition & Extracurricular"
+            description="Leadership roles, community recognition, athletic achievements, and academic excellence beyond technical skills."
             icon={Trophy}
           />
           <motion.div
             variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-1 gap-8"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {achievementsData.recognition.map((achievement, index) => (
               <AchievementCard

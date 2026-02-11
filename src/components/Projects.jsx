@@ -86,11 +86,11 @@ const ProjectCard = ({ project, index }) => {
           </h3>
 
           <span
-            className="inline-block px-2 py-0.5 rounded-md text-xs font-medium mb-3 w-fit"
+            className="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider mb-3 w-fit"
             style={{
-              backgroundColor: "var(--green-accent-dim)",
-              color: "var(--green-accent)",
-              border: "1px solid var(--green-accent)",
+              backgroundColor: "#b63e96",
+              color: "#ffffff",
+              fontFamily: "'Montserrat', sans-serif",
             }}
           >
             {project.category}
