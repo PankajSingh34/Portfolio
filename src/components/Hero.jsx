@@ -52,7 +52,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative flex justify-center md:justify-start order-2 md:order-1"
+            className="relative flex justify-center md:justify-start order-1 md:order-1"
           >
             <div className="double-border-frame inline-block">
               <div className="double-border-frame-inner">
@@ -70,11 +70,11 @@ const Hero = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="order-1 md:order-2"
+            className="order-2 md:order-2"
           >
             <motion.h1
               variants={itemVariants}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-6"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.1] mb-4 md:mb-6 text-center md:text-left"
               style={{
                 fontFamily: "'Montserrat', sans-serif",
                 color: "var(--text-primary)",
@@ -86,9 +86,9 @@ const Hero = () => {
             </motion.h1>
 
             {/* Role with Typing Animation */}
-            <motion.div variants={itemVariants} className="mb-8">
+            <motion.div variants={itemVariants} className="mb-6 md:mb-8 text-center md:text-left">
               <span
-                className="text-xl md:text-2xl font-medium"
+                className="text-lg md:text-xl lg:text-2xl font-medium"
                 style={{ color: "var(--text-secondary)" }}
               >
                 {typedRole}
@@ -99,7 +99,7 @@ const Hero = () => {
                     repeat: Infinity,
                     repeatType: "reverse",
                   }}
-                  className="inline-block w-[3px] h-7 ml-1 align-middle"
+                  className="inline-block w-[3px] h-6 md:h-7 ml-1 align-middle"
                   style={{ backgroundColor: "var(--accent)" }}
                 />
               </span>
@@ -108,13 +108,13 @@ const Hero = () => {
             {/* CTA Buttons & Social Links */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-6"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
             >
               <a
                 href="/PSRESUME(5).pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-7 py-3.5 rounded-full font-semibold text-base transition-all duration-200"
+                className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 w-full sm:w-auto"
                 style={{
                   backgroundColor: "var(--bg-elevated)",
                   color: "var(--text-primary)",
@@ -126,7 +126,7 @@ const Hero = () => {
               </a>
 
               {/* Social Links */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
                 {socialLinks.map((social) => (
                   <a
                     key={social.label}
@@ -137,7 +137,7 @@ const Hero = () => {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="w-14 h-14 rounded-full border-2 transition-all duration-300 flex items-center justify-center hover:scale-110"
+                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 transition-all duration-300 flex items-center justify-center hover:scale-110"
                     style={{
                       borderColor: "#000000",
                       backgroundColor: "#ffffff",
@@ -155,7 +155,7 @@ const Hero = () => {
                     }}
                     aria-label={social.label}
                   >
-                    <social.icon size={26} strokeWidth={2} />
+                    <social.icon size={22} strokeWidth={2} />
                   </a>
                 ))}
               </div>
@@ -169,17 +169,17 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="pb-6 flex flex-col items-center cursor-pointer"
+        className="pb-4 sm:pb-6 flex flex-col items-center cursor-pointer"
         onClick={scrollToAbout}
       >
-        <span className="text-sm mb-2" style={{ color: "var(--text-muted)" }}>
+        <span className="text-xs sm:text-sm mb-2" style={{ color: "var(--text-muted)" }}>
           Scroll to explore
         </span>
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown size={28} style={{ color: "var(--text-muted)" }} />
+          <ChevronDown size={24} style={{ color: "var(--text-muted)" }} />
         </motion.div>
       </motion.div>
     </section>
