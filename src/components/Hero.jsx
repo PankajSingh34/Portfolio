@@ -169,7 +169,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="pb-4 sm:pb-6 flex flex-col items-center cursor-pointer"
+        className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer z-20"
         onClick={scrollToAbout}
       >
         <span className="text-xs sm:text-sm mb-2" style={{ color: "var(--text-muted)" }}>
