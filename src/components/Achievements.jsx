@@ -49,6 +49,33 @@ const achievementsData = {
       color: "from-orange-400 to-red-400",
     },
   ],
+  certifications: [
+    {
+      id: 1,
+      title: "MongoDB Associate Developer",
+      organization: "MongoDB",
+      description:
+        "Earned MongoDB Associate Developer certification demonstrating proficiency in MongoDB database design, development, and query optimization. Validated expertise in NoSQL database architecture and modern data modeling techniques.",
+      issueDate: "09 FEB 2026",
+      verifyLink: "https://www.credly.com/go/bYwYT2DF",
+      year: "2026",
+      type: "Technical Certification",
+      icon: Award,
+      color: "from-green-400 to-teal-400",
+    },
+    {
+      id: 2,
+      title: "Campus Hero",
+      organization: "Coding Blocks",
+      description:
+        "Selected as a Campus Hero for Coding Blocks to bridge the gap between industry requirements and campus learning. Leading tech initiatives and promoting coding culture in the campus community.",
+      issueDate: "January 22, 2026",
+      year: "2026",
+      type: "Leadership & Community",
+      icon: Users,
+      color: "from-purple-400 to-pink-400",
+    },
+  ],
   recognition: [
     {
       id: 1,
@@ -213,6 +240,38 @@ const AchievementCard = ({ achievement, type, index }) => {
         </div>
       )}
 
+      {/* Certification details */}
+      {type === "certifications" && achievement.issueDate && (
+        <div className="mb-4">
+          <div
+            className="flex items-center gap-2 text-sm mb-2"
+            style={{ color: "var(--text-muted)" }}
+          >
+            <span className="font-medium">Issued:</span>
+            <span style={{ color: "var(--accent)" }}>
+              {achievement.issueDate}
+            </span>
+          </div>
+          {achievement.verifyLink && (
+            <div
+              className="flex items-center gap-2 text-sm"
+              style={{ color: "var(--text-muted)" }}
+            >
+              <span className="font-medium">Verify:</span>
+              <a
+                href={achievement.verifyLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--accent)" }}
+                className="hover:underline"
+              >
+                View Credential
+              </a>
+            </div>
+          )}
+        </div>
+      )}
+
       {/* Status badge */}
       {achievement.status && (
         <div className="mb-4">
@@ -260,8 +319,12 @@ const AchievementCard = ({ achievement, type, index }) => {
                 e.currentTarget.style.color = "#ffffff";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = isDark ? "#ffffff" : "#000000";
-                e.currentTarget.style.borderColor = isDark ? "#ffffff" : "#000000";
+                e.currentTarget.style.backgroundColor = isDark
+                  ? "#ffffff"
+                  : "#000000";
+                e.currentTarget.style.borderColor = isDark
+                  ? "#ffffff"
+                  : "#000000";
                 e.currentTarget.style.color = isDark ? "#000000" : "#ffffff";
               }}
             >
@@ -288,7 +351,9 @@ const AchievementCard = ({ achievement, type, index }) => {
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.borderColor = isDark ? "#ffffff" : "#000000";
+                e.currentTarget.style.borderColor = isDark
+                  ? "#ffffff"
+                  : "#000000";
                 e.currentTarget.style.color = isDark ? "#ffffff" : "#000000";
               }}
             >
@@ -370,9 +435,31 @@ const Achievements = () => {
             className="text-xl max-w-3xl mx-auto"
             style={{ color: "var(--text-secondary)" }}
           >
-            A showcase of my hackathon victories and community recognition.
+            A showcase of my certifications, hackathon victories, and community recognition.
           </motion.p>
         </motion.div>
+
+        {/* Certifications Section */}
+        <div className="mb-16">
+          <SectionHeader
+            title="Certifications & Professional Recognition"
+            description="Industry-recognized certifications and professional achievements demonstrating technical expertise and leadership."
+            icon={Award}
+          />
+          <motion.div
+            variants={containerVariants}
+            className="grid md:grid-cols-2 lg:grid-cols-1 gap-8"
+          >
+            {achievementsData.certifications.map((achievement, index) => (
+              <AchievementCard
+                key={achievement.id}
+                achievement={achievement}
+                type="certifications"
+                index={index}
+              />
+            ))}
+          </motion.div>
+        </div>
 
         {/* Hackathons Section */}
         <div className="mb-16">
