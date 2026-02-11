@@ -57,7 +57,7 @@ const Hero = () => {
             <div className="double-border-frame inline-block">
               <div className="double-border-frame-inner">
                 <img
-                  src="/images/athletic.jpg"
+                  src="/images/professional.jpg"
                   alt="Pankaj Singh"
                   className="w-72 h-80 sm:w-80 sm:h-96 md:w-96 md:h-[28rem] object-cover block"
                 />
