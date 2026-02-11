@@ -524,8 +524,8 @@ const Achievements = () => {
         {/* Certifications Section */}
         <div className="mb-10">
           <SectionHeader
-            title="Certifications & Professional Recognition"
-            description="Industry-recognized certifications and professional achievements demonstrating technical expertise and leadership."
+            title="Certifications"
+            description="Industry-recognized certifications demonstrating technical expertise in modern technologies and frameworks."
             icon={Award}
           />
           <motion.div
