@@ -40,7 +40,7 @@ const achievementsData = {
       achievement: "4th Place Winner",
       project: "NASA Space Biology Engine",
       description:
-        "Secured 4th place among 30 competing teams in the NASA Space Hackathon by developing an interactive astrobiology lab simulation for space life support research. Built real-time controlled-environment biology simulator modeling growth physiology and multi-world adaptation.",
+        "Secured 4th place among 30 teams by developing an interactive astrobiology lab simulation for space life support research.",
       tech: ["React", "Node.js", "Data Visualization", "Biology APIs"],
       link: "https://nasa-hackathon-lftj.onrender.com/",
       github: "https://github.com/PankajSingh34/NASA-hackathon.git",
@@ -55,7 +55,7 @@ const achievementsData = {
       title: "MongoDB Associate Developer",
       organization: "MongoDB",
       description:
-        "Earned MongoDB Associate Developer certification demonstrating proficiency in MongoDB database design, development, and query optimization. Validated expertise in NoSQL database architecture and modern data modeling techniques.",
+        "Earned MongoDB Associate Developer certification demonstrating proficiency in database design, development, and query optimization.",
       issueDate: "09 FEB 2026",
       verifyLink: "https://www.credly.com/go/bYwYT2DF",
       year: "2026",
@@ -124,34 +124,17 @@ const AchievementCard = ({ achievement, type, index }) => {
           </div>
           <div className="flex-1">
             <div className="flex items-center justify-between gap-3">
-              <div>
-                <h3
-                  className="text-lg font-bold"
-                  style={{
-                    fontFamily: "'Montserrat', sans-serif",
-                    color: "var(--text-primary)",
-                  }}
-                >
-                  {achievement.title}
-                </h3>
-                {achievement.organization && (
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    {achievement.organization}
-                  </p>
-                )}
-                {achievement.achievement && (
-                  <p
-                    className="text-sm font-medium"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    {achievement.achievement}
-                  </p>
-                )}
-              </div>
-              {/* Buttons inline with title for hackathons */}
+              <h3
+                className="text-lg font-bold"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  color: "var(--text-primary)",
+                }}
+              >
+                {achievement.title}
+              </h3>
+
+              {/* Buttons on right side of title for hackathons */}
               {type === "hackathons" &&
                 (achievement.link || achievement.github) && (
                   <div className="flex gap-2 shrink-0">
@@ -160,12 +143,11 @@ const AchievementCard = ({ achievement, type, index }) => {
                         href={achievement.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 text-xs py-1.5 px-3 rounded-full border transition-all duration-300 font-semibold"
+                        className="flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300"
                         style={{
                           borderColor: isDark ? "#ffffff" : "#000000",
                           backgroundColor: isDark ? "#ffffff" : "#000000",
                           color: isDark ? "#000000" : "#ffffff",
-                          fontFamily: "'Montserrat', sans-serif",
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor =
@@ -185,8 +167,7 @@ const AchievementCard = ({ achievement, type, index }) => {
                             : "#ffffff";
                         }}
                       >
-                        <ExternalLink size={14} />
-                        Live Demo
+                        <ExternalLink size={16} />
                       </a>
                     )}
                     {achievement.github && (
@@ -194,12 +175,11 @@ const AchievementCard = ({ achievement, type, index }) => {
                         href={achievement.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-1.5 text-xs py-1.5 px-3 rounded-full border transition-all duration-300 font-semibold"
+                        className="flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300"
                         style={{
                           borderColor: isDark ? "#ffffff" : "#000000",
                           backgroundColor: "transparent",
                           color: isDark ? "#ffffff" : "#000000",
-                          fontFamily: "'Montserrat', sans-serif",
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.backgroundColor =
@@ -217,21 +197,73 @@ const AchievementCard = ({ achievement, type, index }) => {
                             : "#000000";
                         }}
                       >
-                        <Github size={14} />
-                        Code
+                        <Github size={16} />
                       </a>
                     )}
                   </div>
                 )}
+
+              {/* Credential button for certifications */}
+              {type === "certifications" && achievement.verifyLink && (
+                <div className="flex gap-2 shrink-0">
+                  <a
+                    href={achievement.verifyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300"
+                    style={{
+                      borderColor: isDark ? "#ffffff" : "#000000",
+                      backgroundColor: isDark ? "#ffffff" : "#000000",
+                      color: isDark ? "#000000" : "#ffffff",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "var(--accent)";
+                      e.currentTarget.style.borderColor = "var(--accent)";
+                      e.currentTarget.style.color = "#ffffff";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = isDark
+                        ? "#ffffff"
+                        : "#000000";
+                      e.currentTarget.style.borderColor = isDark
+                        ? "#ffffff"
+                        : "#000000";
+                      e.currentTarget.style.color = isDark
+                        ? "#000000"
+                        : "#ffffff";
+                    }}
+                  >
+                    <ExternalLink size={16} />
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <div>
+              {achievement.organization && (
+                <p
+                  className="text-sm font-medium"
+                  style={{ color: "var(--accent)" }}
+                >
+                  {achievement.organization}
+                </p>
+              )}
+              {achievement.achievement && (
+                <p
+                  className="text-sm font-medium"
+                  style={{ color: "var(--accent)" }}
+                >
+                  {achievement.achievement}
+                </p>
+              )}
             </div>
           </div>
         </div>
         <span
-          className="px-2.5 py-1 rounded-lg text-xs font-bold theme-transition shrink-0 ml-3"
+          className="px-3 py-1.5 rounded-full text-xs font-bold theme-transition shrink-0 ml-3"
           style={{
-            backgroundColor: "var(--bg-secondary)",
-            color: "var(--text-muted)",
-            border: "1px solid var(--border-color)",
+            backgroundColor: "var(--accent)",
+            color: "#ffffff",
           }}
         >
           {achievement.year}
@@ -302,7 +334,7 @@ const AchievementCard = ({ achievement, type, index }) => {
       )}
 
       {type === "hackathons" && achievement.tech && (
-        <div className="mb-3">
+        <div className="mb-3" style={{ display: "none" }}>
           <div className="flex flex-wrap gap-1.5">
             {achievement.tech.map((tech) => (
               <span
@@ -323,7 +355,7 @@ const AchievementCard = ({ achievement, type, index }) => {
 
       {/* Certification details */}
       {type === "certifications" && achievement.issueDate && (
-        <div className="mb-3">
+        <div className="mb-3" style={{ display: "none" }}>
           <div
             className="flex items-center gap-2 text-sm mb-2"
             style={{ color: "var(--text-muted)" }}
@@ -521,16 +553,16 @@ const Achievements = () => {
           </motion.p>
         </motion.div>
 
-        {/* Certifications Section */}
+        {/* Certifications & Hackathons Section */}
         <div className="mb-10">
           <SectionHeader
-            title="Certifications"
-            description="Industry-recognized certifications demonstrating technical expertise in modern technologies and frameworks."
+            title="Certifications & Hackathons"
+            description="Industry-recognized certifications and competitive achievements demonstrating technical expertise and problem-solving abilities."
             icon={Award}
           />
           <motion.div
             variants={containerVariants}
-            className="grid md:grid-cols-2 gap-6"
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {achievementsData.certifications.map((achievement, index) => (
               <AchievementCard
@@ -540,20 +572,6 @@ const Achievements = () => {
                 index={index}
               />
             ))}
-          </motion.div>
-        </div>
-
-        {/* Hackathons Section */}
-        <div className="mb-10">
-          <SectionHeader
-            title="Hackathons & Competitions"
-            description="Building innovative solutions under pressure and collaborating with talented teams worldwide."
-            icon={Trophy}
-          />
-          <motion.div
-            variants={containerVariants}
-            className="grid md:grid-cols-2 gap-6"
-          >
             {achievementsData.hackathons.map((achievement, index) => (
               <AchievementCard
                 key={achievement.id}

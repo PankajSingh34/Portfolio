@@ -56,20 +56,6 @@ const ProjectCard = ({ project, index }) => {
             />
           </div>
         )}
-        {/* Featured Project Label */}
-        {project.featured && (
-          <div className="absolute top-4 left-4">
-            <span
-              className="px-3 py-1 rounded-lg text-white text-xs font-bold uppercase tracking-wider"
-              style={{
-                backgroundColor: "var(--accent)",
-                fontFamily: "'Montserrat', sans-serif",
-              }}
-            >
-              Featured Project
-            </span>
-          </div>
-        )}
       </div>
 
       {/* Content */}

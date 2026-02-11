@@ -41,12 +41,12 @@ const About = () => {
             />
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
             {/* Left: Double-border profile picture */}
             <motion.div
               {...scrollAnimationProps}
               variants={itemVariants}
-              className="flex justify-center"
+              className="flex justify-center items-center lg:col-span-2"
             >
               <div className="double-border-frame inline-block">
                 <div className="double-border-frame-inner">
@@ -60,7 +60,7 @@ const About = () => {
             </motion.div>
 
             {/* Right: Story + Stats */}
-            <motion.div {...scrollAnimationProps} variants={containerVariants}>
+            <motion.div {...scrollAnimationProps} variants={containerVariants} className="lg:col-span-3">
               <motion.h3
                 variants={itemVariants}
                 className="text-2xl font-bold mb-4"
@@ -77,17 +77,23 @@ const About = () => {
                 className="leading-relaxed mb-5"
                 style={{ color: "var(--text-secondary)" }}
               >
-                Hey! I'm{" "}
+                I'm{" "}
                 <span
                   className="font-semibold"
                   style={{ color: "var(--accent)" }}
                 >
                   Pankaj Singh
                 </span>
-                —a builder, a problem solver, and a lifelong learner. My journey
-                in tech started with curiosity and a knack for tinkering, but
-                quickly grew into a passion for creating things that make life
-                easier, smarter, and more fun.
+                , a Computer Science Engineering student at{" "}
+                <span
+                  className="font-semibold"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Birla Institute of Applied Sciences, Bhimtal
+                </span>
+                . Originally from Ramnagar, Uttarakhand, I specialize in full-stack
+                development with a focus on building scalable web applications and
+                solving complex technical challenges.
               </motion.p>
 
               <motion.p
@@ -95,11 +101,31 @@ const About = () => {
                 className="leading-relaxed mb-5"
                 style={{ color: "var(--text-secondary)" }}
               >
-                I'm currently pursuing Computer Science Engineering at Veer
-                Madho Singh Bhandari Uttarakhand Technical University. Whether
-                it's a hackathon project, a freelance gig, or a personal
-                experiment, I love the thrill of turning ideas into real,
-                working products.
+                As an{" "}
+                <span
+                  className="font-semibold"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Open Source Contributor at Elite Coders
+                </span>{" "}
+                and{" "}
+                <span
+                  className="font-semibold"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Coding Blocks Campus Hero
+                </span>
+                , I actively contribute to open-source projects and mentor peers in
+                technical initiatives. My tech stack includes React, Node.js, and
+                MongoDB, which I leverage to build scalable solutions. Recently, I
+                competed in the{" "}
+                <span
+                  className="font-semibold"
+                  style={{ color: "var(--accent)" }}
+                >
+                  NASA Space Hackathon
+                </span>
+                , where our team achieved 4th place among 30 teams.
               </motion.p>
 
               <motion.p
@@ -107,10 +133,17 @@ const About = () => {
                 className="leading-relaxed"
                 style={{ color: "var(--text-secondary)" }}
               >
-                Beyond the screen, I'm the Athletics Secretary at my college, a
-                football enthusiast, and a gym regular. Sports have taught me
-                discipline, teamwork, and how to push through challenges—skills
-                I bring to every line of code I write.
+                I'm focused on continuous learning and applying emerging
+                technologies to{" "}
+                <span
+                  className="font-semibold"
+                  style={{ color: "var(--accent)" }}
+                >
+                  solve real-world problems
+                </span>
+                . Whether it's developing full-stack applications or optimizing
+                system performance, I approach each project with technical rigor
+                and attention to detail.
               </motion.p>
             </motion.div>
           </div>
