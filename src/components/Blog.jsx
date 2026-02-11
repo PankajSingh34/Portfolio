@@ -2,8 +2,16 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
 import { blogsData, blogCategories } from "../data/blogs";
+import { useTheme } from "../context/ThemeContext";
+import {
+  containerVariants,
+  itemVariants,
+  useScrollAnimation,
+} from "../utils/animations";
 
 const Blog = () => {
+  const { isDark } = useTheme();
+  const scrollAnimationProps = useScrollAnimation();
   const [activeCategory, setActiveCategory] = useState("All");
   const [expandedBlog, setExpandedBlog] = useState(null);
 
@@ -21,19 +29,41 @@ const Blog = () => {
   };
 
   return (
-    <section id="blog" className="py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="blog"
+      className="py-20 theme-transition"
+      style={{ backgroundColor: "var(--bg-primary)" }}
+    >
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Blog & <span className="text-green-400">Articles</span>
-            <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
-          </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+        <motion.div
+          {...scrollAnimationProps}
+          variants={containerVariants}
+          className="text-center mb-16"
+        >
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-black mb-4"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-primary)",
+            }}
+          >
+            Blog & <span style={{ color: "var(--accent)" }}>Articles</span>
+          </motion.h2>
+          <div
+            className="w-24 h-1 mx-auto mb-4"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
+          <motion.p
+            variants={itemVariants}
+            style={{ color: "var(--text-muted)" }}
+            className="text-lg max-w-2xl mx-auto"
+          >
             Sharing my knowledge and experiences in web development, AI, and
             software engineering.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
@@ -41,212 +71,162 @@ const Blog = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeCategory === category
-                  ? "bg-green-600 text-white shadow-lg shadow-green-500/25"
-                  : "bg-gray-800/50 text-gray-400 hover:bg-gray-700/50 hover:text-white"
-              }`}
+              className="px-6 py-2.5 rounded-lg text-sm font-bold border-2 cursor-pointer transition-all duration-300"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                borderColor: activeCategory === category ? "var(--accent)" : "#000000",
+                backgroundColor: activeCategory === category ? "var(--accent)" : "#ffffff",
+                color: activeCategory === category ? "#ffffff" : "#000000",
+              }}
+              onMouseEnter={(e) => {
+                if (activeCategory !== category) {
+                  e.currentTarget.style.backgroundColor = "var(--accent)";
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.color = "#ffffff";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeCategory !== category) {
+                  e.currentTarget.style.backgroundColor = "#ffffff";
+                  e.currentTarget.style.borderColor = "#000000";
+                  e.currentTarget.style.color = "#000000";
+                }
+              }}
             >
               {category}
             </button>
           ))}
         </div>
 
-        {/* Featured Blog */}
-        {activeCategory === "All" && (
-          <div className="mb-12">
-            {blogsData
-              .filter((blog) => blog.featured)
-              .slice(0, 1)
-              .map((blog) => (
-                <div
-                  key={blog.id}
-                  className="relative group bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl overflow-hidden border border-gray-700/50 hover:border-green-500/50 transition-all duration-500"
-                >
-                  <div className="grid md:grid-cols-2 gap-0">
-                    {/* Image */}
-                    <div className="relative h-64 md:h-auto overflow-hidden">
-                      <img
-                        src={blog.image}
-                        alt={blog.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-900/50" />
-                      <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
+        {/* Minimalist Article List */}
+        <div className="space-y-4">
+          {filteredBlogs.map((blog, index) => (
+            <motion.div
+              key={blog.id}
+              {...scrollAnimationProps}
+              variants={itemVariants}
+            >
+              <div
+                className="article-item group cursor-pointer theme-transition"
+                onClick={() =>
+                  setExpandedBlog(expandedBlog === blog.id ? null : blog.id)
+                }
+              >
+                <div className="flex items-center justify-between gap-4">
+                  {/* Left: Title and meta */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 mb-1">
+                      {blog.featured && (
+                        <span
+                          className="px-2 py-0.5 rounded-md text-xs font-bold uppercase tracking-wider text-white shrink-0"
+                          style={{
+                            backgroundColor: "var(--accent)",
+                            fontFamily: "'Montserrat', sans-serif",
+                          }}
+                        >
                           Featured
                         </span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-8 flex flex-col justify-center">
-                      <div className="flex items-center gap-4 text-gray-400 text-sm mb-4">
-                        <span className="flex items-center gap-1">
-                          <Calendar size={14} />
-                          {formatDate(blog.date)}
-                        </span>
-                        <span className="flex items-center gap-1">
-                          <Clock size={14} />
-                          {blog.readTime}
-                        </span>
-                      </div>
-
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-green-400 transition-colors">
-                        {blog.title}
-                      </h3>
-
-                      <p className="text-gray-400 mb-6 line-clamp-3">
-                        {blog.excerpt}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {blog.tags.slice(0, 4).map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-3 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-
-                      <button
-                        onClick={() =>
-                          setExpandedBlog(
-                            expandedBlog === blog.id ? null : blog.id
-                          )
-                        }
-                        className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-medium"
-                      >
-                        {expandedBlog === blog.id ? "Show Less" : "Read More"}
-                        <ArrowRight
-                          size={16}
-                          className={`transform transition-transform ${
-                            expandedBlog === blog.id ? "rotate-90" : ""
-                          }`}
-                        />
-                      </button>
-
-                      {/* Expanded Content */}
-                      {expandedBlog === blog.id && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="mt-6 pt-6 border-t border-gray-700"
-                        >
-                          <div className="prose prose-invert prose-sm max-w-none">
-                            <pre className="whitespace-pre-wrap text-gray-300 text-sm leading-relaxed">
-                              {blog.content}
-                            </pre>
-                          </div>
-                        </motion.div>
                       )}
+                      <span
+                        className="px-2 py-0.5 rounded-md text-xs font-medium shrink-0"
+                        style={{
+                          backgroundColor: "var(--green-accent-dim)",
+                          color: "var(--green-accent)",
+                        }}
+                      >
+                        {blog.category}
+                      </span>
                     </div>
-                  </div>
-                </div>
-              ))}
-          </div>
-        )}
 
-        {/* Blog Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredBlogs
-            .filter((blog) =>
-              activeCategory === "All" ? !blog.featured : true
-            )
-            .map((blog, index) => (
-              <article
-                key={blog.id}
-                className="group bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10"
-              >
-                {/* Image */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={blog.image}
-                    alt={blog.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-60" />
-                  <div className="absolute bottom-4 left-4">
-                    <span className="px-3 py-1 bg-green-600/80 text-white text-xs font-medium rounded-full">
-                      {blog.category}
-                    </span>
-                  </div>
-                </div>
+                    <h3
+                      className="text-lg font-bold transition-colors line-clamp-1"
+                      style={{
+                        fontFamily: "'Montserrat', sans-serif",
+                        color: "var(--text-primary)",
+                      }}
+                    >
+                      {blog.title}
+                    </h3>
 
-                {/* Content */}
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-gray-500 text-xs mb-3">
-                    <span className="flex items-center gap-1">
-                      <Calendar size={12} />
+                    <p
+                      className="text-sm mt-1 line-clamp-1"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      {blog.excerpt}
+                    </p>
+                  </div>
+
+                  {/* Right: Date + Read time */}
+                  <div className="shrink-0 text-right">
+                    <span
+                      className="block text-sm font-medium"
+                      style={{ color: "var(--accent)" }}
+                    >
                       {formatDate(blog.date)}
                     </span>
-                    <span className="flex items-center gap-1">
+                    <span
+                      className="flex items-center gap-1 text-xs mt-0.5 justify-end"
+                      style={{ color: "var(--text-muted)" }}
+                    >
                       <Clock size={12} />
                       {blog.readTime}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-3 group-hover:text-green-400 transition-colors line-clamp-2">
-                    {blog.title}
-                  </h3>
-
-                  <p className="text-gray-400 text-sm mb-4 line-clamp-3">
-                    {blog.excerpt}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {blog.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="flex items-center gap-1 px-2 py-1 bg-gray-800 text-gray-400 text-xs rounded"
-                      >
-                        <Tag size={10} />
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() =>
-                      setExpandedBlog(expandedBlog === blog.id ? null : blog.id)
-                    }
-                    className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors text-sm font-medium"
-                  >
-                    {expandedBlog === blog.id ? "Show Less" : "Read Article"}
-                    <ArrowRight
-                      size={14}
-                      className={`transform transition-transform ${
-                        expandedBlog === blog.id ? "rotate-90" : ""
-                      }`}
-                    />
-                  </button>
-
-                  {/* Expanded Content */}
-                  {expandedBlog === blog.id && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="mt-4 pt-4 border-t border-gray-700"
-                    >
-                      <div className="prose prose-invert prose-sm max-w-none">
-                        <pre className="whitespace-pre-wrap text-gray-300 text-xs leading-relaxed">
-                          {blog.content}
-                        </pre>
-                      </div>
-                    </motion.div>
-                  )}
+                  {/* Arrow */}
+                  <ArrowRight
+                    size={18}
+                    className="shrink-0 transition-transform"
+                    style={{
+                      color: "var(--text-muted)",
+                      transform:
+                        expandedBlog === blog.id
+                          ? "rotate(90deg)"
+                          : "rotate(0deg)",
+                    }}
+                  />
                 </div>
-              </article>
-            ))}
-        </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          {/* Social media section removed as requested */}
+                {/* Expanded Content */}
+                {expandedBlog === blog.id && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="mt-4 pt-4"
+                    style={{ borderTop: "1px solid var(--border-color)" }}
+                  >
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {blog.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium border theme-transition"
+                          style={{
+                            borderColor: "var(--border-color)",
+                            color: "var(--text-secondary)",
+                            backgroundColor: "var(--bg-secondary)",
+                          }}
+                        >
+                          <Tag size={10} />
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="prose prose-sm max-w-none">
+                      <pre
+                        className="whitespace-pre-wrap text-sm leading-relaxed"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        {blog.content}
+                      </pre>
+                    </div>
+                  </motion.div>
+                )}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

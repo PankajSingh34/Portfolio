@@ -1,6 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-
 @import "tailwindcss";
+
+/* ========================================
+   NEO-BRUTALIST DARK THEME SYSTEM
+   ======================================== */
+
+:root {
+  /* Dark mode (default) */
+  --bg-primary: #1b1b1b;
+  --bg-secondary: #242424;
+  --bg-card: #2a2a2a;
+  --bg-elevated: #333333;
+  --text-primary: #f5f5f5;
+  --text-secondary: #b0b0b0;
+  --text-muted: #888888;
+  --accent: #b63e96;
+  --accent-hover: #d14fad;
+  --border-color: #444444;
+  --border-strong: #f5f5f5;
+  --shadow-brutal: #000000;
+  --green-accent: #4ade80;
+  --green-accent-dim: rgba(74, 222, 128, 0.15);
+}
+
+.light {
+  --bg-primary: #f5f5f5;
+  --bg-secondary: #ebebeb;
+  --bg-card: #ffffff;
+  --bg-elevated: #e0e0e0;
+  --text-primary: #1b1b1b;
+  --text-secondary: #555555;
+  --text-muted: #777777;
+  --accent: #b63e96;
+  --accent-hover: #9a2f7e;
+  --border-color: #cccccc;
+  --border-strong: #1b1b1b;
+  --shadow-brutal: #1b1b1b;
+  --green-accent: #16a34a;
+  --green-accent-dim: rgba(22, 163, 74, 0.12);
+}
 
 html {
   scroll-behavior: smooth;
@@ -8,54 +45,104 @@ html {
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background-color: #111827; /* gray-900 */
-  color: #ffffff;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Dark theme base styles */
-.dark {
-  color-scheme: dark;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
 }
 
-/* Custom component classes */
-.btn-primary {
-  background-color: rgb(37 99 235);
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s;
-  transform: scale(1);
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+/* ========================================
+   THEME TRANSITION HELPERS
+   ======================================== */
+.theme-transition {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
-.btn-primary:hover {
-  background-color: rgb(29 78 216);
-  transform: scale(1.05);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+/* ========================================
+   NEO-BRUTALIST BUTTON STYLES
+   ======================================== */
+.btn-brutal {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  padding: 0.875rem 2rem;
+  border: 2px solid var(--border-strong);
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-.btn-secondary {
+.btn-brutal:hover {
+  transform: translateY(-2px);
+}
+
+.btn-brutal:active {
+  transform: translateY(0);
+}
+
+.btn-brutal-primary {
+  background-color: var(--green-accent);
+  color: #1b1b1b;
+  border-color: var(--border-strong);
+}
+
+.btn-brutal-outline {
   background-color: transparent;
-  border: 2px solid rgb(96 165 250);
-  color: rgb(96 165 250);
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  transition: all 0.3s;
-  transform: scale(1);
+  color: var(--text-primary);
+  border-color: var(--border-strong);
 }
 
-.btn-secondary:hover {
-  background-color: rgb(96 165 250);
-  color: rgb(17 24 39);
-  transform: scale(1.05);
+/* ========================================
+   NEO-BRUTALIST CARD STYLES
+   ======================================== */
+.card-brutal {
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+  background-color: var(--bg-card);
 }
 
+.card-brutal:hover {
+  box-shadow: 8px 8px 0px var(--shadow-brutal);
+  transform: translate(-2px, -2px);
+}
+
+/* ========================================
+   ROTATING BADGE
+   ======================================== */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+/* ========================================
+   DOUBLE BORDER PROFILE FRAME
+   ======================================== */
+.double-border-frame {
+  padding: 6px;
+  background-color: var(--text-primary);
+  border-radius: 1.5rem;
+}
+
+.double-border-frame-inner {
+  padding: 4px;
+  background-color: var(--bg-primary);
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+/* ========================================
+   SECTION STYLES
+   ======================================== */
 .section-padding {
-  padding: 4rem 1rem;
+  padding: 5rem 1rem;
 }
 
 @media (min-width: 640px) {
@@ -72,24 +159,63 @@ body {
   }
 }
 
-.container-custom {
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
+/* ========================================
+   ARTICLE / LIST ITEM STYLES
+   ======================================== */
+.article-item {
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  transition: all 0.3s ease;
+  background-color: var(--bg-card);
 }
 
-.gradient-text {
-  background: linear-gradient(to right, rgb(96 165 250), rgb(168 85 247));
-  background-clip: text;
-  color: transparent;
+.article-item:hover {
+  border-color: var(--accent);
+  transform: translateX(4px);
 }
 
-.card-hover {
-  transition: all 0.3s;
-  transform: scale(1);
+/* ========================================
+   STATS COUNTER
+   ======================================== */
+.stat-number {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--text-primary);
 }
 
-.card-hover:hover {
-  transform: scale(1.05);
-  box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+@media (min-width: 768px) {
+  .stat-number {
+    font-size: 3.75rem;
+  }
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ========================================
+   SELECTION
+   ======================================== */
+::selection {
+  background-color: var(--accent);
+  color: #ffffff;
 }

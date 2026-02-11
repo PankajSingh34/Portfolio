@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 import {
   containerVariants,
   itemVariants,
@@ -6,6 +7,7 @@ import {
 } from "../utils/animations";
 
 const Skills = () => {
+  const { isDark } = useTheme();
   const scrollAnimationProps = useScrollAnimation();
 
   // Exact technologies from your screenshot in the same order
@@ -116,7 +118,11 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 bg-black">
+    <section
+      id="skills"
+      className="py-20 px-4 sm:px-6 lg:px-8 theme-transition"
+      style={{ backgroundColor: "var(--bg-secondary)" }}
+    >
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -126,18 +132,25 @@ const Skills = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-bold mb-6 text-white"
+            className="text-4xl md:text-5xl font-black mb-6"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-primary)",
+            }}
           >
-            My Skills
-            <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
+            My <span style={{ color: "var(--accent)" }}>Skills</span>
           </motion.h2>
+          <div
+            className="w-24 h-1 mx-auto"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
         </motion.div>
 
-        {/* Technologies Grid - 7 columns to match your screenshot */}
+        {/* Technologies Grid */}
         <motion.div
           {...scrollAnimationProps}
           variants={containerVariants}
-          className="grid grid-cols-7 gap-6 mb-16"
+          className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-6 mb-16"
         >
           {technologies.map((tech, index) => (
             <motion.div
@@ -147,8 +160,14 @@ const Skills = () => {
               className="group relative flex flex-col items-center"
             >
               <motion.div
-                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl shadow-sm border border-gray-300/20 flex items-center justify-center transition-all duration-300 hover:border-green-400 hover:shadow-lg cursor-pointer"
-                whileHover={{ scale: 1.1 }}
+                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center transition-all duration-300 cursor-pointer border-2 theme-transition"
+                style={{
+                  borderColor: "var(--border-color)",
+                  backgroundColor: "var(--bg-card)",
+                }}
+                whileHover={{
+                  scale: 1.1,
+                }}
                 whileTap={{ scale: 0.95 }}
               >
                 <img
@@ -157,22 +176,29 @@ const Skills = () => {
                   className="w-10 h-10 md:w-12 md:h-12 object-contain"
                   style={{
                     filter:
-                      tech.name === "Express" ||
-                      tech.name === "GitHub" ||
-                      tech.name === "Socket.io" ||
-                      tech.name === "JWT"
+                      isDark &&
+                      (tech.name === "Express" ||
+                        tech.name === "GitHub" ||
+                        tech.name === "Socket.io" ||
+                        tech.name === "JWT")
                         ? "invert(0.8)"
                         : "none",
                   }}
                 />
               </motion.div>
 
-              {/* Enhanced Tooltip */}
+              {/* Tooltip */}
               <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
-                <div className="bg-gray-900 border border-green-400/50 text-green-400 text-xs font-medium px-3 py-2 rounded-lg shadow-lg whitespace-nowrap">
+                <div
+                  className="text-xs font-bold px-3 py-2 rounded-lg whitespace-nowrap"
+                  style={{
+                    fontFamily: "'Montserrat', sans-serif",
+                    backgroundColor: "var(--bg-card)",
+                    color: "var(--accent)",
+                    border: "2px solid var(--border-color)",
+                  }}
+                >
                   {tech.name}
-                  {/* Tooltip Arrow */}
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 border-l border-t border-green-400/50 rotate-45"></div>
                 </div>
               </div>
             </motion.div>

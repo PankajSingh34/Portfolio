@@ -8,6 +8,7 @@ import {
   Github,
   Users,
 } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 import {
   containerVariants,
   itemVariants,
@@ -76,73 +77,114 @@ const achievementsData = {
 
 const AchievementCard = ({ achievement, type, index }) => {
   const Icon = achievement.icon;
+  const { isDark } = useTheme();
 
   return (
     <div
-      className="group relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-green-400/50 transition-all duration-300 hover:shadow-lg hover:shadow-green-500/10"
+      className="group relative card-brutal rounded-2xl p-6 theme-transition"
+      style={{
+        backgroundColor: "var(--bg-card)",
+        borderColor: "var(--border-color)",
+      }}
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-3">
-          <div className="p-3 rounded-xl bg-black">
-            <Icon className="w-6 h-6 text-green-400" />
+          <div
+            className="p-3 rounded-xl"
+            style={{ backgroundColor: "var(--bg-secondary)" }}
+          >
+            <Icon className="w-6 h-6" style={{ color: "var(--accent)" }} />
           </div>
           <div>
-            <h3 className="text-xl font-bold text-white">
+            <h3
+              className="text-xl font-bold"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                color: "var(--text-primary)",
+              }}
+            >
               {achievement.title}
             </h3>
             {achievement.organization && (
-              <p className="text-green-400 font-medium">
+              <p className="font-medium" style={{ color: "var(--accent)" }}>
                 {achievement.organization}
               </p>
             )}
             {achievement.achievement && (
-              <p className="text-green-400 font-medium">
+              <p className="font-medium" style={{ color: "var(--accent)" }}>
                 {achievement.achievement}
               </p>
             )}
           </div>
         </div>
-        <span className="px-3 py-1 bg-gray-700/50 text-gray-300 text-xs rounded-full">
+        <span
+          className="px-3 py-1 rounded-lg text-xs font-bold theme-transition"
+          style={{
+            backgroundColor: "var(--bg-secondary)",
+            color: "var(--text-muted)",
+            border: "1px solid var(--border-color)",
+          }}
+        >
           {achievement.year}
         </span>
       </div>
 
       {/* Description */}
-      <p className="text-gray-300 text-sm leading-relaxed mb-4">
+      <p
+        className="text-sm leading-relaxed mb-4"
+        style={{ color: "var(--text-secondary)" }}
+      >
         {achievement.description}
       </p>
 
       {/* Special content based on type */}
       {type === "openSource" && achievement.badge && (
         <div className="mb-4">
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
+          <div
+            className="flex items-center gap-2 text-sm mb-2"
+            style={{ color: "var(--text-muted)" }}
+          >
             <span className="font-medium">Authenticity Key:</span>
-            <span className="font-mono bg-gray-700/30 px-2 py-1 rounded text-green-400">
+            <span
+              className="font-mono px-2 py-1 rounded-md"
+              style={{
+                backgroundColor: "var(--bg-secondary)",
+                color: "var(--green-accent)",
+              }}
+            >
               {achievement.badge}
             </span>
           </div>
           {achievement.website && (
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div
+              className="flex items-center gap-2 text-sm"
+              style={{ color: "var(--text-muted)" }}
+            >
               <span>Website:</span>
               <a
                 href={`https://${achievement.website}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-400 hover:text-green-300 transition-colors"
+                style={{ color: "var(--accent)" }}
+                className="hover:underline"
               >
                 {achievement.website}
               </a>
             </div>
           )}
           {achievement.link && (
-            <div className="flex items-center gap-2 text-sm text-gray-400">
+            <div
+              className="flex items-center gap-2 text-sm"
+              style={{ color: "var(--text-muted)" }}
+            >
               <span>ECWoC ID Card:</span>
               <a
                 href={achievement.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-green-400 hover:text-green-300 transition-colors"
+                style={{ color: "var(--accent)" }}
+                className="hover:underline"
               >
                 View ID Card
               </a>
@@ -157,7 +199,12 @@ const AchievementCard = ({ achievement, type, index }) => {
             {achievement.tech.map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-1 bg-gray-700/50 text-gray-300 rounded text-xs font-medium"
+                className="px-2 py-1 rounded-md text-xs font-medium border theme-transition"
+                style={{
+                  borderColor: "var(--border-color)",
+                  color: "var(--text-secondary)",
+                  backgroundColor: "var(--bg-secondary)",
+                }}
               >
                 {tech}
               </span>
@@ -166,15 +213,26 @@ const AchievementCard = ({ achievement, type, index }) => {
         </div>
       )}
 
-      {/* Status badge for ongoing items */}
+      {/* Status badge */}
       {achievement.status && (
         <div className="mb-4">
           <span
-            className={`px-3 py-1 rounded-full text-xs font-medium ${
-              achievement.status === "Active"
-                ? "bg-green-600/20 text-green-400 border border-green-600/30"
-                : "bg-gray-600/20 text-gray-400 border border-gray-600/30"
-            }`}
+            className="px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider"
+            style={{
+              backgroundColor:
+                achievement.status === "Active"
+                  ? "var(--green-accent-dim)"
+                  : "var(--bg-secondary)",
+              color:
+                achievement.status === "Active"
+                  ? "var(--green-accent)"
+                  : "var(--text-muted)",
+              border: `1px solid ${
+                achievement.status === "Active"
+                  ? "var(--green-accent)"
+                  : "var(--border-color)"
+              }`,
+            }}
           >
             {achievement.status}
           </span>
@@ -182,14 +240,57 @@ const AchievementCard = ({ achievement, type, index }) => {
       )}
 
       {/* Action Links */}
-      {achievement.github && (
+      {(achievement.link || achievement.github) && (
         <div className="flex gap-3">
+          {achievement.link && (
+            <a
+              href={achievement.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-xl border-2 transition-all duration-300 font-semibold hover:scale-105"
+              style={{
+                borderColor: isDark ? "#ffffff" : "#000000",
+                backgroundColor: isDark ? "#ffffff" : "#000000",
+                color: isDark ? "#000000" : "#ffffff",
+                fontFamily: "'Montserrat', sans-serif",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--accent)";
+                e.currentTarget.style.borderColor = "var(--accent)";
+                e.currentTarget.style.color = "#ffffff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = isDark ? "#ffffff" : "#000000";
+                e.currentTarget.style.borderColor = isDark ? "#ffffff" : "#000000";
+                e.currentTarget.style.color = isDark ? "#000000" : "#ffffff";
+              }}
+            >
+              <ExternalLink size={16} />
+              Live Demo
+            </a>
+          )}
           {achievement.github && (
             <a
               href={achievement.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 bg-gray-700/50 text-gray-300 font-medium py-2 px-4 rounded-lg hover:bg-gray-600/50 transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-xl border-2 transition-all duration-300 font-semibold hover:scale-105"
+              style={{
+                borderColor: isDark ? "#ffffff" : "#000000",
+                backgroundColor: "transparent",
+                color: isDark ? "#ffffff" : "#000000",
+                fontFamily: "'Montserrat', sans-serif",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--accent)";
+                e.currentTarget.style.borderColor = "var(--accent)";
+                e.currentTarget.style.color = "#ffffff";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "transparent";
+                e.currentTarget.style.borderColor = isDark ? "#ffffff" : "#000000";
+                e.currentTarget.style.color = isDark ? "#ffffff" : "#000000";
+              }}
             >
               <Github size={16} />
               Code
@@ -204,27 +305,39 @@ const AchievementCard = ({ achievement, type, index }) => {
 const SectionHeader = ({ title, description, icon: Icon }) => (
   <div className="mb-8">
     <div className="flex items-center gap-3 mb-3">
-      <Icon className="w-6 h-6 text-green-400" />
-      <h3 className="text-2xl font-bold text-white">{title}</h3>
+      <Icon className="w-6 h-6" style={{ color: "var(--accent)" }} />
+      <h3
+        className="text-2xl font-bold"
+        style={{
+          fontFamily: "'Montserrat', sans-serif",
+          color: "var(--text-primary)",
+        }}
+      >
+        {title}
+      </h3>
     </div>
-    <p className="text-gray-400 leading-relaxed">{description}</p>
+    <p style={{ color: "var(--text-muted)" }} className="leading-relaxed">
+      {description}
+    </p>
   </div>
 );
 
 const Achievements = () => {
+  const { isDark } = useTheme();
   const scrollAnimationProps = useScrollAnimation();
 
   return (
     <section
       id="achievements"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900/30 relative overflow-hidden"
+      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden theme-transition"
+      style={{ backgroundColor: "var(--bg-secondary)" }}
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
           className="absolute inset-0"
           style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, white 2px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 25px 25px, var(--text-muted) 1px, transparent 0)`,
             backgroundSize: "50px 50px",
           }}
         />
@@ -237,50 +350,29 @@ const Achievements = () => {
           variants={containerVariants}
           className="text-center mb-16"
         >
-          <motion.div variants={itemVariants} className="mb-4">
-            <span className="inline-block px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium">
-              Recognition & Impact
-            </span>
-          </motion.div>
-
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+            className="text-4xl md:text-6xl font-black mb-6"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-primary)",
+            }}
           >
-            My <span className="text-green-400">Achievements</span>
-            <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
+            My <span style={{ color: "var(--accent)" }}>Achievements</span>
           </motion.h2>
+          <div
+            className="w-24 h-1 mx-auto mb-6"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-xl max-w-3xl mx-auto"
+            style={{ color: "var(--text-secondary)" }}
           >
-            A showcase of my contributions to open source, hackathon victories,
-            and community recognition.
+            A showcase of my hackathon victories and community recognition.
           </motion.p>
         </motion.div>
-
-        {/* Open Source Section */}
-        <div className="mb-16">
-          <SectionHeader
-            title="Open Source Contributions"
-            description="Contributing to the global developer community through meaningful projects and collaborations."
-            icon={GitBranch}
-          />
-          <motion.div
-            variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-1 gap-8"
-          >
-            {achievementsData.openSource.map((achievement, index) => (
-              <AchievementCard
-                key={achievement.id}
-                achievement={achievement}
-                type="openSource"
-                index={index}
-              />
-            ))}
-          </motion.div>
-        </div>
 
         {/* Hackathons Section */}
         <div className="mb-16">

@@ -1,21 +1,38 @@
-import { useState, useEffect, useRef } from "react";
-import { ExternalLink, Github, Calendar, Code } from "lucide-react";
+import { useState } from "react";
+import { ExternalLink, Github, Code } from "lucide-react";
+import { motion } from "framer-motion";
 import { projectsData } from "../data/projects";
-import Loading from "./Loading";
+import { useTheme } from "../context/ThemeContext";
+import {
+  containerVariants,
+  itemVariants,
+  useScrollAnimation,
+} from "../utils/animations";
 
 const ProjectCard = ({ project, index }) => {
+  const { isDark } = useTheme();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
 
   return (
     <article
-      className="group bg-gray-900/50 rounded-xl overflow-hidden border border-gray-800 hover:border-green-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-green-500/10 flex flex-col h-full"
+      className="group card-brutal rounded-2xl overflow-hidden flex flex-col md:flex-row theme-transition"
+      style={{
+        backgroundColor: "var(--bg-card)",
+        borderColor: "var(--border-color)",
+      }}
     >
       {/* Image */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative w-full md:w-2/5 h-56 md:h-auto overflow-hidden flex-shrink-0">
         {!imageLoaded && !imageError && (
-          <div className="absolute inset-0 bg-gray-700 animate-pulse flex items-center justify-center">
-            <Code className="w-12 h-12 text-gray-500" />
+          <div
+            className="absolute inset-0 animate-pulse flex items-center justify-center"
+            style={{ backgroundColor: "var(--bg-elevated)" }}
+          >
+            <Code
+              className="w-12 h-12"
+              style={{ color: "var(--text-muted)" }}
+            />
           </div>
         )}
         {!imageError ? (
@@ -29,46 +46,106 @@ const ProjectCard = ({ project, index }) => {
             onError={() => setImageError(true)}
           />
         ) : (
-          <div className="w-full h-full bg-gray-800 flex items-center justify-center">
-            <Code className="w-16 h-16 text-gray-400" />
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ backgroundColor: "var(--bg-elevated)" }}
+          >
+            <Code
+              className="w-16 h-16"
+              style={{ color: "var(--text-muted)" }}
+            />
           </div>
         )}
-        <div className="absolute bottom-4 left-4">
-          <span className="px-3 py-1 bg-green-600/80 text-white text-xs font-medium rounded-full">
-            {project.category}
-          </span>
-        </div>
+        {/* Featured Project Label */}
+        {project.featured && (
+          <div className="absolute top-4 left-4">
+            <span
+              className="px-3 py-1 rounded-lg text-white text-xs font-bold uppercase tracking-wider"
+              style={{
+                backgroundColor: "var(--accent)",
+                fontFamily: "'Montserrat', sans-serif",
+              }}
+            >
+              Featured Project
+            </span>
+          </div>
+        )}
       </div>
 
       {/* Content */}
-      <div className="p-6 flex flex-col flex-1">
-        {/* Content area with flex-grow to push tags and buttons to the bottom */}
+      <div className="p-6 md:p-8 flex flex-col flex-1">
         <div className="flex flex-col flex-1">
-          <h3 className="text-lg font-bold text-white mb-3 group-hover:text-green-400 transition-colors line-clamp-2">
+          <h3
+            className="text-xl font-bold mb-3 transition-colors"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-primary)",
+            }}
+          >
             {project.title}
           </h3>
-          <p className="text-gray-400 text-sm mb-4 line-clamp-3">
+
+          <span
+            className="inline-block px-2 py-0.5 rounded-md text-xs font-medium mb-3 w-fit"
+            style={{
+              backgroundColor: "var(--green-accent-dim)",
+              color: "var(--green-accent)",
+              border: "1px solid var(--green-accent)",
+            }}
+          >
+            {project.category}
+          </span>
+
+          <p
+            className="text-sm mb-4 line-clamp-3"
+            style={{ color: "var(--text-secondary)" }}
+          >
             {project.description}
           </p>
+
           <div className="flex-1" />
-          {/* Tag row absolutely anchored at the bottom of content area */}
-          <div className="flex flex-wrap gap-2 mb-4 min-h-[40px] items-center">
-            {project.tags.slice(0, 3).map((tag) => (
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-5">
+            {project.tags.slice(0, 4).map((tag) => (
               <span
                 key={tag}
-                className="flex items-center gap-1 px-2 py-1 bg-gray-800 text-gray-400 text-xs rounded"
+                className="flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium border theme-transition"
+                style={{
+                  borderColor: "var(--border-color)",
+                  color: "var(--text-secondary)",
+                  backgroundColor: "var(--bg-secondary)",
+                }}
               >
                 {tag}
               </span>
             ))}
           </div>
         </div>
-        <div className="flex gap-3 mt-auto">
+
+        {/* Action Buttons */}
+        <div className="flex gap-4 mt-auto">
           <a
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+            className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-xl border-2 transition-all duration-300 font-semibold"
+            style={{
+              borderColor: isDark ? "#ffffff" : "#000000",
+              backgroundColor: isDark ? "#ffffff" : "#000000",
+              color: isDark ? "#000000" : "#ffffff",
+              fontFamily: "'Montserrat', sans-serif",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent)";
+              e.currentTarget.style.borderColor = "var(--accent)";
+              e.currentTarget.style.color = "#ffffff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = isDark ? "#ffffff" : "#000000";
+              e.currentTarget.style.borderColor = isDark ? "#ffffff" : "#000000";
+              e.currentTarget.style.color = isDark ? "#000000" : "#ffffff";
+            }}
           >
             <ExternalLink size={16} />
             Live Demo
@@ -77,7 +154,23 @@ const ProjectCard = ({ project, index }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white font-medium py-3 px-4 rounded-lg transition-colors"
+            className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-xl border-2 transition-all duration-300 font-semibold"
+            style={{
+              borderColor: isDark ? "#ffffff" : "#000000",
+              backgroundColor: "transparent",
+              color: isDark ? "#ffffff" : "#000000",
+              fontFamily: "'Montserrat', sans-serif",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent)";
+              e.currentTarget.style.borderColor = "var(--accent)";
+              e.currentTarget.style.color = "#ffffff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.borderColor = isDark ? "#ffffff" : "#000000";
+              e.currentTarget.style.color = isDark ? "#ffffff" : "#000000";
+            }}
           >
             <Github size={16} />
             Code
@@ -89,11 +182,11 @@ const ProjectCard = ({ project, index }) => {
 };
 
 const Projects = () => {
+  const { isDark } = useTheme();
+  const scrollAnimationProps = useScrollAnimation();
   const [loading, setLoading] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
 
-  // Get unique categories from projects
-  // Map button labels to data categories
   const categoryMap = {
     All: "All",
     AIML: "AI/ML",
@@ -102,53 +195,87 @@ const Projects = () => {
     "Full Stack": "Full Stack",
     Hackathon: "Hackathon",
   };
-  // Button labels to display
   const categories = ["All", "AIML", "Fullstack", "Hackathon"];
 
-  // Filter projects based on selected category
   const filteredProjects =
     categoryMap[activeCategory] === "All"
       ? projectsData
       : projectsData.filter(
-          (project) => project.category === categoryMap[activeCategory]
+          (project) => project.category === categoryMap[activeCategory],
         );
 
   return (
     <section
       id="projects"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden"
+      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden theme-transition"
+      style={{ backgroundColor: "var(--bg-secondary)" }}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, white 2px, transparent 0)`,
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <div className="mb-4">
-            <span className="inline-block px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium">
-              My Work
-            </span>
-          </div>
+        <motion.div
+          {...scrollAnimationProps}
+          variants={containerVariants}
+          className="text-center mb-16"
+        >
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-6xl font-black mb-6"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-primary)",
+            }}
+          >
+            Featured <span style={{ color: "var(--accent)" }}>Projects</span>
+          </motion.h2>
+          <div
+            className="w-24 h-1 mx-auto mb-6"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
+        </motion.div>
 
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            Featured <span className="text-green-400">Projects</span>
-          </h2>
-
-          <div className="w-24 h-1 bg-green-400 mx-auto mb-6" />
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className="px-6 py-2.5 rounded-lg text-sm font-bold border-2 cursor-pointer transition-all duration-300"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                borderColor: activeCategory === cat ? "var(--accent)" : "#000000",
+                backgroundColor: activeCategory === cat ? "var(--accent)" : "#ffffff",
+                color: activeCategory === cat ? "#ffffff" : "#000000",
+              }}
+              onMouseEnter={(e) => {
+                if (activeCategory !== cat) {
+                  e.currentTarget.style.backgroundColor = "var(--accent)";
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.color = "#ffffff";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeCategory !== cat) {
+                  e.currentTarget.style.backgroundColor = "#ffffff";
+                  e.currentTarget.style.borderColor = "#000000";
+                  e.currentTarget.style.color = "#000000";
+                }
+              }}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
-        {/* Projects Grid (restored) */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Projects - Stacked Layout */}
+        <div className="space-y-10">
           {filteredProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <motion.div
+              key={project.id}
+              {...scrollAnimationProps}
+              variants={itemVariants}
+            >
+              <ProjectCard project={project} index={index} />
+            </motion.div>
           ))}
         </div>
       </div>

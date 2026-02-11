@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Calendar, MapPin, Briefcase } from "lucide-react";
+import { Calendar, MapPin, Briefcase, ExternalLink } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 import {
   containerVariants,
   itemVariants,
@@ -9,6 +10,29 @@ import {
 const experienceData = [
   {
     id: 1,
+    title: "Open Source Contributor",
+    company: "ECWoC 2026 - Elite Coders",
+    location: "Remote",
+    duration: "Jan 2026 - Present",
+    type: "Open Source",
+    description: [
+      "Selected as a contributor for Extended Code Winter of Code 2026 program.",
+      "Contributing to open source projects and collaborating with developers worldwide.",
+      "Working on real-world projects to enhance coding skills and build meaningful solutions.",
+      "Authenticity Badge: ECW-2026-906815",
+    ],
+    technologies: [
+      "Open Source",
+      "Git",
+      "GitHub",
+      "Collaboration",
+      "Code Review",
+    ],
+    link: "https://code.elitecoders.xyz/id-card/view/singhps588",
+    color: "from-purple-400 to-pink-400",
+  },
+  {
+    id: 2,
     title: "Software Developer Intern",
     company: "Brown Spark Digital",
     location: "Remote",
@@ -33,7 +57,7 @@ const experienceData = [
     color: "from-blue-400 to-purple-400",
   },
   {
-    id: 2,
+    id: 3,
     title: "Full Stack Developer",
     company: "CollabAuditAI",
     location: "Remote",
@@ -68,33 +92,62 @@ const ExperienceCard = ({ experience, index, isLast }) => {
     >
       {/* Timeline Line */}
       <div className="flex flex-col items-center">
-        {/* Timeline Dot */}
-        <motion.div className="w-4 h-4 rounded-full bg-green-400 border-4 border-black relative z-10" />
-
-        {/* Timeline Line */}
-        {!isLast && <div className="w-0.5 h-32 bg-gray-600 mt-2" />}
+        <motion.div
+          className="w-4 h-4 rounded-full relative z-10"
+          style={{
+            backgroundColor: "var(--accent)",
+            border: "3px solid var(--bg-primary)",
+          }}
+        />
+        {!isLast && (
+          <div
+            className="w-0.5 h-32 mt-2"
+            style={{ backgroundColor: "var(--border-color)" }}
+          />
+        )}
       </div>
 
       {/* Content Card */}
-      <motion.div className="flex-1 bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50">
+      <motion.div
+        className="flex-1 card-brutal rounded-2xl p-6 theme-transition"
+        style={{
+          backgroundColor: "var(--bg-card)",
+          borderColor: "var(--border-color)",
+        }}
+      >
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
           <div>
-            <h3 className="text-xl font-bold text-white mb-1">
+            <h3
+              className="text-xl font-bold mb-1"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                color: "var(--text-primary)",
+              }}
+            >
               {experience.title}
             </h3>
-            <div className="flex items-center gap-2 text-green-400 font-medium">
+            <div
+              className="flex items-center gap-2 font-medium"
+              style={{ color: "var(--accent)" }}
+            >
               <Briefcase size={16} />
               {experience.company}
             </div>
           </div>
 
           <div className="flex flex-col md:items-end mt-3 md:mt-0">
-            <div className="flex items-center gap-2 text-gray-300 text-sm mb-1">
+            <div
+              className="flex items-center gap-2 text-sm mb-1"
+              style={{ color: "var(--text-secondary)" }}
+            >
               <Calendar size={14} />
               {experience.duration}
             </div>
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
+            <div
+              className="flex items-center gap-2 text-sm"
+              style={{ color: "var(--text-muted)" }}
+            >
               <MapPin size={14} />
               {experience.location}
             </div>
@@ -103,7 +156,13 @@ const ExperienceCard = ({ experience, index, isLast }) => {
 
         {/* Type Badge */}
         <div className="mb-4">
-          <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-green-600 text-white">
+          <span
+            className="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider text-white"
+            style={{
+              backgroundColor: "var(--accent)",
+              fontFamily: "'Montserrat', sans-serif",
+            }}
+          >
             {experience.type}
           </span>
         </div>
@@ -114,9 +173,13 @@ const ExperienceCard = ({ experience, index, isLast }) => {
             {experience.description.map((item, idx) => (
               <li
                 key={idx}
-                className="text-gray-300 text-sm leading-relaxed flex items-start gap-2"
+                className="text-sm leading-relaxed flex items-start gap-2"
+                style={{ color: "var(--text-secondary)" }}
               >
-                <span className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0" />
+                <span
+                  className="w-1.5 h-1.5 rounded-full mt-2 shrink-0"
+                  style={{ backgroundColor: "var(--accent)" }}
+                />
                 {item}
               </li>
             ))}
@@ -124,40 +187,65 @@ const ExperienceCard = ({ experience, index, isLast }) => {
         </div>
 
         {/* Technologies */}
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2 mb-4">
           {experience.technologies.map((tech) => (
             <span
               key={tech}
-              className="px-2 py-1 bg-gray-700/50 text-gray-300 rounded text-xs font-medium border border-gray-600/50"
+              className="px-2 py-1 rounded-md text-xs font-medium border theme-transition"
+              style={{
+                borderColor: "var(--border-color)",
+                color: "var(--text-secondary)",
+                backgroundColor: "var(--bg-secondary)",
+              }}
             >
               {tech}
             </span>
           ))}
         </div>
+
+        {/* ID Card Link */}
+        {experience.link && (
+          <a
+            href={experience.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 text-sm py-2.5 px-5 rounded-xl border-2 transition-all duration-300 font-semibold hover:scale-105"
+            style={{
+              borderColor: "var(--border-color)",
+              backgroundColor: "transparent",
+              color: "var(--accent)",
+              fontFamily: "'Montserrat', sans-serif",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent)";
+              e.currentTarget.style.borderColor = "var(--accent)";
+              e.currentTarget.style.color = "#ffffff";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.borderColor = "var(--border-color)";
+              e.currentTarget.style.color = "var(--accent)";
+            }}
+          >
+            <ExternalLink size={16} />
+            View ECWoC ID Card
+          </a>
+        )}
       </motion.div>
     </motion.div>
   );
 };
 
 const Experience = () => {
+  const { isDark } = useTheme();
   const scrollAnimationProps = useScrollAnimation();
 
   return (
     <section
       id="experience"
-      className="py-20 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden"
+      className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden theme-transition"
+      style={{ backgroundColor: "var(--bg-primary)" }}
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, white 2px, transparent 0)`,
-            backgroundSize: "50px 50px",
-          }}
-        />
-      </div>
-
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -165,23 +253,25 @@ const Experience = () => {
           variants={containerVariants}
           className="text-center mb-16"
         >
-          <motion.div variants={itemVariants} className="mb-4">
-            <span className="inline-block px-4 py-2 bg-green-500/20 border border-green-500/30 rounded-full text-green-300 text-sm font-medium">
-              Professional Journey
-            </span>
-          </motion.div>
-
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-bold mb-6 text-white"
+            className="text-4xl md:text-6xl font-black mb-6"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-primary)",
+            }}
           >
-            Work <span className="text-green-400">Experience</span>
-            <div className="w-24 h-1 bg-green-400 mx-auto mt-4"></div>
+            Work <span style={{ color: "var(--accent)" }}>Experience</span>
           </motion.h2>
+          <div
+            className="w-24 h-1 mx-auto mb-6"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
 
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-xl max-w-3xl mx-auto"
+            style={{ color: "var(--text-secondary)" }}
           >
             My professional journey in software development, where I've grown
             from an intern to contributing meaningfully to enterprise-level

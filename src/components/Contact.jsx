@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, Send } from "lucide-react";
 import { useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -50,10 +51,10 @@ const Contact = () => {
       } else {
         // Fallback to mailto if Web3Forms fails
         const subject = encodeURIComponent(
-          `Portfolio Contact: Message from ${formData.name}`
+          `Portfolio Contact: Message from ${formData.name}`,
         );
         const body = encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
         );
         window.location.href = `mailto:singhps588@gmail.com?subject=${subject}&body=${body}`;
         setSubmitStatus("success");
@@ -63,10 +64,10 @@ const Contact = () => {
       console.error("Error sending message:", error);
       // Fallback to mailto
       const subject = encodeURIComponent(
-        `Portfolio Contact: Message from ${formData.name}`
+        `Portfolio Contact: Message from ${formData.name}`,
       );
       const body = encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`,
       );
       window.location.href = `mailto:singhps588@gmail.com?subject=${subject}&body=${body}`;
       setSubmitStatus("success");
@@ -98,7 +99,11 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-16 px-4 sm:px-6 lg:px-8 bg-black">
+    <section
+      id="contact"
+      className="py-16 px-4 sm:px-6 lg:px-8 theme-transition"
+      style={{ backgroundColor: "var(--bg-secondary)" }}
+    >
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -107,10 +112,19 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
-            Get In Touch
+          <h2
+            className="text-4xl md:text-5xl font-black mb-6"
+            style={{
+              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-primary)",
+            }}
+          >
+            Get In <span style={{ color: "var(--accent)" }}>Touch</span>
           </h2>
-          <div className="w-24 h-1 bg-green-400 mx-auto"></div>
+          <div
+            className="w-24 h-1 mx-auto"
+            style={{ backgroundColor: "var(--accent)" }}
+          />
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
@@ -121,10 +135,16 @@ const Contact = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-2xl font-semibold mb-6 text-white">
+              <h3
+                className="text-2xl font-bold mb-6"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  color: "var(--text-primary)",
+                }}
+              >
                 Let's Connect
               </h3>
-              <p className="text-gray-300 mb-8">
+              <p className="mb-8" style={{ color: "var(--text-secondary)" }}>
                 I'm always interested in hearing about new opportunities and
                 exciting projects. Feel free to reach out if you'd like to
                 collaborate or just want to say hello!
@@ -135,12 +155,27 @@ const Contact = () => {
                   <a
                     key={info.label}
                     href={info.link}
-                    className="flex items-center gap-4 p-4 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors"
+                    className="flex items-center gap-4 p-4 border-2 transition-all duration-200 theme-transition"
+                    style={{
+                      borderColor: "var(--border-color)",
+                      backgroundColor: "var(--bg-card)",
+                      boxShadow: "3px 3px 0px var(--shadow-brutal)",
+                    }}
                   >
-                    <info.icon size={24} className="text-green-400" />
+                    <info.icon size={24} style={{ color: "var(--accent)" }} />
                     <div>
-                      <p className="font-medium text-white">{info.label}</p>
-                      <p className="text-gray-300 text-sm">{info.value}</p>
+                      <p
+                        className="font-medium"
+                        style={{ color: "var(--text-primary)" }}
+                      >
+                        {info.label}
+                      </p>
+                      <p
+                        className="text-sm"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        {info.value}
+                      </p>
                     </div>
                   </a>
                 ))}
@@ -152,9 +187,19 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-gray-800 p-8 rounded-xl"
+              className="card-brutal p-8 theme-transition"
+              style={{
+                backgroundColor: "var(--bg-card)",
+                borderColor: "var(--border-color)",
+              }}
             >
-              <h3 className="text-xl font-semibold mb-6 text-white">
+              <h3
+                className="text-xl font-bold mb-6"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  color: "var(--text-primary)",
+                }}
+              >
                 Send a Message
               </h3>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -165,7 +210,12 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Your Name"
                   required
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 focus:outline-none theme-transition"
+                  style={{
+                    backgroundColor: "var(--bg-secondary)",
+                    borderColor: "var(--border-color)",
+                    color: "var(--text-primary)",
+                  }}
                 />
                 <input
                   type="email"
@@ -174,7 +224,12 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Your Email"
                   required
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border-2 focus:outline-none theme-transition"
+                  style={{
+                    backgroundColor: "var(--bg-secondary)",
+                    borderColor: "var(--border-color)",
+                    color: "var(--text-primary)",
+                  }}
                 />
                 <textarea
                   rows={4}
@@ -183,31 +238,41 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Your Message"
                   required
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 border-2 focus:outline-none resize-none theme-transition"
+                  style={{
+                    backgroundColor: "var(--bg-secondary)",
+                    borderColor: "var(--border-color)",
+                    color: "var(--text-primary)",
+                  }}
                 ></textarea>
 
                 {/* Status Messages */}
                 {submitStatus === "success" && (
-                  <div className="p-3 bg-green-600/20 border border-green-500/30 rounded-lg text-green-400 text-sm">
-                    ✅ Message sent successfully! Your email client should open
-                    shortly.
+                  <div
+                    className="p-3 border text-sm"
+                    style={{
+                      backgroundColor: "var(--green-accent-dim)",
+                      borderColor: "var(--green-accent)",
+                      color: "var(--green-accent)",
+                    }}
+                  >
+                    ✅ Message sent successfully!
                   </div>
                 )}
                 {submitStatus === "error" && (
-                  <div className="p-3 bg-red-600/20 border border-red-500/30 rounded-lg text-red-400 text-sm">
-                    ❌ Error sending message. Please try again or contact me
-                    directly.
+                  <div className="p-3 bg-red-600/20 border border-red-500/30 text-red-400 text-sm">
+                    ❌ Error sending message. Please try again.
                   </div>
                 )}
 
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
+                  className="w-full btn-brutal btn-brutal-primary flex items-center justify-center gap-2"
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
                       Sending...
                     </>
                   ) : (
