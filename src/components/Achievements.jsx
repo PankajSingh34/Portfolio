@@ -67,6 +67,17 @@ const achievementsData = {
   recognition: [
     {
       id: 1,
+      title: "Campus Hero",
+      organization: "Coding Blocks",
+      description:
+        "Selected as a Campus Hero for Coding Blocks to bridge the gap between industry requirements and campus learning. Leading tech initiatives and promoting coding culture in the campus community.",
+      year: "2026",
+      type: "Leadership & Community",
+      icon: Users,
+      color: "from-purple-400 to-pink-400",
+    },
+    {
+      id: 2,
       title: "Athletics Secretary",
       organization: "BIAS Bhimtal (2025-2026)",
       description:
@@ -77,7 +88,7 @@ const achievementsData = {
       color: "from-green-400 to-emerald-400",
     },
     {
-      id: 2,
+      id: 3,
       title: "Academic Excellence",
       organization: "BIAS Bhimtal",
       description:
