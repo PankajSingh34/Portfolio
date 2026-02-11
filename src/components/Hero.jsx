@@ -42,24 +42,24 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative h-screen flex flex-col justify-center overflow-hidden pt-16 theme-transition"
+      className="relative h-screen flex flex-col justify-center overflow-hidden pt-20 sm:pt-16 theme-transition"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center pt-8 sm:pt-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center w-full">
           {/* Left Side - Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative flex justify-center md:justify-start order-1 md:order-1"
+            className="relative flex justify-center md:justify-start order-1 md:order-1 mt-4 sm:mt-0"
           >
             <div className="double-border-frame inline-block">
               <div className="double-border-frame-inner">
                 <img
                   src="/images/professional.jpg"
                   alt="Pankaj Singh"
-                  className="w-72 h-80 sm:w-80 sm:h-96 md:w-96 md:h-[28rem] object-cover object-top block"
+                  className="w-64 h-72 sm:w-80 sm:h-96 md:w-96 md:h-[28rem] object-cover object-top block"
                 />
               </div>
             </div>
