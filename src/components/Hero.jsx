@@ -52,14 +52,14 @@ const Hero = () => {
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative flex justify-center md:justify-start order-1 md:order-1"
+            className="relative flex justify-center md:justify-start order-1 md:order-1 mt-8 sm:mt-0"
           >
             <div className="double-border-frame inline-block">
               <div className="double-border-frame-inner">
                 <img
                   src="/images/professional.jpg"
                   alt="Pankaj Singh"
-                  className="w-56 h-80 sm:w-64 sm:h-96 md:w-72 md:h-[28rem] object-cover object-top block"
+                  className="w-48 h-72 sm:w-64 sm:h-96 md:w-72 md:h-[28rem] object-cover object-top block"
                 />
               </div>
             </div>
