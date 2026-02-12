@@ -108,7 +108,7 @@ const Hero = () => {
             {/* CTA Buttons & Social Links */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
+              className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mb-20 sm:mb-0"
             >
               <a
                 href="/PSRESUME(5).pdf"
@@ -137,7 +137,7 @@ const Hero = () => {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 transition-all duration-300 flex items-center justify-center hover:scale-110"
+                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 transition-all duration-300 flex items-center justify-center hover:scale-110"
                     style={{
                       borderColor: "#000000",
                       backgroundColor: "#ffffff",
@@ -155,7 +155,7 @@ const Hero = () => {
                     }}
                     aria-label={social.label}
                   >
-                    <social.icon size={22} strokeWidth={2} />
+                    <social.icon size={20} strokeWidth={2.5} />
                   </a>
                 ))}
               </div>
@@ -169,17 +169,17 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
-        className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer z-20"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer z-20"
         onClick={scrollToAbout}
       >
-        <span className="text-xs sm:text-sm mb-2" style={{ color: "var(--text-muted)" }}>
+        <span className="text-xs sm:text-sm mb-1 font-medium" style={{ color: "var(--text-muted)" }}>
           Scroll to explore
         </span>
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown size={24} style={{ color: "var(--text-muted)" }} />
+          <ChevronDown size={20} strokeWidth={2.5} style={{ color: "var(--text-muted)" }} />
         </motion.div>
       </motion.div>
     </section>
