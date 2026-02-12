@@ -59,7 +59,7 @@ const Hero = () => {
                 <img
                   src="/images/professional.jpg"
                   alt="Pankaj Singh"
-                  className="w-64 h-72 sm:w-72 sm:h-80 md:w-80 md:h-96 object-cover object-top block"
+                  className="w-56 h-80 sm:w-64 sm:h-96 md:w-72 md:h-[28rem] object-cover object-top block"
                 />
               </div>
             </div>
