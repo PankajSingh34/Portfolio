@@ -42,11 +42,11 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative h-screen flex flex-col justify-center overflow-hidden pt-16 theme-transition"
+      className="relative h-screen flex flex-col justify-center overflow-hidden pt-20 sm:pt-16 theme-transition"
       style={{ backgroundColor: "var(--bg-primary)" }}
     >
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center pt-4 sm:pt-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center w-full">
           {/* Left Side - Profile Image */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
