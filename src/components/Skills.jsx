@@ -175,9 +175,6 @@ const Skills = () => {
                   src={tech.icon}
                   alt={tech.name}
                   className="w-10 h-10 md:w-12 md:h-12 object-contain"
-                  style={{
-                    filter: isDark ? "grayscale(1) brightness(1.5)" : "grayscale(1)",
-                  }}
                 />
               </motion.div>
 
