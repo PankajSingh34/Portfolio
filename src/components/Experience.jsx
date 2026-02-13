@@ -29,7 +29,7 @@ const experienceData = [
       "Code Review",
     ],
     link: "https://code.elitecoders.xyz/id-card/view/singhps588",
-    color: "from-purple-400 to-pink-400",
+    color: "from-gray-300 to-white",
   },
   {
     id: 2,
@@ -54,7 +54,7 @@ const experienceData = [
       "Git",
       "CRM Development",
     ],
-    color: "from-blue-400 to-purple-400",
+    color: "from-gray-400 to-gray-200",
   },
   {
     id: 3,
@@ -79,7 +79,7 @@ const experienceData = [
       "JWT",
       "REST APIs",
     ],
-    color: "from-green-400 to-emerald-400",
+    color: "from-white to-gray-300",
   },
 ];
 

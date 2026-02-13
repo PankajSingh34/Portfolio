@@ -29,7 +29,7 @@ const achievementsData = {
       year: "2026",
       status: "Active",
       icon: GitBranch,
-      color: "from-blue-400 to-purple-400",
+      color: "from-gray-300 to-white",
     },
   ],
   hackathons: [
@@ -45,7 +45,7 @@ const achievementsData = {
       github: "https://github.com/PankajSingh34/NASA-hackathon.git",
       year: "2025",
       icon: Trophy,
-      color: "from-orange-400 to-red-400",
+      color: "from-gray-400 to-gray-200",
     },
   ],
   certifications: [
@@ -60,7 +60,18 @@ const achievementsData = {
       year: "2026",
       type: "Technical Certification",
       icon: Award,
-      color: "from-green-400 to-teal-400",
+      color: "from-white to-gray-300",
+    },
+    {
+      id: 2,
+      title: "OCI 2025 Certified DevOps Professional",
+      organization: "Oracle",
+      description:
+        "Earned Oracle Cloud Infrastructure 2025 Certified DevOps Professional certification demonstrating expertise in CI/CD pipelines, infrastructure as code, and cloud-native DevOps practices on OCI.",
+      year: "2025",
+      type: "Technical Certification",
+      icon: Award,
+      color: "from-gray-300 to-white",
     },
   ],
   recognition: [
@@ -73,7 +84,7 @@ const achievementsData = {
       year: "2026",
       type: "Leadership & Community",
       icon: Users,
-      color: "from-purple-400 to-pink-400",
+      color: "from-gray-200 to-gray-400",
     },
     {
       id: 2,
@@ -84,7 +95,7 @@ const achievementsData = {
       year: "2025-2026",
       type: "Leadership",
       icon: Trophy,
-      color: "from-green-400 to-emerald-400",
+      color: "from-gray-300 to-white",
     },
   ],
 };

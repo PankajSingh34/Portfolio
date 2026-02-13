@@ -74,8 +74,8 @@ const ProjectCard = ({ project, index }) => {
           <span
             className="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider mb-3 w-fit"
             style={{
-              backgroundColor: "#b63e96",
-              color: "#ffffff",
+              backgroundColor: "#ffffff",
+              color: "#0a0a0a",
               fontFamily: "'Montserrat', sans-serif",
             }}
           >
