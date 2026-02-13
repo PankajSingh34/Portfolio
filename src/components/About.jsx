@@ -41,26 +41,9 @@ const About = () => {
             />
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
-            {/* Left: Double-border profile picture */}
-            <motion.div
-              {...scrollAnimationProps}
-              variants={itemVariants}
-              className="flex justify-center items-center lg:col-span-2"
-            >
-              <div className="double-border-frame inline-block">
-                <div className="double-border-frame-inner">
-                  <img
-                    src="/images/athletic.jpg"
-                    alt="Pankaj Singh"
-                    className="w-72 h-80 sm:w-80 sm:h-96 object-cover block"
-                  />
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Right: Story + Stats */}
-            <motion.div {...scrollAnimationProps} variants={containerVariants} className="lg:col-span-3">
+          <div className="max-w-4xl mx-auto">
+            {/* Story */}
+            <motion.div {...scrollAnimationProps} variants={containerVariants}>
               <motion.h3
                 variants={itemVariants}
                 className="text-2xl font-bold mb-4"
