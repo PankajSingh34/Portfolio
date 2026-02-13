@@ -170,8 +170,13 @@ h1, h2, h3, h4, h5, h6 {
    SELECTION
    ======================================== */
 ::selection {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  background-color: rgba(135, 206, 250, 0.4);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background-color: rgba(135, 206, 250, 0.4);
+  color: var(--text-primary);
 }
 
 /* ========================================

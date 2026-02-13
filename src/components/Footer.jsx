@@ -35,7 +35,7 @@ const Footer = () => {
           className="text-xl font-bold mb-4 tracking-tight"
           style={{ color: "var(--text-primary)" }}
         >
-          Pankaj.
+          Pankaj Singh
         </div>
         <p className="mb-6 text-sm" style={{ color: "var(--text-muted)" }}>
           Building digital experiences that make a difference

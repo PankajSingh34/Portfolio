@@ -75,17 +75,16 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <motion.div
+          <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="flex items-center text-xl font-bold tracking-tight"
+            className="font-sans text-2xl font-bold tracking-tight"
             style={{
               color: "var(--text-primary)",
             }}
           >
-            Pankaj
-            <span className="ml-0.5 text-gray-500">.</span>
-          </motion.div>
+            Pankaj Singh
+          </motion.h1>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
@@ -100,7 +99,10 @@ const Navbar = () => {
                       ? "var(--text-primary)"
                       : "var(--text-muted)",
                   fontWeight: activeSection === item.id ? 500 : 400,
-                  backgroundColor: activeSection === item.id ? "rgba(255,255,255,0.06)" : "transparent",
+                  backgroundColor:
+                    activeSection === item.id
+                      ? "rgba(255,255,255,0.06)"
+                      : "transparent",
                 }}
               >
                 {item.label}
