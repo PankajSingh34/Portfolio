@@ -49,39 +49,50 @@ const Hero = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-16 items-center w-full">
           {/* Left Side - Profile Image */}
           <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative flex justify-center md:justify-start order-1 md:order-1 mt-8 sm:mt-0"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: [0.4, 0, 0.2, 1] }}
+            className="relative flex justify-center md:justify-center order-1 md:order-2 mt-8 sm:mt-0"
           >
-            <img
-              src="/images/professional.jpg"
-              alt="Pankaj Singh"
-              className="w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover object-top"
-              style={{
-                boxShadow: "0 0 40px rgba(255, 255, 255, 0.05)",
-              }}
-            />
+            <div className="relative">
+              <img
+                src="/images/professional.jpg"
+                alt="Pankaj Singh"
+                className="w-52 h-52 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-700"
+                style={{
+                  border: "2px solid #1e1e1e",
+                }}
+              />
+              {/* Subtle ring */}
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{
+                  border: "1px solid rgba(255, 255, 255, 0.05)",
+                  transform: "scale(1.08)",
+                }}
+              />
+            </div>
           </motion.div>
 
-          {/* Right Side - Text Content */}
+          {/* Left Side - Text Content */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="order-2 md:order-2"
+            className="order-2 md:order-1"
           >
             <motion.h1
               variants={itemVariants}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.1] mb-4 md:mb-6 text-center md:text-left"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] mb-4 md:mb-6 text-center md:text-left tracking-tight"
               style={{
-                fontFamily: "'Montserrat', sans-serif",
                 color: "var(--text-primary)",
               }}
             >
-              Turning Vision Into Reality With{" "}
-              <span style={{ color: "var(--accent)" }}>Code</span> And{" "}
-              <span style={{ color: "var(--green-accent)" }}>Design.</span>
+              Turning Vision Into{" "}
+              <br className="hidden md:block" />
+              Reality With Code{" "}
+              <br className="hidden md:block" />
+              And Design.
             </motion.h1>
 
             {/* Role with Typing Animation */}
@@ -116,15 +127,14 @@ const Hero = () => {
                 href="/PSRESUME(5).pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 w-full sm:w-auto"
+                className="flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full font-medium text-sm sm:text-base transition-all duration-300 w-full sm:w-auto hover:scale-105"
                 style={{
-                  backgroundColor: "var(--bg-elevated)",
-                  color: "var(--text-primary)",
-                  border: "1px solid var(--border-color)",
+                  backgroundColor: "#ffffff",
+                  color: "#0a0a0a",
                 }}
               >
                 Resume
-                <ExternalLink size={16} />
+                <ExternalLink size={15} />
               </a>
 
               {/* Social Links */}
@@ -139,25 +149,23 @@ const Hero = () => {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 transition-all duration-300 flex items-center justify-center hover:scale-110"
+                    className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border transition-all duration-300 flex items-center justify-center hover:scale-110"
                     style={{
-                      borderColor: "#000000",
-                      backgroundColor: "#ffffff",
-                      color: "#000000",
+                      borderColor: "#2a2a2a",
+                      backgroundColor: "transparent",
+                      color: "var(--text-secondary)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = "var(--accent)";
-                      e.currentTarget.style.borderColor = "var(--accent)";
+                      e.currentTarget.style.borderColor = "#ffffff";
                       e.currentTarget.style.color = "#ffffff";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = "#ffffff";
-                      e.currentTarget.style.borderColor = "#000000";
-                      e.currentTarget.style.color = "#000000";
+                      e.currentTarget.style.borderColor = "#2a2a2a";
+                      e.currentTarget.style.color = "var(--text-secondary)";
                     }}
                     aria-label={social.label}
                   >
-                    <social.icon size={22} strokeWidth={2} />
+                    <social.icon size={18} strokeWidth={1.5} />
                   </a>
                 ))}
               </div>
@@ -169,22 +177,16 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="pb-4 sm:pb-6 flex flex-col items-center cursor-pointer"
+        animate={{ opacity: 0.4 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="pb-6 sm:pb-8 flex flex-col items-center cursor-pointer"
         onClick={scrollToAbout}
       >
-        <span
-          className="text-xs sm:text-sm mb-2"
-          style={{ color: "var(--text-muted)" }}
-        >
-          Scroll to explore
-        </span>
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <ChevronDown size={24} style={{ color: "var(--text-muted)" }} />
+          <ChevronDown size={20} style={{ color: "var(--text-muted)" }} />
         </motion.div>
       </motion.div>
     </section>

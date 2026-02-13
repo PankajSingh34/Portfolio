@@ -1,25 +1,25 @@
 @import "tailwindcss";
 
 /* ========================================
-   NEO-BRUTALIST DARK THEME SYSTEM
+   MINIMAL DARK THEME SYSTEM
    ======================================== */
 
 :root {
   /* Dark mode (default) - Simple Black & White */
   --bg-primary: #0a0a0a;
-  --bg-secondary: #141414;
-  --bg-card: #1a1a1a;
-  --bg-elevated: #252525;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a0a0a0;
-  --text-muted: #666666;
+  --bg-secondary: #111111;
+  --bg-card: #161616;
+  --bg-elevated: #1e1e1e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #8a8a8a;
+  --text-muted: #555555;
   --accent: #ffffff;
   --accent-hover: #e0e0e0;
-  --border-color: #2a2a2a;
-  --border-strong: #f5f5f5;
+  --border-color: #1e1e1e;
+  --border-strong: #f0f0f0;
   --shadow-brutal: #000000;
   --green-accent: #ffffff;
-  --green-accent-dim: rgba(255, 255, 255, 0.08);
+  --green-accent-dim: rgba(255, 255, 255, 0.06);
 }
 
 .light {
@@ -45,111 +45,50 @@ html {
 }
 
 body {
-  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   overflow-x: hidden;
   transition: background-color 0.4s ease, color 0.4s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.02em;
 }
 
 /* ========================================
    THEME TRANSITION HELPERS
    ======================================== */
 .theme-transition {
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ========================================
-   NEO-BRUTALIST BUTTON STYLES
-   ======================================== */
-.btn-brutal {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  padding: 0.875rem 2rem;
-  border: 2px solid var(--border-strong);
-  border-radius: 0.75rem;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-.btn-brutal:hover {
-  transform: translateY(-2px);
-}
-
-.btn-brutal:active {
-  transform: translateY(0);
-}
-
-.btn-brutal-primary {
-  background-color: var(--green-accent);
-  color: #1b1b1b;
-  border-color: var(--border-strong);
-}
-
-.btn-brutal-outline {
-  background-color: transparent;
-  color: var(--text-primary);
-  border-color: var(--border-strong);
-}
-
-/* ========================================
-   NEO-BRUTALIST CARD STYLES
+   CARD STYLES - Minimal
    ======================================== */
 .card-brutal {
-  border: 2px solid var(--border-color);
-  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: var(--bg-card);
 }
 
 .card-brutal:hover {
-  box-shadow: 8px 8px 0px var(--shadow-brutal);
-  transform: translate(-2px, -2px);
+  border-color: #333333;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* ========================================
-   ROTATING BADGE
+   SECTION DIVIDER LINE
    ======================================== */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
-}
-
-/* ========================================
-   DOUBLE BORDER PROFILE FRAME
-   ======================================== */
-.double-border-frame {
-  padding: 4px;
-  background-color: var(--text-primary);
-  border-radius: 1.5rem;
-  box-shadow: 6px 6px 0px #000000;
-}
-
-@media (min-width: 768px) {
-  .double-border-frame {
-    box-shadow: 10px 10px 0px #000000;
-  }
-}
-
-.double-border-frame-inner {
-  padding: 0;
-  background-color: transparent;
-  border-radius: 1.25rem;
-  overflow: hidden;
-}
-
-.double-border-frame-inner img {
-  border-radius: 1.25rem;
-  display: block;
-  width: 100%;
-  height: 100%;
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--text-muted), transparent);
+  margin: 0 auto;
 }
 
 /* ========================================
@@ -180,24 +119,25 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   background-color: var(--bg-card);
 }
 
 .article-item:hover {
-  border-color: var(--accent);
-  transform: translateX(4px);
+  border-color: #333333;
+  transform: translateY(-2px);
 }
 
 /* ========================================
    STATS COUNTER
    ======================================== */
 .stat-number {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
+  font-family: 'Inter', sans-serif;
+  font-weight: 800;
   font-size: 3rem;
   line-height: 1;
   color: var(--text-primary);
+  letter-spacing: -0.03em;
 }
 
 @media (min-width: 768px) {
@@ -207,29 +147,58 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
-   SCROLLBAR
+   SCROLLBAR - Minimal
    ======================================== */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--border-color);
-  border-radius: 4px;
+  background: #222222;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  background: #333333;
 }
 
 /* ========================================
    SELECTION
    ======================================== */
 ::selection {
-  background-color: #ffffff;
-  color: #0a0a0a;
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+/* ========================================
+   GLOW EFFECT - Subtle
+   ======================================== */
+.glow-subtle {
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.03);
+}
+
+/* ========================================
+   SMOOTH LINK UNDERLINE
+   ======================================== */
+.link-underline {
+  position: relative;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--text-primary);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
 }

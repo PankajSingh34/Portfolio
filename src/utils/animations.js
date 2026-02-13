@@ -1,62 +1,65 @@
 import { motion } from "framer-motion";
 
+// Smooth ease curve
+const smooth = [0.4, 0, 0.2, 1];
+
 export const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
+  initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
+  transition: { duration: 0.7, ease: smooth },
 };
 
 export const fadeInLeft = {
-  initial: { opacity: 0, x: -60 },
+  initial: { opacity: 0, x: -30 },
   animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
+  transition: { duration: 0.7, ease: smooth },
 };
 
 export const fadeInRight = {
-  initial: { opacity: 0, x: 60 },
+  initial: { opacity: 0, x: 30 },
   animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
+  transition: { duration: 0.7, ease: smooth },
 };
 
 export const scaleIn = {
-  initial: { opacity: 0, scale: 0.8 },
+  initial: { opacity: 0, scale: 0.95 },
   animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.6, ease: "easeOut" },
+  transition: { duration: 0.6, ease: smooth },
 };
 
 export const staggerContainer = {
   initial: {},
   animate: {
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.3,
+      staggerChildren: 0.08,
+      delayChildren: 0.2,
     },
   },
 };
 
 export const slideInFromBottom = {
-  initial: { opacity: 0, y: 100 },
+  initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.8, ease: "easeOut" },
+  transition: { duration: 0.8, ease: smooth },
 };
 
 export const bounceIn = {
-  initial: { opacity: 0, scale: 0.3 },
+  initial: { opacity: 0, scale: 0.9 },
   animate: {
     opacity: 1,
     scale: 1,
     transition: {
       type: "spring",
-      damping: 15,
-      stiffness: 300,
+      damping: 20,
+      stiffness: 200,
     },
   },
 };
 
 export const rotateIn = {
-  initial: { opacity: 0, rotate: -180 },
+  initial: { opacity: 0, rotate: -10 },
   animate: { opacity: 1, rotate: 0 },
-  transition: { duration: 0.8, ease: "easeOut" },
+  transition: { duration: 0.6, ease: smooth },
 };
 
 export const textVariants = {
@@ -64,20 +67,20 @@ export const textVariants = {
   animate: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.5,
+      staggerChildren: 0.05,
+      delayChildren: 0.3,
     },
   },
 };
 
 export const letterVariants = {
-  initial: { opacity: 0, y: 50 },
+  initial: { opacity: 0, y: 20 },
   animate: {
     opacity: 1,
     y: 0,
     transition: {
       type: "spring",
-      damping: 12,
+      damping: 20,
       stiffness: 200,
     },
   },
@@ -88,20 +91,20 @@ export const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.12,
       delayChildren: 0.1,
     },
   },
 };
 
 export const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut",
+      ease: smooth,
     },
   },
 };
@@ -111,24 +114,24 @@ export const useScrollAnimation = () => {
   return {
     initial: "hidden",
     whileInView: "visible",
-    viewport: { once: true, amount: 0.3 },
+    viewport: { once: true, amount: 0.2 },
   };
 };
 
-// Hover animations
+// Hover animations - subtle
 export const hoverGrow = {
-  scale: 1.05,
-  transition: { duration: 0.3, ease: "easeInOut" },
+  scale: 1.03,
+  transition: { duration: 0.3, ease: smooth },
 };
 
 export const hoverShrink = {
-  scale: 0.95,
-  transition: { duration: 0.3, ease: "easeInOut" },
+  scale: 0.97,
+  transition: { duration: 0.3, ease: smooth },
 };
 
 export const hoverFloat = {
-  y: -10,
-  transition: { duration: 0.3, ease: "easeInOut" },
+  y: -6,
+  transition: { duration: 0.3, ease: smooth },
 };
 
 // Loading animations
@@ -145,9 +148,9 @@ export const spinnerVariants = {
 
 export const pulseVariants = {
   animate: {
-    scale: [1, 1.1, 1],
+    scale: [1, 1.05, 1],
     transition: {
-      duration: 2,
+      duration: 2.5,
       repeat: Infinity,
       ease: "easeInOut",
     },
