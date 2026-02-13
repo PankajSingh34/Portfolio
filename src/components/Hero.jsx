@@ -54,15 +54,14 @@ const Hero = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="relative flex justify-center md:justify-start order-1 md:order-1 mt-8 sm:mt-0"
           >
-            <div className="double-border-frame inline-block">
-              <div className="double-border-frame-inner">
-                <img
-                  src="/images/professional.jpg"
-                  alt="Pankaj Singh"
-                  className="w-44 h-64 sm:w-52 sm:h-72 md:w-60 md:h-80 object-cover object-top block"
-                />
-              </div>
-            </div>
+            <img
+              src="/images/professional.jpg"
+              alt="Pankaj Singh"
+              className="w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full object-cover object-top"
+              style={{
+                boxShadow: "0 0 40px rgba(255, 255, 255, 0.05)",
+              }}
+            />
           </motion.div>
 
           {/* Right Side - Text Content */}
