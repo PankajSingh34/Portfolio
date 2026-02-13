@@ -16,7 +16,7 @@ const ProjectCard = ({ project, index }) => {
 
   return (
     <article
-      className="group card-brutal rounded-2xl overflow-hidden flex flex-col md:flex-row theme-transition"
+      className="group rounded-2xl overflow-hidden flex flex-col md:flex-row theme-transition border transition-all duration-300 hover:border-[#333333]"
       style={{
         backgroundColor: "var(--bg-card)",
         borderColor: "var(--border-color)",
@@ -62,21 +62,18 @@ const ProjectCard = ({ project, index }) => {
       <div className="p-6 md:p-8 flex flex-col flex-1">
         <div className="flex flex-col flex-1">
           <h3
-            className="text-xl font-bold mb-3 transition-colors"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              color: "var(--text-primary)",
-            }}
+            className="text-xl font-semibold mb-3 transition-colors tracking-tight"
+            style={{ color: "var(--text-primary)" }}
           >
             {project.title}
           </h3>
 
           <span
-            className="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider mb-3 w-fit"
+            className="inline-block px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider mb-3 w-fit"
             style={{
-              backgroundColor: "#ffffff",
-              color: "#0a0a0a",
-              fontFamily: "'Montserrat', sans-serif",
+              backgroundColor: "rgba(255, 255, 255, 0.08)",
+              color: "var(--text-secondary)",
+              border: "1px solid var(--border-color)",
             }}
           >
             {project.category}
@@ -115,22 +112,19 @@ const ProjectCard = ({ project, index }) => {
             href={project.demo}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-xl border-2 transition-all duration-300 font-semibold"
+            className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-full border transition-all duration-300 font-medium"
             style={{
-              borderColor: isDark ? "#ffffff" : "#000000",
-              backgroundColor: isDark ? "#ffffff" : "#000000",
-              color: isDark ? "#000000" : "#ffffff",
-              fontFamily: "'Montserrat', sans-serif",
+              borderColor: "var(--text-secondary)",
+              backgroundColor: "transparent",
+              color: "var(--text-primary)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--accent)";
-              e.currentTarget.style.borderColor = "var(--accent)";
-              e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.08)";
+              e.currentTarget.style.borderColor = "var(--text-primary)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = isDark ? "#ffffff" : "#000000";
-              e.currentTarget.style.borderColor = isDark ? "#ffffff" : "#000000";
-              e.currentTarget.style.color = isDark ? "#000000" : "#ffffff";
+              e.currentTarget.style.backgroundColor = "transparent";
+              e.currentTarget.style.borderColor = "var(--text-secondary)";
             }}
           >
             <ExternalLink size={16} />
@@ -140,22 +134,19 @@ const ProjectCard = ({ project, index }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-xl border-2 transition-all duration-300 font-semibold"
+            className="flex-1 flex items-center justify-center gap-2 text-sm py-3 px-4 rounded-full border transition-all duration-300 font-medium"
             style={{
-              borderColor: isDark ? "#ffffff" : "#000000",
+              borderColor: "var(--border-color)",
               backgroundColor: "transparent",
-              color: isDark ? "#ffffff" : "#000000",
-              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-secondary)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--accent)";
-              e.currentTarget.style.borderColor = "var(--accent)";
-              e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.borderColor = "#444444";
+              e.currentTarget.style.color = "var(--text-primary)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-              e.currentTarget.style.borderColor = isDark ? "#ffffff" : "#000000";
-              e.currentTarget.style.color = isDark ? "#ffffff" : "#000000";
+              e.currentTarget.style.borderColor = "var(--border-color)";
+              e.currentTarget.style.color = "var(--text-secondary)";
             }}
           >
             <Github size={16} />
@@ -205,18 +196,12 @@ const Projects = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-black mb-6"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              color: "var(--text-primary)",
-            }}
+            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+            style={{ color: "var(--text-primary)" }}
           >
-            Featured <span style={{ color: "var(--accent)" }}>Projects</span>
+            Featured Projects
           </motion.h2>
-          <div
-            className="w-24 h-1 mx-auto mb-6"
-            style={{ backgroundColor: "var(--accent)" }}
-          />
+          <div className="section-divider mb-2" />
         </motion.div>
 
         {/* Category Filter */}
@@ -225,25 +210,22 @@ const Projects = () => {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className="px-6 py-2.5 rounded-lg text-sm font-bold border-2 cursor-pointer transition-all duration-300"
+              className="px-5 py-2 rounded-full text-sm font-medium border cursor-pointer transition-all duration-300"
               style={{
-                fontFamily: "'Montserrat', sans-serif",
-                borderColor: activeCategory === cat ? "var(--accent)" : "#000000",
-                backgroundColor: activeCategory === cat ? "var(--accent)" : "#ffffff",
-                color: activeCategory === cat ? "#ffffff" : "#000000",
+                borderColor: activeCategory === cat ? "var(--text-primary)" : "var(--border-color)",
+                backgroundColor: activeCategory === cat ? "rgba(255,255,255,0.08)" : "transparent",
+                color: activeCategory === cat ? "var(--text-primary)" : "var(--text-muted)",
               }}
               onMouseEnter={(e) => {
                 if (activeCategory !== cat) {
-                  e.currentTarget.style.backgroundColor = "var(--accent)";
-                  e.currentTarget.style.borderColor = "var(--accent)";
-                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.borderColor = "#444444";
+                  e.currentTarget.style.color = "var(--text-primary)";
                 }
               }}
               onMouseLeave={(e) => {
                 if (activeCategory !== cat) {
-                  e.currentTarget.style.backgroundColor = "#ffffff";
-                  e.currentTarget.style.borderColor = "#000000";
-                  e.currentTarget.style.color = "#000000";
+                  e.currentTarget.style.borderColor = "var(--border-color)";
+                  e.currentTarget.style.color = "var(--text-muted)";
                 }
               }}
             >

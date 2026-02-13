@@ -113,18 +113,12 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2
-            className="text-4xl md:text-5xl font-black mb-6"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              color: "var(--text-primary)",
-            }}
+            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+            style={{ color: "var(--text-primary)" }}
           >
-            Get In <span style={{ color: "var(--accent)" }}>Touch</span>
+            Get In Touch
           </h2>
-          <div
-            className="w-24 h-1 mx-auto"
-            style={{ backgroundColor: "var(--accent)" }}
-          />
+          <div className="section-divider" />
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
@@ -136,11 +130,8 @@ const Contact = () => {
               viewport={{ once: true }}
             >
               <h3
-                className="text-2xl font-bold mb-6"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  color: "var(--text-primary)",
-                }}
+                className="text-xl font-semibold mb-6 tracking-tight"
+                style={{ color: "var(--text-primary)" }}
               >
                 Let's Connect
               </h3>
@@ -155,14 +146,16 @@ const Contact = () => {
                   <a
                     key={info.label}
                     href={info.link}
-                    className="flex items-center gap-4 p-4 border-2 transition-all duration-200 theme-transition"
+                    className="flex items-center gap-4 p-4 rounded-xl border transition-all duration-300 theme-transition hover:border-[#333333]"
                     style={{
                       borderColor: "var(--border-color)",
                       backgroundColor: "var(--bg-card)",
-                      boxShadow: "3px 3px 0px var(--shadow-brutal)",
                     }}
                   >
-                    <info.icon size={24} style={{ color: "var(--accent)" }} />
+                    <info.icon
+                      size={24}
+                      style={{ color: "var(--text-muted)" }}
+                    />
                     <div>
                       <p
                         className="font-medium"
@@ -187,18 +180,15 @@ const Contact = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="card-brutal p-8 theme-transition"
+              className="rounded-2xl p-8 theme-transition border"
               style={{
                 backgroundColor: "var(--bg-card)",
                 borderColor: "var(--border-color)",
               }}
             >
               <h3
-                className="text-xl font-bold mb-6"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  color: "var(--text-primary)",
-                }}
+                className="text-lg font-semibold mb-6 tracking-tight"
+                style={{ color: "var(--text-primary)" }}
               >
                 Send a Message
               </h3>
@@ -210,7 +200,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Your Name"
                   required
-                  className="w-full px-4 py-3 border-2 focus:outline-none theme-transition"
+                  className="w-full px-4 py-3 rounded-xl border focus:outline-none focus:border-[#444444] theme-transition"
                   style={{
                     backgroundColor: "var(--bg-secondary)",
                     borderColor: "var(--border-color)",
@@ -224,7 +214,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Your Email"
                   required
-                  className="w-full px-4 py-3 border-2 focus:outline-none theme-transition"
+                  className="w-full px-4 py-3 rounded-xl border focus:outline-none focus:border-[#444444] theme-transition"
                   style={{
                     backgroundColor: "var(--bg-secondary)",
                     borderColor: "var(--border-color)",
@@ -238,7 +228,7 @@ const Contact = () => {
                   onChange={handleInputChange}
                   placeholder="Your Message"
                   required
-                  className="w-full px-4 py-3 border-2 focus:outline-none resize-none theme-transition"
+                  className="w-full px-4 py-3 rounded-xl border focus:outline-none resize-none focus:border-[#444444] theme-transition"
                   style={{
                     backgroundColor: "var(--bg-secondary)",
                     borderColor: "var(--border-color)",
@@ -268,7 +258,20 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-brutal btn-brutal-primary flex items-center justify-center gap-2"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-full border font-medium transition-all duration-300 cursor-pointer"
+                  style={{
+                    borderColor: "var(--text-secondary)",
+                    backgroundColor: "transparent",
+                    color: "var(--text-primary)",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)";
+                    e.currentTarget.style.borderColor = "var(--text-primary)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = "transparent";
+                    e.currentTarget.style.borderColor = "var(--text-secondary)";
+                  }}
                 >
                   {isSubmitting ? (
                     <>

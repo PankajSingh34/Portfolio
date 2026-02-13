@@ -27,18 +27,12 @@ const About = () => {
           >
             <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-black mb-6"
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                color: "var(--text-primary)",
-              }}
+              className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+              style={{ color: "var(--text-primary)" }}
             >
-              About <span style={{ color: "var(--accent)" }}>Me</span>
+              About Me
             </motion.h2>
-            <div
-              className="w-24 h-1 mx-auto"
-              style={{ backgroundColor: "var(--accent)" }}
-            />
+            <div className="section-divider mb-2" />
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
@@ -46,11 +40,8 @@ const About = () => {
             <motion.div {...scrollAnimationProps} variants={containerVariants}>
               <motion.h3
                 variants={itemVariants}
-                className="text-2xl font-bold mb-4"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  color: "var(--text-primary)",
-                }}
+                className="text-xl font-semibold mb-4 tracking-tight"
+                style={{ color: "var(--text-primary)" }}
               >
                 My Story
               </motion.h3>

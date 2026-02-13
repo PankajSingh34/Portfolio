@@ -109,7 +109,7 @@ const ExperienceCard = ({ experience, index, isLast }) => {
 
       {/* Content Card */}
       <motion.div
-        className="flex-1 card-brutal rounded-2xl p-6 theme-transition"
+        className="flex-1 rounded-2xl p-6 theme-transition border"
         style={{
           backgroundColor: "var(--bg-card)",
           borderColor: "var(--border-color)",
@@ -119,11 +119,8 @@ const ExperienceCard = ({ experience, index, isLast }) => {
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
           <div>
             <h3
-              className="text-xl font-bold mb-1"
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                color: "var(--text-primary)",
-              }}
+              className="text-xl font-semibold mb-1 tracking-tight"
+              style={{ color: "var(--text-primary)" }}
             >
               {experience.title}
             </h3>
@@ -157,10 +154,11 @@ const ExperienceCard = ({ experience, index, isLast }) => {
         {/* Type Badge */}
         <div className="mb-4">
           <span
-            className="inline-block px-3 py-1 rounded-lg text-xs font-bold uppercase tracking-wider text-white"
+            className="inline-block px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider"
             style={{
-              backgroundColor: "var(--accent)",
-              fontFamily: "'Montserrat', sans-serif",
+              backgroundColor: "rgba(255, 255, 255, 0.08)",
+              color: "var(--text-secondary)",
+              border: "1px solid var(--border-color)",
             }}
           >
             {experience.type}
@@ -209,22 +207,19 @@ const ExperienceCard = ({ experience, index, isLast }) => {
             href={experience.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 text-sm py-2.5 px-5 rounded-xl border-2 transition-all duration-300 font-semibold hover:scale-105"
+            className="inline-flex items-center justify-center gap-2 text-sm py-2.5 px-5 rounded-full border transition-all duration-300 font-medium hover:scale-[1.02]"
             style={{
               borderColor: "var(--border-color)",
               backgroundColor: "transparent",
-              color: "var(--accent)",
-              fontFamily: "'Montserrat', sans-serif",
+              color: "var(--text-secondary)",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--accent)";
-              e.currentTarget.style.borderColor = "var(--accent)";
-              e.currentTarget.style.color = "#ffffff";
+              e.currentTarget.style.borderColor = "#444444";
+              e.currentTarget.style.color = "var(--text-primary)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
               e.currentTarget.style.borderColor = "var(--border-color)";
-              e.currentTarget.style.color = "var(--accent)";
+              e.currentTarget.style.color = "var(--text-secondary)";
             }}
           >
             <ExternalLink size={16} />
@@ -255,18 +250,12 @@ const Experience = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-6xl font-black mb-6"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              color: "var(--text-primary)",
-            }}
+            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+            style={{ color: "var(--text-primary)" }}
           >
-            Work <span style={{ color: "var(--accent)" }}>Experience</span>
+            Work Experience
           </motion.h2>
-          <div
-            className="w-24 h-1 mx-auto mb-6"
-            style={{ backgroundColor: "var(--accent)" }}
-          />
+          <div className="section-divider mb-6" />
 
           <motion.p
             variants={itemVariants}

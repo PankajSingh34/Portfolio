@@ -133,18 +133,12 @@ const Skills = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-black mb-6"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              color: "var(--text-primary)",
-            }}
+            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+            style={{ color: "var(--text-primary)" }}
           >
-            My <span style={{ color: "var(--accent)" }}>Skills</span>
+            My Skills
           </motion.h2>
-          <div
-            className="w-24 h-1 mx-auto"
-            style={{ backgroundColor: "var(--accent)" }}
-          />
+          <div className="section-divider mb-2" />
         </motion.div>
 
         {/* Technologies Grid */}
@@ -161,15 +155,16 @@ const Skills = () => {
               className="group relative flex flex-col items-center"
             >
               <motion.div
-                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center transition-all duration-300 cursor-pointer border-2 theme-transition"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center transition-all duration-300 cursor-pointer border theme-transition"
                 style={{
                   borderColor: "var(--border-color)",
                   backgroundColor: "var(--bg-card)",
                 }}
                 whileHover={{
-                  scale: 1.1,
+                  scale: 1.05,
+                  borderColor: "#333333",
                 }}
-                whileTap={{ scale: 0.95 }}
+                whileTap={{ scale: 0.97 }}
               >
                 <img
                   src={tech.icon}
@@ -181,12 +176,11 @@ const Skills = () => {
               {/* Tooltip */}
               <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
                 <div
-                  className="text-xs font-bold px-3 py-2 rounded-lg whitespace-nowrap"
+                  className="text-xs font-medium px-3 py-2 rounded-lg whitespace-nowrap"
                   style={{
-                    fontFamily: "'Montserrat', sans-serif",
                     backgroundColor: "var(--bg-card)",
-                    color: "var(--accent)",
-                    border: "2px solid var(--border-color)",
+                    color: "var(--text-primary)",
+                    border: "1px solid var(--border-color)",
                   }}
                 >
                   {tech.name}

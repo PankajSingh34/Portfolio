@@ -33,24 +33,22 @@ const BackToTop = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.5 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-3 rounded-full border-2 transition-all duration-300 cursor-pointer"
+          className="fixed bottom-8 right-8 z-50 p-3 rounded-full border transition-all duration-300 cursor-pointer"
           style={{
-            backgroundColor: "#ffffff",
-            borderColor: "#000000",
-            color: "#000000",
+            backgroundColor: "var(--bg-card)",
+            borderColor: "var(--border-color)",
+            color: "var(--text-muted)",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = "var(--accent)";
-            e.currentTarget.style.borderColor = "var(--accent)";
-            e.currentTarget.style.color = "#ffffff";
+            e.currentTarget.style.borderColor = "#444444";
+            e.currentTarget.style.color = "var(--text-primary)";
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = "#ffffff";
-            e.currentTarget.style.borderColor = "#000000";
-            e.currentTarget.style.color = "#000000";
+            e.currentTarget.style.borderColor = "var(--border-color)";
+            e.currentTarget.style.color = "var(--text-muted)";
           }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           aria-label="Back to top"
         >
           <ArrowUp size={24} />

@@ -106,7 +106,7 @@ const AchievementCard = ({ achievement, type, index }) => {
 
   return (
     <div
-      className="group relative card-brutal rounded-2xl p-4 theme-transition"
+      className="group relative rounded-2xl p-4 theme-transition border transition-all duration-300 hover:border-[#333333]"
       style={{
         backgroundColor: "var(--bg-card)",
         borderColor: "var(--border-color)",
@@ -124,11 +124,8 @@ const AchievementCard = ({ achievement, type, index }) => {
           <div className="flex-1">
             <div className="flex items-center justify-between gap-3">
               <h3
-                className="text-lg font-bold"
-                style={{
-                  fontFamily: "'Montserrat', sans-serif",
-                  color: "var(--text-primary)",
-                }}
+                className="text-lg font-semibold tracking-tight"
+                style={{ color: "var(--text-primary)" }}
               >
                 {achievement.title}
               </h3>
@@ -144,26 +141,17 @@ const AchievementCard = ({ achievement, type, index }) => {
                         rel="noopener noreferrer"
                         className="flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300"
                         style={{
-                          borderColor: isDark ? "#ffffff" : "#000000",
-                          backgroundColor: isDark ? "#ffffff" : "#000000",
-                          color: isDark ? "#000000" : "#ffffff",
+                          borderColor: "var(--border-color)",
+                          backgroundColor: "transparent",
+                          color: "var(--text-secondary)",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor =
-                            "var(--accent)";
-                          e.currentTarget.style.borderColor = "var(--accent)";
-                          e.currentTarget.style.color = "#ffffff";
+                          e.currentTarget.style.borderColor = "#444444";
+                          e.currentTarget.style.color = "var(--text-primary)";
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = isDark
-                            ? "#ffffff"
-                            : "#000000";
-                          e.currentTarget.style.borderColor = isDark
-                            ? "#ffffff"
-                            : "#000000";
-                          e.currentTarget.style.color = isDark
-                            ? "#000000"
-                            : "#ffffff";
+                          e.currentTarget.style.borderColor = "var(--border-color)";
+                          e.currentTarget.style.color = "var(--text-secondary)";
                         }}
                       >
                         <ExternalLink size={16} />
@@ -176,24 +164,17 @@ const AchievementCard = ({ achievement, type, index }) => {
                         rel="noopener noreferrer"
                         className="flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300"
                         style={{
-                          borderColor: isDark ? "#ffffff" : "#000000",
+                          borderColor: "var(--border-color)",
                           backgroundColor: "transparent",
-                          color: isDark ? "#ffffff" : "#000000",
+                          color: "var(--text-secondary)",
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor =
-                            "var(--accent)";
-                          e.currentTarget.style.borderColor = "var(--accent)";
-                          e.currentTarget.style.color = "#ffffff";
+                          e.currentTarget.style.borderColor = "#444444";
+                          e.currentTarget.style.color = "var(--text-primary)";
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = "transparent";
-                          e.currentTarget.style.borderColor = isDark
-                            ? "#ffffff"
-                            : "#000000";
-                          e.currentTarget.style.color = isDark
-                            ? "#ffffff"
-                            : "#000000";
+                          e.currentTarget.style.borderColor = "var(--border-color)";
+                          e.currentTarget.style.color = "var(--text-secondary)";
                         }}
                       >
                         <Github size={16} />
@@ -211,25 +192,17 @@ const AchievementCard = ({ achievement, type, index }) => {
                     rel="noopener noreferrer"
                     className="flex items-center justify-center w-8 h-8 rounded-full border transition-all duration-300"
                     style={{
-                      borderColor: isDark ? "#ffffff" : "#000000",
-                      backgroundColor: isDark ? "#ffffff" : "#000000",
-                      color: isDark ? "#000000" : "#ffffff",
+                      borderColor: "var(--border-color)",
+                      backgroundColor: "transparent",
+                      color: "var(--text-secondary)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.backgroundColor = "var(--accent)";
-                      e.currentTarget.style.borderColor = "var(--accent)";
-                      e.currentTarget.style.color = "#ffffff";
+                      e.currentTarget.style.borderColor = "#444444";
+                      e.currentTarget.style.color = "var(--text-primary)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.backgroundColor = isDark
-                        ? "#ffffff"
-                        : "#000000";
-                      e.currentTarget.style.borderColor = isDark
-                        ? "#ffffff"
-                        : "#000000";
-                      e.currentTarget.style.color = isDark
-                        ? "#000000"
-                        : "#ffffff";
+                      e.currentTarget.style.borderColor = "var(--border-color)";
+                      e.currentTarget.style.color = "var(--text-secondary)";
                     }}
                   >
                     <ExternalLink size={16} />
@@ -259,10 +232,11 @@ const AchievementCard = ({ achievement, type, index }) => {
           </div>
         </div>
         <span
-          className="px-3 py-1.5 rounded-full text-xs font-bold theme-transition shrink-0 ml-3"
+          className="px-3 py-1.5 rounded-full text-xs font-medium theme-transition shrink-0 ml-3"
           style={{
-            backgroundColor: "var(--accent)",
-            color: "#ffffff",
+            backgroundColor: "rgba(255, 255, 255, 0.06)",
+            color: "var(--text-secondary)",
+            border: "1px solid var(--border-color)",
           }}
         >
           {achievement.year}
@@ -418,26 +392,19 @@ const AchievementCard = ({ achievement, type, index }) => {
               href={achievement.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-1.5 text-xs py-2 px-3 rounded-full border transition-all duration-300 font-semibold"
+              className="flex-1 flex items-center justify-center gap-1.5 text-xs py-2 px-3 rounded-full border transition-all duration-300 font-medium"
               style={{
-                borderColor: isDark ? "#ffffff" : "#000000",
-                backgroundColor: isDark ? "#ffffff" : "#000000",
-                color: isDark ? "#000000" : "#ffffff",
-                fontFamily: "'Montserrat', sans-serif",
+                borderColor: "var(--border-color)",
+                backgroundColor: "transparent",
+                color: "var(--text-secondary)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--accent)";
-                e.currentTarget.style.borderColor = "var(--accent)";
-                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.borderColor = "#444444";
+                e.currentTarget.style.color = "var(--text-primary)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = isDark
-                  ? "#ffffff"
-                  : "#000000";
-                e.currentTarget.style.borderColor = isDark
-                  ? "#ffffff"
-                  : "#000000";
-                e.currentTarget.style.color = isDark ? "#000000" : "#ffffff";
+                e.currentTarget.style.borderColor = "var(--border-color)";
+                e.currentTarget.style.color = "var(--text-secondary)";
               }}
             >
               <ExternalLink size={14} />
@@ -449,24 +416,19 @@ const AchievementCard = ({ achievement, type, index }) => {
               href={achievement.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-1.5 text-xs py-2 px-3 rounded-full border transition-all duration-300 font-semibold"
+              className="flex-1 flex items-center justify-center gap-1.5 text-xs py-2 px-3 rounded-full border transition-all duration-300 font-medium"
               style={{
-                borderColor: isDark ? "#ffffff" : "#000000",
+                borderColor: "var(--border-color)",
                 backgroundColor: "transparent",
-                color: isDark ? "#ffffff" : "#000000",
-                fontFamily: "'Montserrat', sans-serif",
+                color: "var(--text-secondary)",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = "var(--accent)";
-                e.currentTarget.style.borderColor = "var(--accent)";
-                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.borderColor = "#444444";
+                e.currentTarget.style.color = "var(--text-primary)";
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = "transparent";
-                e.currentTarget.style.borderColor = isDark
-                  ? "#ffffff"
-                  : "#000000";
-                e.currentTarget.style.color = isDark ? "#ffffff" : "#000000";
+                e.currentTarget.style.borderColor = "var(--border-color)";
+                e.currentTarget.style.color = "var(--text-secondary)";
               }}
             >
               <Github size={14} />
@@ -482,13 +444,10 @@ const AchievementCard = ({ achievement, type, index }) => {
 const SectionHeader = ({ title, description, icon: Icon }) => (
   <div className="mb-6">
     <div className="flex items-center gap-2.5 mb-2">
-      <Icon className="w-5 h-5" style={{ color: "var(--accent)" }} />
+      <Icon className="w-5 h-5" style={{ color: "var(--text-muted)" }} />
       <h3
-        className="text-xl font-bold"
-        style={{
-          fontFamily: "'Montserrat', sans-serif",
-          color: "var(--text-primary)",
-        }}
+        className="text-lg font-semibold tracking-tight"
+        style={{ color: "var(--text-primary)" }}
       >
         {title}
       </h3>
@@ -529,18 +488,12 @@ const Achievements = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-black mb-4"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              color: "var(--text-primary)",
-            }}
+            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+            style={{ color: "var(--text-primary)" }}
           >
-            My <span style={{ color: "var(--accent)" }}>Achievements</span>
+            My Achievements
           </motion.h2>
-          <div
-            className="w-24 h-1 mx-auto mb-4"
-            style={{ backgroundColor: "var(--accent)" }}
-          />
+          <div className="section-divider mb-4" />
 
           <motion.p
             variants={itemVariants}

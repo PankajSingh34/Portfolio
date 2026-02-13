@@ -43,18 +43,12 @@ const Blog = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-4xl md:text-5xl font-black mb-4"
-            style={{
-              fontFamily: "'Montserrat', sans-serif",
-              color: "var(--text-primary)",
-            }}
+            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+            style={{ color: "var(--text-primary)" }}
           >
-            Blog & <span style={{ color: "var(--accent)" }}>Articles</span>
+            Blog & Articles
           </motion.h2>
-          <div
-            className="w-24 h-1 mx-auto mb-4"
-            style={{ backgroundColor: "var(--accent)" }}
-          />
+          <div className="section-divider mb-4" />
           <motion.p
             variants={itemVariants}
             style={{ color: "var(--text-muted)" }}
@@ -71,25 +65,22 @@ const Blog = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className="px-6 py-2.5 rounded-lg text-sm font-bold border-2 cursor-pointer transition-all duration-300"
+              className="px-5 py-2 rounded-full text-sm font-medium border cursor-pointer transition-all duration-300"
               style={{
-                fontFamily: "'Montserrat', sans-serif",
-                borderColor: activeCategory === category ? "var(--accent)" : "#000000",
-                backgroundColor: activeCategory === category ? "var(--accent)" : "#ffffff",
-                color: activeCategory === category ? "#ffffff" : "#000000",
+                borderColor: activeCategory === category ? "var(--text-primary)" : "var(--border-color)",
+                backgroundColor: activeCategory === category ? "rgba(255,255,255,0.08)" : "transparent",
+                color: activeCategory === category ? "var(--text-primary)" : "var(--text-muted)",
               }}
               onMouseEnter={(e) => {
                 if (activeCategory !== category) {
-                  e.currentTarget.style.backgroundColor = "var(--accent)";
-                  e.currentTarget.style.borderColor = "var(--accent)";
-                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.borderColor = "#444444";
+                  e.currentTarget.style.color = "var(--text-primary)";
                 }
               }}
               onMouseLeave={(e) => {
                 if (activeCategory !== category) {
-                  e.currentTarget.style.backgroundColor = "#ffffff";
-                  e.currentTarget.style.borderColor = "#000000";
-                  e.currentTarget.style.color = "#000000";
+                  e.currentTarget.style.borderColor = "var(--border-color)";
+                  e.currentTarget.style.color = "var(--text-muted)";
                 }
               }}
             >
@@ -118,10 +109,11 @@ const Blog = () => {
                     <div className="flex items-center gap-3 mb-1">
                       {blog.featured && (
                         <span
-                          className="px-2 py-0.5 rounded-md text-xs font-bold uppercase tracking-wider text-white shrink-0"
+                          className="px-2 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider shrink-0"
                           style={{
-                            backgroundColor: "var(--accent)",
-                            fontFamily: "'Montserrat', sans-serif",
+                            backgroundColor: "rgba(255, 255, 255, 0.08)",
+                            color: "var(--text-secondary)",
+                            border: "1px solid var(--border-color)",
                           }}
                         >
                           Featured
@@ -139,11 +131,8 @@ const Blog = () => {
                     </div>
 
                     <h3
-                      className="text-lg font-bold transition-colors line-clamp-1"
-                      style={{
-                        fontFamily: "'Montserrat', sans-serif",
-                        color: "var(--text-primary)",
-                      }}
+                      className="text-lg font-semibold transition-colors line-clamp-1 tracking-tight"
+                      style={{ color: "var(--text-primary)" }}
                     >
                       {blog.title}
                     </h3>
