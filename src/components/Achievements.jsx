@@ -3,7 +3,6 @@ import {
   Trophy,
   GitBranch,
   Award,
-  Star,
   ExternalLink,
   Github,
   Users,
@@ -86,17 +85,6 @@ const achievementsData = {
       type: "Leadership",
       icon: Trophy,
       color: "from-green-400 to-emerald-400",
-    },
-    {
-      id: 3,
-      title: "Academic Excellence",
-      organization: "BIAS Bhimtal",
-      description:
-        "Achieved Rank 7 among 170 students, demonstrating exceptional academic performance and dedication to studies alongside extracurricular commitments.",
-      year: "2025-2026",
-      type: "Academic",
-      icon: Star,
-      color: "from-blue-400 to-indigo-400",
     },
   ],
 };
