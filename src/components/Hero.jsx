@@ -7,11 +7,9 @@ import {
   Linkedin,
 } from "lucide-react";
 import { useTypingAnimation } from "../hooks";
-import { useTheme } from "../context/ThemeContext";
 import { containerVariants, itemVariants } from "../utils/animations";
 
 const Hero = () => {
-  const { isDark } = useTheme();
   const roles = ["Full Stack Developer", "Problem Solver"];
   const typedRole = useTypingAnimation(roles, 100, 2000);
 
@@ -59,10 +57,8 @@ const Hero = () => {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-center lg:text-left tracking-tight"
               style={{ color: "var(--text-primary)" }}
             >
-              Turning Vision Into{" "}
-              <br className="hidden lg:block" />
-              Reality With Code{" "}
-              <br className="hidden lg:block" />
+              Turning Vision Into <br className="hidden lg:block" />
+              Reality With Code <br className="hidden lg:block" />
               And Design.
             </motion.h1>
 
@@ -95,9 +91,8 @@ const Hero = () => {
               className="flex flex-col sm:flex-row items-center lg:items-start gap-4"
             >
               <a
-                href="/PSRESUME(5).pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/PSRESUME (5).pdf"
+                download="Pankaj_Singh_Resume.pdf"
                 className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-medium text-base transition-all duration-300 w-full sm:w-auto hover:scale-[1.02]"
                 style={{
                   backgroundColor: "#ffffff",
@@ -122,17 +117,17 @@ const Hero = () => {
                     }
                     className="w-11 h-11 rounded-full border transition-all duration-300 flex items-center justify-center hover:scale-105"
                     style={{
-                      borderColor: "#2a2a2a",
+                      borderColor: "var(--border-color)",
                       backgroundColor: "transparent",
-                      color: "var(--text-secondary)",
+                      color: "var(--text-muted)",
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = "#222";
-                      e.currentTarget.style.color = "#222";
+                      e.currentTarget.style.borderColor = "#444444";
+                      e.currentTarget.style.color = "var(--text-primary)";
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = "#2a2a2a";
-                      e.currentTarget.style.color = "var(--text-secondary)";
+                      e.currentTarget.style.borderColor = "var(--border-color)";
+                      e.currentTarget.style.color = "var(--text-muted)";
                     }}
                     aria-label={social.label}
                   >

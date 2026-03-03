@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Calendar, MapPin, Briefcase, ExternalLink } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
 import {
   containerVariants,
   itemVariants,
@@ -36,7 +35,7 @@ const experienceData = [
     title: "Software Developer Intern",
     company: "Brown Spark Digital",
     location: "Remote",
-  duration: "Sept 2025 - Oct 2025",
+    duration: "Sept 2025 - Oct 2025",
     type: "Internship",
     description: [
       "Developed and maintained full-stack web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js) for client projects.",
@@ -90,149 +89,207 @@ const ExperienceCard = ({ experience, index, isLast }) => {
       custom={index}
       className="relative flex items-start gap-6 group"
     >
-      {/* Timeline Line */}
-      <div className="flex flex-col items-center">
-        <motion.div
-          className="w-4 h-4 rounded-full relative z-10"
+      {/* Timeline dot + line */}
+      <div className="flex flex-col items-center pt-6">
+        <div
+          className="w-2.5 h-2.5 rounded-full relative z-10 shrink-0"
           style={{
             backgroundColor: "var(--accent)",
-            border: "3px solid var(--bg-primary)",
+            boxShadow:
+              "0 0 0 3px var(--bg-primary), 0 0 0 5px var(--bg-elevated)",
           }}
         />
         {!isLast && (
           <div
-            className="w-0.5 h-32 mt-2"
-            style={{ backgroundColor: "var(--border-color)" }}
+            className="w-px flex-1 mt-3"
+            style={{
+              minHeight: "2rem",
+              background:
+                "linear-gradient(180deg, var(--bg-elevated) 0%, transparent 100%)",
+            }}
           />
         )}
       </div>
 
       {/* Content Card */}
-      <motion.div
-        className="flex-1 rounded-2xl p-6 theme-transition border"
+      <div
+        className="flex-1 rounded-3xl theme-transition relative overflow-hidden mb-2"
         style={{
           backgroundColor: "var(--bg-card)",
-          borderColor: "var(--border-color)",
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
         }}
       >
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
-          <div>
-            <h3
-              className="text-xl font-semibold mb-1 tracking-tight"
-              style={{ color: "var(--text-primary)" }}
-            >
-              {experience.title}
-            </h3>
-            <div
-              className="flex items-center gap-2 font-medium"
-              style={{ color: "var(--accent)" }}
-            >
-              <Briefcase size={16} />
-              {experience.company}
-            </div>
-          </div>
+        {/* Gradient overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.025] pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle at top right, var(--accent), transparent 60%)",
+          }}
+        />
 
-          <div className="flex flex-col md:items-end mt-3 md:mt-0">
-            <div
-              className="flex items-center gap-2 text-sm mb-1"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              <Calendar size={14} />
-              {experience.duration}
+        {/* Top accent line */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent, var(--border-strong), transparent)",
+            opacity: 0.12,
+          }}
+        />
+
+        {/* Card Header */}
+        <div className="px-8 pt-7 pb-5 relative z-10">
+          <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            {/* Left: title + company */}
+            <div className="flex-1 min-w-0">
+              {/* Type badge inline with title */}
+              <div className="flex items-center gap-3 mb-3">
+                <span
+                  className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-widest"
+                  style={{
+                    backgroundColor: "var(--bg-secondary)",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  {experience.type}
+                </span>
+              </div>
+              <h3
+                className="text-xl font-bold tracking-tight mb-1.5"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {experience.title}
+              </h3>
+              <div
+                className="flex items-center gap-1.5 text-sm font-semibold"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                <Briefcase size={13} strokeWidth={2.5} />
+                {experience.company}
+              </div>
             </div>
-            <div
-              className="flex items-center gap-2 text-sm"
-              style={{ color: "var(--text-muted)" }}
-            >
-              <MapPin size={14} />
-              {experience.location}
+
+            {/* Right: duration + location pills */}
+            <div className="flex flex-row sm:flex-col items-start sm:items-end gap-2 shrink-0">
+              <div
+                className="flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full"
+                style={{
+                  backgroundColor: "var(--bg-secondary)",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                <Calendar size={11} />
+                {experience.duration}
+              </div>
+              <div
+                className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
+                style={{
+                  backgroundColor: "var(--bg-secondary)",
+                  color: "var(--text-muted)",
+                }}
+              >
+                <MapPin size={11} />
+                {experience.location}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Type Badge */}
-        <div className="mb-4">
-          <span
-            className="inline-block px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider"
-            style={{
-              backgroundColor: "rgba(255, 255, 255, 0.08)",
-              color: "var(--text-secondary)",
-              border: "1px solid var(--border-color)",
-            }}
-          >
-            {experience.type}
-          </span>
-        </div>
+        {/* Divider */}
+        <div
+          className="mx-8 h-px"
+          style={{ backgroundColor: "var(--border-color)" }}
+        />
 
         {/* Description */}
-        <div className="mb-6">
-          <ul className="space-y-3">
+        <div className="px-8 pt-5 pb-5 relative z-10">
+          <ul className="space-y-2.5">
             {experience.description.map((item, idx) => (
               <li
                 key={idx}
-                className="text-sm leading-relaxed flex items-start gap-2"
+                className="text-sm leading-relaxed flex items-start gap-3"
                 style={{ color: "var(--text-secondary)" }}
               >
                 <span
                   className="w-1.5 h-1.5 rounded-full mt-2 shrink-0"
-                  style={{ backgroundColor: "var(--accent)" }}
+                  style={{ backgroundColor: "var(--text-muted)" }}
                 />
-                {item}
+                <span className="flex-1">{item}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {experience.technologies.map((tech) => (
-            <span
-              key={tech}
-              className="px-2 py-1 rounded-md text-xs font-medium border theme-transition"
-              style={{
-                borderColor: "var(--border-color)",
-                color: "var(--text-secondary)",
-                backgroundColor: "var(--bg-secondary)",
-              }}
-            >
-              {tech}
-            </span>
-          ))}
+        {/* Divider */}
+        <div
+          className="mx-8 h-px"
+          style={{ backgroundColor: "var(--border-color)" }}
+        />
+
+        {/* Tech Stack */}
+        <div className="px-8 py-5 relative z-10">
+          <p
+            className="text-[10px] font-semibold uppercase tracking-widest mb-3"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Tech Stack
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {experience.technologies.map((tech) => (
+              <span
+                key={tech}
+                className="px-3 py-1 rounded-lg text-xs font-medium theme-transition"
+                style={{
+                  backgroundColor: "var(--bg-secondary)",
+                  color: "var(--text-secondary)",
+                }}
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </div>
 
-        {/* ID Card Link */}
+        {/* Link button */}
         {experience.link && (
-          <a
-            href={experience.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 text-sm py-2.5 px-5 rounded-full border transition-all duration-300 font-medium hover:scale-[1.02]"
-            style={{
-              borderColor: "var(--border-color)",
-              backgroundColor: "transparent",
-              color: "var(--text-secondary)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = "#444444";
-              e.currentTarget.style.color = "var(--text-primary)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = "var(--border-color)";
-              e.currentTarget.style.color = "var(--text-secondary)";
-            }}
-          >
-            <ExternalLink size={16} />
-            View ECWoC ID Card
-          </a>
+          <>
+            <div
+              className="mx-8 h-px"
+              style={{ backgroundColor: "var(--border-color)" }}
+            />
+            <div className="px-8 py-5 relative z-10">
+              <a
+                href={experience.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs font-semibold py-2.5 px-5 rounded-full transition-all duration-300"
+                style={{
+                  backgroundColor: "var(--bg-elevated)",
+                  color: "var(--text-primary)",
+                  border: "1px solid var(--bg-elevated)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.color = "var(--accent)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "var(--bg-elevated)";
+                  e.currentTarget.style.color = "var(--text-primary)";
+                }}
+              >
+                <ExternalLink size={13} />
+                View ID Card
+              </a>
+            </div>
+          </>
         )}
-      </motion.div>
+      </div>
     </motion.div>
   );
 };
 
 const Experience = () => {
-  const { isDark } = useTheme();
   const scrollAnimationProps = useScrollAnimation();
 
   return (

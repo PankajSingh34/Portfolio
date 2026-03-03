@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useTheme } from "../context/ThemeContext";
 import {
   containerVariants,
   itemVariants,
@@ -8,7 +7,6 @@ import {
 } from "../utils/animations";
 
 const About = () => {
-  const { isDark } = useTheme();
   const scrollAnimationProps = useScrollAnimation();
 
   return (
@@ -65,9 +63,9 @@ const About = () => {
                 >
                   Birla Institute of Applied Sciences, Bhimtal
                 </span>
-                . Originally from Ramnagar, Uttarakhand, I specialize in full-stack
-                development with a focus on building scalable web applications and
-                solving complex technical challenges.
+                . Originally from Ramnagar, Uttarakhand, I specialize in
+                full-stack development with a focus on building scalable web
+                applications and solving complex technical challenges.
               </motion.p>
 
               <motion.p
@@ -89,10 +87,10 @@ const About = () => {
                 >
                   Coding Blocks Campus Hero
                 </span>
-                , I actively contribute to open-source projects and mentor peers in
-                technical initiatives. My tech stack includes React, Node.js, and
-                MongoDB, which I leverage to build scalable solutions. Recently, I
-                competed in the{" "}
+                , I actively contribute to open-source projects and mentor peers
+                in technical initiatives. My tech stack includes React, Node.js,
+                and MongoDB, which I leverage to build scalable solutions.
+                Recently, I competed in the{" "}
                 <span
                   className="font-semibold"
                   style={{ color: "var(--accent)" }}

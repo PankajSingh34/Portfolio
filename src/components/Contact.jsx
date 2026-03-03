@@ -265,7 +265,8 @@ const Contact = () => {
                     color: "var(--text-primary)",
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.backgroundColor = "rgba(255,255,255,0.06)";
+                    e.currentTarget.style.backgroundColor =
+                      "rgba(255,255,255,0.06)";
                     e.currentTarget.style.borderColor = "var(--text-primary)";
                   }}
                   onMouseLeave={(e) => {

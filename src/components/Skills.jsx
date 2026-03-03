@@ -43,6 +43,7 @@ const Skills = () => {
       name: "Next.js",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
       color: "#000000",
+      invertInDark: true,
     },
     {
       name: "Tailwind CSS",
@@ -89,6 +90,7 @@ const Skills = () => {
       name: "Socket.io",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg",
       color: "#010101",
+      invertInDark: true,
     },
     // DevOps & Tools
     {
@@ -100,6 +102,7 @@ const Skills = () => {
       name: "GitHub",
       icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
       color: "#181717",
+      invertInDark: true,
     },
     {
       name: "Docker",
@@ -145,7 +148,7 @@ const Skills = () => {
         <motion.div
           {...scrollAnimationProps}
           variants={containerVariants}
-          className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-6 mb-16"
+          className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-7 gap-4 mb-16"
         >
           {technologies.map((tech, index) => (
             <motion.div
@@ -154,37 +157,33 @@ const Skills = () => {
               custom={index}
               className="group relative flex flex-col items-center"
             >
-              <motion.div
-                className="w-16 h-16 md:w-20 md:h-20 rounded-2xl flex items-center justify-center transition-all duration-300 cursor-pointer border theme-transition"
+              <div
+                className="relative w-16 h-16 md:w-20 md:h-20 rounded-3xl flex items-center justify-center overflow-hidden theme-transition"
                 style={{
-                  borderColor: "var(--border-color)",
                   backgroundColor: "var(--bg-card)",
+                  border: "1px solid var(--bg-elevated)",
+                  boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
                 }}
-                whileHover={{
-                  scale: 1.05,
-                  borderColor: "#333333",
-                }}
-                whileTap={{ scale: 0.97 }}
               >
+                {/* Subtle gradient overlay */}
+                <div
+                  className="absolute inset-0 opacity-[0.04] pointer-events-none"
+                  style={{
+                    background:
+                      "radial-gradient(circle at top right, var(--accent), transparent 70%)",
+                  }}
+                />
                 <img
                   src={tech.icon}
                   alt={tech.name}
-                  className="w-10 h-10 md:w-12 md:h-12 object-contain"
-                />
-              </motion.div>
-
-              {/* Tooltip */}
-              <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 pointer-events-none">
-                <div
-                  className="text-xs font-medium px-3 py-2 rounded-lg whitespace-nowrap"
+                  className="relative z-10 w-8 h-8 md:w-10 md:h-10 object-contain"
                   style={{
-                    backgroundColor: "var(--bg-card)",
-                    color: "var(--text-primary)",
-                    border: "1px solid var(--border-color)",
+                    filter:
+                      tech.invertInDark && isDark
+                        ? "invert(1) brightness(1.2)"
+                        : "none",
                   }}
-                >
-                  {tech.name}
-                </div>
+                />
               </div>
             </motion.div>
           ))}

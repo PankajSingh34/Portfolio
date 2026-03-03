@@ -41,21 +41,32 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -63,7 +74,10 @@ h1, h2, h3, h4, h5, h6 {
    THEME TRANSITION HELPERS
    ======================================== */
 .theme-transition {
-  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ========================================
@@ -87,7 +101,12 @@ h1, h2, h3, h4, h5, h6 {
 .section-divider {
   width: 60px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--text-muted), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--text-muted),
+    transparent
+  );
   margin: 0 auto;
 }
 
@@ -116,7 +135,6 @@ h1, h2, h3, h4, h5, h6 {
    ARTICLE / LIST ITEM STYLES
    ======================================== */
 .article-item {
-  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 1.25rem 1.5rem;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -124,7 +142,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .article-item:hover {
-  border-color: #333333;
   transform: translateY(-2px);
 }
 
@@ -132,8 +149,10 @@ h1, h2, h3, h4, h5, h6 {
    STATS COUNTER
    ======================================== */
 .stat-number {
-  font-family: 'Inter', sans-serif;
-  font-weight: 800;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto,
+    sans-serif;
+  font-weight: 700;
   font-size: 3rem;
   line-height: 1;
   color: var(--text-primary);
@@ -194,7 +213,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .link-underline::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;
@@ -206,4 +225,16 @@ h1, h2, h3, h4, h5, h6 {
 
 .link-underline:hover::after {
   width: 100%;
+}
+
+/* ========================================
+   HORIZONTAL SCROLL - Apple Style
+   ======================================== */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
 }

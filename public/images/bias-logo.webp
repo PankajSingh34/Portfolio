@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+  <meta name="description" content="Birla Institute of Applied Sciences offers Bachelors of Technology (B. Tech.) degree programme in two branches CSE and ECE"/>
+  <meta name="author" content="Sumit Chauhan"/>
+  <meta name="copyright" content="Birla Institute of Applied Sciences, Bhimtal"/>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/media.css">
+  <!-- Custom JS -->
+  <script src="/js/global-bars.js"></script>
+      <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/Pictures/birla-white-logo.png">
+  <title>Err 404 | FILE NOT FOUND</title>
+  <style>
+main {
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 min-height: 40vh;
+	 max-width: 100%;
+}
+ .container {
+	 max-width: 100%;
+}
+ .hero {
+	 margin: 0;
+	 font-size: 6em;
+	 font-weight: bold;
+	 line-height: 0.85;
+	 letter-spacing: -0.05em;
+	 text-transform: uppercase;
+}
+ .hero span {
+	 display: block;
+	 word-wrap: break-word;
+}
+ .hero span.bigger {
+	 font-size: 1.5em;
+}
+ .links {
+	 color: #666;
+	 margin: 4em 0 0;
+}
+ .links a {
+	 color: #666;
+	 text-decoration: none;
+}
+ .links a:first-child {
+	 font-weight: bold;
+	 margin-left: 0.6em;
+}
+ .links a:not(:first-child) {
+	 margin-left: 0.6em;
+}
+ @media (max-width: 720px) {
+	 .hero {
+		 font-size: 4em;
+	}
+}
+  </style>
+
+  <title>BIAS, Bhimtal</title>
+</head>
+
+<body>
+<div class="loader-wrapper"><h1><b>ERROR 404</b></h1><span class="loader"><span class="loader-inner"></span></span></div>
+  <div id="header"></div>
+  <script>
+    load("/php/header.html", document.getElementById("header"));
+  </script>
+  <div class="strip s-1"></div>
+  <div class="strip1 s-2">
+    <h3 class="page-heading"><b>ERROR 404</b></h3>
+  </div>
+  <div class="strip s-3"></div>
+  <section class="body">
+    <main>
+  <div class="container">
+    <p class="hero">
+      <span class="bigger">404</span>
+            <span>File</span>
+      <span>Not</span>
+      <span>Found</span>
+    </p>
+    <p class="links">
+      <a href="/">Back to Home</a>
+    </p>
+  </div>
+</main>
+  </section>
+  <div id="footer"></div>
+  <script>
+  load("/php/footer.html", document.getElementById("footer"));
+  </script>
+  <script src="/js/news-updates.js"></script>
+  <section class="chat-bot">
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+
+
+  <!-- Your customer chat code -->
+  <div class="fb-customerchat" attribution=install_email page_id="2689521794408559" theme_color="#0084ff">
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh" crossorigin="anonymous"></script>
+<script>
+//======CHATBOT===============CHATBOT============CHATBOT======
+            $(window).on("load",function(){
+    window.fbAsyncInit = function() {
+      FB.init({
+        xfbml: true,
+        version: 'v6.0'
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s);
+      js.id = id;
+      js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+          });
+  </script>
+</section>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  
+  <script src="/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>

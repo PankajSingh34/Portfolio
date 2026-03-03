@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowRight, Tag } from "lucide-react";
+import { Clock, ArrowRight, Tag } from "lucide-react";
 import { blogsData, blogCategories } from "../data/blogs";
-import { useTheme } from "../context/ThemeContext";
 import {
   containerVariants,
   itemVariants,
@@ -10,7 +9,6 @@ import {
 } from "../utils/animations";
 
 const Blog = () => {
-  const { isDark } = useTheme();
   const scrollAnimationProps = useScrollAnimation();
   const [activeCategory, setActiveCategory] = useState("All");
   const [expandedBlog, setExpandedBlog] = useState(null);
@@ -67,9 +65,18 @@ const Blog = () => {
               onClick={() => setActiveCategory(category)}
               className="px-5 py-2 rounded-full text-sm font-medium border cursor-pointer transition-all duration-300"
               style={{
-                borderColor: activeCategory === category ? "var(--text-primary)" : "var(--border-color)",
-                backgroundColor: activeCategory === category ? "rgba(255,255,255,0.08)" : "transparent",
-                color: activeCategory === category ? "var(--text-primary)" : "var(--text-muted)",
+                borderColor:
+                  activeCategory === category
+                    ? "var(--text-primary)"
+                    : "var(--border-color)",
+                backgroundColor:
+                  activeCategory === category
+                    ? "rgba(255,255,255,0.08)"
+                    : "transparent",
+                color:
+                  activeCategory === category
+                    ? "var(--text-primary)"
+                    : "var(--text-muted)",
               }}
               onMouseEnter={(e) => {
                 if (activeCategory !== category) {
@@ -113,7 +120,6 @@ const Blog = () => {
                           style={{
                             backgroundColor: "rgba(255, 255, 255, 0.08)",
                             color: "var(--text-secondary)",
-                            border: "1px solid var(--border-color)",
                           }}
                         >
                           Featured
@@ -190,9 +196,8 @@ const Blog = () => {
                       {blog.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium border theme-transition"
+                          className="flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium theme-transition"
                           style={{
-                            borderColor: "var(--border-color)",
                             color: "var(--text-secondary)",
                             backgroundColor: "var(--bg-secondary)",
                           }}
