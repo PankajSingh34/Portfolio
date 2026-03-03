@@ -63,30 +63,22 @@ const Blog = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className="px-5 py-2 rounded-full text-sm font-medium border cursor-pointer transition-all duration-300"
+              className="px-5 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-300"
               style={{
-                borderColor:
-                  activeCategory === category
-                    ? "var(--text-primary)"
-                    : "var(--border-color)",
-                backgroundColor:
-                  activeCategory === category
-                    ? "rgba(255,255,255,0.08)"
-                    : "transparent",
+                backgroundColor: "transparent",
                 color:
                   activeCategory === category
                     ? "var(--text-primary)"
                     : "var(--text-muted)",
+                fontWeight: activeCategory === category ? 600 : 400,
               }}
               onMouseEnter={(e) => {
                 if (activeCategory !== category) {
-                  e.currentTarget.style.borderColor = "#444444";
                   e.currentTarget.style.color = "var(--text-primary)";
                 }
               }}
               onMouseLeave={(e) => {
                 if (activeCategory !== category) {
-                  e.currentTarget.style.borderColor = "var(--border-color)";
                   e.currentTarget.style.color = "var(--text-muted)";
                 }
               }}
@@ -118,7 +110,6 @@ const Blog = () => {
                         <span
                           className="px-2 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider shrink-0"
                           style={{
-                            backgroundColor: "rgba(255, 255, 255, 0.08)",
                             color: "var(--text-secondary)",
                           }}
                         >
@@ -128,7 +119,6 @@ const Blog = () => {
                       <span
                         className="px-2 py-0.5 rounded-md text-xs font-medium shrink-0"
                         style={{
-                          backgroundColor: "var(--green-accent-dim)",
                           color: "var(--green-accent)",
                         }}
                       >
@@ -199,7 +189,6 @@ const Blog = () => {
                           className="flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium theme-transition"
                           style={{
                             color: "var(--text-secondary)",
-                            backgroundColor: "var(--bg-secondary)",
                           }}
                         >
                           <Tag size={10} />

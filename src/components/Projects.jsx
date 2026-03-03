@@ -97,10 +97,9 @@ const ProjectCard = ({ project }) => {
           {project.tags.slice(0, 4).map((tag) => (
             <span
               key={tag}
-              className="px-2.5 py-1 rounded-full text-[11px] font-medium"
+              className="px-2.5 py-1 rounded-full text-[11px] font-bold"
               style={{
-                backgroundColor: "var(--bg-secondary)",
-                color: "var(--text-secondary)",
+                color: "var(--text-primary)",
               }}
             >
               {tag}
@@ -117,14 +116,14 @@ const ProjectCard = ({ project }) => {
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-2.5 rounded-full transition-all duration-200"
             style={{
-              backgroundColor: "var(--accent)",
-              color: "var(--bg-primary)",
+              backgroundColor: "#ffffff",
+              color: "#000000",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = "0.85";
+              e.currentTarget.style.backgroundColor = "#e5e5e5";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = "1";
+              e.currentTarget.style.backgroundColor = "#ffffff";
             }}
           >
             <ExternalLink size={13} />
@@ -136,14 +135,14 @@ const ProjectCard = ({ project }) => {
             rel="noopener noreferrer"
             className="flex-1 flex items-center justify-center gap-1.5 text-xs font-semibold py-2.5 rounded-full transition-all duration-200"
             style={{
-              backgroundColor: "var(--bg-secondary)",
-              color: "var(--text-primary)",
+              backgroundColor: "#000000",
+              color: "#ffffff",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--bg-elevated)";
+              e.currentTarget.style.backgroundColor = "#1a1a1a";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "var(--bg-secondary)";
+              e.currentTarget.style.backgroundColor = "#000000";
             }}
           >
             <Github size={13} />

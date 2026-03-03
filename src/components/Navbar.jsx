@@ -94,10 +94,7 @@ const Navbar = () => {
                       ? "var(--text-primary)"
                       : "var(--text-muted)",
                   fontWeight: activeSection === item.id ? 500 : 400,
-                  backgroundColor:
-                    activeSection === item.id
-                      ? "rgba(255,255,255,0.06)"
-                      : "transparent",
+                  backgroundColor: "transparent",
                 }}
               >
                 {item.label}

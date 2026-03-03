@@ -188,6 +188,16 @@ const achievementsData = {
   ],
 };
 
+const highlightText = (text) => {
+  if (!text) return text;
+  return text.split(/((?<!\w)\d[\d,.%+\/x-]*\+?(?=\s|,|\.|\))|(?<!\w)(?:merged|selected|earned|secured|elected|won|contributed|certified|demonstrated|proficiency|expertise|4th place|top 3%|medals?|rank \d+|department rank|open source|real-time|collaborative|concurrent|scalable|active|ci\/cd|devops|infrastructure|audit|astrobiology|simulation|authentication|collaboration|campus hero|athletics secretary|academic excellence|ECWoC|MERN|JWT|Socket\.io|MongoDB|React\.js|Node\.js|Oracle|OCI|NASA)(?!\w))/gi)
+    .map((part, i) =>
+      /^(?:\d[\d,.%+\/x-]*\+?$|merged|selected|earned|secured|elected|won|contributed|certified|demonstrated|proficiency|expertise|4th place|top 3%|medals?|rank \d*|department rank|open source|real-time|collaborative|concurrent|scalable|active|ci\/cd|devops|infrastructure|audit|astrobiology|simulation|authentication|collaboration|campus hero|athletics secretary|academic excellence|ECWoC|MERN|JWT|Socket\.io|MongoDB|React\.js|Node\.js|Oracle|OCI|NASA)$/i.test(part.trim()) && part.trim()
+        ? <strong key={i} style={{ color: "var(--text-primary)" }}>{part}</strong>
+        : part
+    );
+};
+
 const AchievementCard = ({ achievement, type, onClick }) => {
   const Icon = achievement.icon;
   return (
@@ -214,7 +224,6 @@ const AchievementCard = ({ achievement, type, onClick }) => {
         <div className="flex items-start gap-2.5 flex-1 min-w-0">
           <div
             className="p-2 rounded-lg shrink-0"
-            style={{ backgroundColor: "var(--bg-secondary)" }}
           >
             <Icon className="w-4 h-4" style={{ color: "var(--accent)" }} />
           </div>
@@ -248,7 +257,6 @@ const AchievementCard = ({ achievement, type, onClick }) => {
         <span
           className="px-2.5 py-1 rounded-full text-[10px] font-semibold shrink-0"
           style={{
-            backgroundColor: "var(--bg-secondary)",
             color: "var(--text-secondary)",
           }}
         >
@@ -260,7 +268,7 @@ const AchievementCard = ({ achievement, type, onClick }) => {
         className="text-xs leading-relaxed mb-3 relative z-10 line-clamp-4 grow"
         style={{ color: "var(--text-secondary)" }}
       >
-        {achievement.description}
+        {highlightText(achievement.description)}
       </p>
 
       {type === "openSource" && achievement.badge && (
@@ -273,7 +281,6 @@ const AchievementCard = ({ achievement, type, onClick }) => {
             <span
               className="font-mono px-1.5 py-0.5 rounded text-[9px]"
               style={{
-                backgroundColor: "var(--bg-secondary)",
                 color: "var(--green-accent)",
               }}
             >
@@ -288,10 +295,6 @@ const AchievementCard = ({ achievement, type, onClick }) => {
           <span
             className="px-2.5 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider"
             style={{
-              backgroundColor:
-                achievement.status === "Active"
-                  ? "var(--green-accent-dim)"
-                  : "var(--bg-secondary)",
               color:
                 achievement.status === "Active"
                   ? "var(--green-accent)"
@@ -316,7 +319,6 @@ const AchievementCard = ({ achievement, type, onClick }) => {
                 style={{
                   backgroundColor: "#000000",
                   color: "#ffffff",
-                  border: "1px solid #333333",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "#1a1a1a";
@@ -339,7 +341,6 @@ const AchievementCard = ({ achievement, type, onClick }) => {
                 style={{
                   backgroundColor: "#000000",
                   color: "#ffffff",
-                  border: "1px solid #333333",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = "#1a1a1a";
@@ -453,7 +454,7 @@ const AchievementModal = ({ achievement, type, onClose }) => {
             className="text-base leading-relaxed mb-6"
             style={{ color: "var(--text-secondary)" }}
           >
-            {achievement.description}
+            {highlightText(achievement.description)}
           </p>
 
           <div className="space-y-4">
@@ -509,7 +510,6 @@ const AchievementModal = ({ achievement, type, onClose }) => {
                       key={tech}
                       className="px-3 py-1.5 rounded-lg text-sm font-medium"
                       style={{
-                        backgroundColor: "var(--bg-secondary)",
                         color: "var(--text-primary)",
                       }}
                     >
@@ -541,10 +541,6 @@ const AchievementModal = ({ achievement, type, onClose }) => {
               <span
                 className="inline-block px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wider"
                 style={{
-                  backgroundColor:
-                    achievement.status === "Active"
-                      ? "var(--green-accent-dim)"
-                      : "var(--bg-secondary)",
                   color:
                     achievement.status === "Active"
                       ? "var(--green-accent)"
@@ -567,7 +563,6 @@ const AchievementModal = ({ achievement, type, onClose }) => {
                     style={{
                       backgroundColor: "#000000",
                       color: "#ffffff",
-                      border: "1px solid #333333",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = "#1a1a1a";
@@ -596,7 +591,6 @@ const AchievementModal = ({ achievement, type, onClose }) => {
                     style={{
                       backgroundColor: "#000000",
                       color: "#ffffff",
-                      border: "1px solid #333333",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = "#1a1a1a";
