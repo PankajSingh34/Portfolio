@@ -66,6 +66,23 @@ export const projectsData = [
     status: "Completed",
     year: "2025",
   },
+  {
+    id: 4,
+    title: "AlgoBuddy",
+    description:
+      "An interactive algorithm visualization platform that helps developers master DSA concepts through step-by-step animations and an integrated learning experience.",
+    longDescription:
+      "AlgoBuddy is a full-featured interactive learning platform for mastering Data Structures and Algorithms. It provides step-by-step visual animations for every major algorithm (sorting, searching, graph traversal, dynamic programming) and data structure. Features include a live code editor, complexity analyzer showing O(n) breakdowns, blog section, and a progress tracker. Built for students and developers who want to build deep intuition before writing a single line of code.",
+    image: "/images/algobuddy-screenshot.png",
+    tags: ["React", "Node.js", "DSA", "Animations", "Express", "MongoDB"],
+    category: "Full Stack",
+    link: "https://algo-buddy-5o6g.vercel.app/",
+    demo: "https://algo-buddy-5o6g.vercel.app/",
+    github: "https://github.com/PankajSingh34/AlgoBuddy",
+    featured: true,
+    status: "In Progress",
+    year: "2026",
+  },
 ];
 
 export const categories = [
