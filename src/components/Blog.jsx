@@ -72,11 +72,7 @@ const Blog = () => {
                   <div className="flex-1 min-w-0">
                     <h3
                       className="text-lg font-semibold transition-colors line-clamp-1 tracking-tight"
-                      style={{
-                        color: "var(--text-primary)",
-                        fontFamily: "'Nanum Pen Script', cursive",
-                        fontSize: "1.4rem",
-                      }}
+                      style={{ color: "var(--text-primary)" }}
                     >
                       {blog.title}
                     </h3>
@@ -86,7 +82,7 @@ const Blog = () => {
                       style={{
                         color: "var(--text-muted)",
                         fontFamily: "'Nanum Pen Script', cursive",
-                        fontSize: "1.1rem",
+                        fontSize: "1.15rem",
                       }}
                     >
                       {blog.excerpt}
@@ -135,14 +131,8 @@ const Blog = () => {
                   >
                     {/* Blog Title inside expanded */}
                     <h2
-                      className="mb-3"
-                      style={{
-                        fontFamily: "'Nanum Pen Script', cursive",
-                        fontSize: "2rem",
-                        fontWeight: 700,
-                        color: "var(--text-primary)",
-                        lineHeight: 1.2,
-                      }}
+                      className="mb-3 text-xl font-semibold tracking-tight"
+                      style={{ color: "var(--text-primary)" }}
                     >
                       {blog.title}
                     </h2>
