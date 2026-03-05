@@ -85,12 +85,7 @@ export const projectsData = [
   },
 ];
 
-export const categories = [
-  "All",
-  "AI/ML",
-  "Full Stack",
-  "Hackathon",
-];
+export const categories = ["All", "AI/ML", "Full Stack", "Hackathon"];
 
 export const technologies = [
   "React",

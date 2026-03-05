@@ -213,11 +213,24 @@ const ExperienceCard = ({ experience, index, isLast }) => {
                   style={{ backgroundColor: "var(--text-muted)" }}
                 />
                 <span className="flex-1">
-                  {item.split(/((?<!\w)\d[\d,.%+\/x-]*(?:\+)?(?=\s|,|\.|\))|(?<!\w)(?:merged|optimized|delivered|implemented|designed|built|resolved|reduced|improved|achieving|scalable|real-time|collaborative|concurrent|reusable|full-stack|MERN stack|REST API|Socket\.io|JWT|MongoDB|React\.js|Node\.js)(?!\w))/gi).map((part, i) =>
-                    /^(?:\d[\d,.%+\/x-]*\+?$|merged|optimized|delivered|implemented|designed|built|resolved|reduced|improved|achieving|scalable|real-time|collaborative|concurrent|reusable|full-stack|MERN stack|REST API|Socket\.io|JWT|MongoDB|React\.js|Node\.js)$/i.test(part.trim()) && part.trim()
-                      ? <strong key={i} style={{ color: "var(--text-primary)" }}>{part}</strong>
-                      : part
-                  )}
+                  {item
+                    .split(
+                      /((?<!\w)\d[\d,.%+\/x-]*(?:\+)?(?=\s|,|\.|\))|(?<!\w)(?:merged|optimized|delivered|implemented|designed|built|resolved|reduced|improved|achieving|scalable|real-time|collaborative|concurrent|reusable|full-stack|MERN stack|REST API|Socket\.io|JWT|MongoDB|React\.js|Node\.js)(?!\w))/gi,
+                    )
+                    .map((part, i) =>
+                      /^(?:\d[\d,.%+\/x-]*\+?$|merged|optimized|delivered|implemented|designed|built|resolved|reduced|improved|achieving|scalable|real-time|collaborative|concurrent|reusable|full-stack|MERN stack|REST API|Socket\.io|JWT|MongoDB|React\.js|Node\.js)$/i.test(
+                        part.trim(),
+                      ) && part.trim() ? (
+                        <strong
+                          key={i}
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {part}
+                        </strong>
+                      ) : (
+                        part
+                      ),
+                    )}
                 </span>
               </li>
             ))}

@@ -228,6 +228,51 @@ h6 {
 }
 
 /* ========================================
+   BLOG HANDWRITTEN CONTENT STYLE
+   ======================================== */
+.blog-handwritten {
+  font-family: "Nanum Pen Script", cursive !important;
+  font-size: 1.45rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--text-secondary);
+}
+
+.blog-handwritten p {
+  font-family: "Nanum Pen Script", cursive !important;
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+.blog-handwritten h2 {
+  font-family: "Nanum Pen Script", cursive !important;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 1rem;
+  margin-bottom: 0.15rem;
+  letter-spacing: 0.02em;
+}
+
+.blog-handwritten strong {
+  font-family: "Nanum Pen Script", cursive !important;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.blog-handwritten ul,
+.blog-handwritten ol {
+  font-family: "Nanum Pen Script", cursive !important;
+  padding-left: 1.4rem;
+  margin: 0.3rem 0;
+}
+
+.blog-handwritten li {
+  font-family: "Nanum Pen Script", cursive !important;
+  margin-bottom: 0.1rem;
+}
+
+/* ========================================
    HORIZONTAL SCROLL - Apple Style
    ======================================== */
 .scrollbar-hide {

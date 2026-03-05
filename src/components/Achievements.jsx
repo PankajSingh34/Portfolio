@@ -190,11 +190,20 @@ const achievementsData = {
 
 const highlightText = (text) => {
   if (!text) return text;
-  return text.split(/((?<!\w)\d[\d,.%+\/x-]*\+?(?=\s|,|\.|\))|(?<!\w)(?:merged|selected|earned|secured|elected|won|contributed|certified|demonstrated|proficiency|expertise|4th place|top 3%|medals?|rank \d+|department rank|open source|real-time|collaborative|concurrent|scalable|active|ci\/cd|devops|infrastructure|audit|astrobiology|simulation|authentication|collaboration|campus hero|athletics secretary|academic excellence|ECWoC|MERN|JWT|Socket\.io|MongoDB|React\.js|Node\.js|Oracle|OCI|NASA)(?!\w))/gi)
+  return text
+    .split(
+      /((?<!\w)\d[\d,.%+\/x-]*\+?(?=\s|,|\.|\))|(?<!\w)(?:merged|selected|earned|secured|elected|won|contributed|certified|demonstrated|proficiency|expertise|4th place|top 3%|medals?|rank \d+|department rank|open source|real-time|collaborative|concurrent|scalable|active|ci\/cd|devops|infrastructure|audit|astrobiology|simulation|authentication|collaboration|campus hero|athletics secretary|academic excellence|ECWoC|MERN|JWT|Socket\.io|MongoDB|React\.js|Node\.js|Oracle|OCI|NASA)(?!\w))/gi,
+    )
     .map((part, i) =>
-      /^(?:\d[\d,.%+\/x-]*\+?$|merged|selected|earned|secured|elected|won|contributed|certified|demonstrated|proficiency|expertise|4th place|top 3%|medals?|rank \d*|department rank|open source|real-time|collaborative|concurrent|scalable|active|ci\/cd|devops|infrastructure|audit|astrobiology|simulation|authentication|collaboration|campus hero|athletics secretary|academic excellence|ECWoC|MERN|JWT|Socket\.io|MongoDB|React\.js|Node\.js|Oracle|OCI|NASA)$/i.test(part.trim()) && part.trim()
-        ? <strong key={i} style={{ color: "var(--text-primary)" }}>{part}</strong>
-        : part
+      /^(?:\d[\d,.%+\/x-]*\+?$|merged|selected|earned|secured|elected|won|contributed|certified|demonstrated|proficiency|expertise|4th place|top 3%|medals?|rank \d*|department rank|open source|real-time|collaborative|concurrent|scalable|active|ci\/cd|devops|infrastructure|audit|astrobiology|simulation|authentication|collaboration|campus hero|athletics secretary|academic excellence|ECWoC|MERN|JWT|Socket\.io|MongoDB|React\.js|Node\.js|Oracle|OCI|NASA)$/i.test(
+        part.trim(),
+      ) && part.trim() ? (
+        <strong key={i} style={{ color: "var(--text-primary)" }}>
+          {part}
+        </strong>
+      ) : (
+        part
+      ),
     );
 };
 
@@ -222,9 +231,7 @@ const AchievementCard = ({ achievement, type, onClick }) => {
 
       <div className="flex items-start justify-between mb-3 relative z-10">
         <div className="flex items-start gap-2.5 flex-1 min-w-0">
-          <div
-            className="p-2 rounded-lg shrink-0"
-          >
+          <div className="p-2 rounded-lg shrink-0">
             <Icon className="w-4 h-4" style={{ color: "var(--accent)" }} />
           </div>
           <div className="flex-1 min-w-0">

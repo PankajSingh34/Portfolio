@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Clock, ArrowRight, Tag } from "lucide-react";
-import { blogsData, blogCategories } from "../data/blogs";
+import { Clock, ArrowRight } from "lucide-react";
+import { blogsData } from "../data/blogs";
 import {
   containerVariants,
   itemVariants,
@@ -10,13 +10,9 @@ import {
 
 const Blog = () => {
   const scrollAnimationProps = useScrollAnimation();
-  const [activeCategory, setActiveCategory] = useState("All");
   const [expandedBlog, setExpandedBlog] = useState(null);
 
-  const filteredBlogs =
-    activeCategory === "All"
-      ? blogsData
-      : blogsData.filter((blog) => blog.category === activeCategory);
+  const filteredBlogs = blogsData;
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString("en-US", {
@@ -57,37 +53,6 @@ const Blog = () => {
           </motion.p>
         </motion.div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {blogCategories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className="px-5 py-2 rounded-full text-sm font-medium cursor-pointer transition-all duration-300"
-              style={{
-                backgroundColor: "transparent",
-                color:
-                  activeCategory === category
-                    ? "var(--text-primary)"
-                    : "var(--text-muted)",
-                fontWeight: activeCategory === category ? 600 : 400,
-              }}
-              onMouseEnter={(e) => {
-                if (activeCategory !== category) {
-                  e.currentTarget.style.color = "var(--text-primary)";
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (activeCategory !== category) {
-                  e.currentTarget.style.color = "var(--text-muted)";
-                }
-              }}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
         {/* Minimalist Article List */}
         <div className="space-y-4">
           {filteredBlogs.map((blog, index) => (
@@ -105,37 +70,24 @@ const Blog = () => {
                 <div className="flex items-center justify-between gap-4">
                   {/* Left: Title and meta */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-3 mb-1">
-                      {blog.featured && (
-                        <span
-                          className="px-2 py-0.5 rounded-full text-xs font-medium uppercase tracking-wider shrink-0"
-                          style={{
-                            color: "var(--text-secondary)",
-                          }}
-                        >
-                          Featured
-                        </span>
-                      )}
-                      <span
-                        className="px-2 py-0.5 rounded-md text-xs font-medium shrink-0"
-                        style={{
-                          color: "var(--green-accent)",
-                        }}
-                      >
-                        {blog.category}
-                      </span>
-                    </div>
-
                     <h3
                       className="text-lg font-semibold transition-colors line-clamp-1 tracking-tight"
-                      style={{ color: "var(--text-primary)" }}
+                      style={{
+                        color: "var(--text-primary)",
+                        fontFamily: "'Nanum Pen Script', cursive",
+                        fontSize: "1.4rem",
+                      }}
                     >
                       {blog.title}
                     </h3>
 
                     <p
                       className="text-sm mt-1 line-clamp-1"
-                      style={{ color: "var(--text-muted)" }}
+                      style={{
+                        color: "var(--text-muted)",
+                        fontFamily: "'Nanum Pen Script', cursive",
+                        fontSize: "1.1rem",
+                      }}
                     >
                       {blog.excerpt}
                     </p>
@@ -181,29 +133,74 @@ const Blog = () => {
                     className="mt-4 pt-4"
                     style={{ borderTop: "1px solid var(--border-color)" }}
                   >
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {blog.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium theme-transition"
-                          style={{
-                            color: "var(--text-secondary)",
-                          }}
-                        >
-                          <Tag size={10} />
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
+                    {/* Blog Title inside expanded */}
+                    <h2
+                      className="mb-3"
+                      style={{
+                        fontFamily: "'Nanum Pen Script', cursive",
+                        fontSize: "2rem",
+                        fontWeight: 700,
+                        color: "var(--text-primary)",
+                        lineHeight: 1.2,
+                      }}
+                    >
+                      {blog.title}
+                    </h2>
 
-                    <div className="prose prose-sm max-w-none">
-                      <pre
-                        className="whitespace-pre-wrap text-sm leading-relaxed"
-                        style={{ color: "var(--text-secondary)" }}
-                      >
-                        {blog.content}
-                      </pre>
+                    <div
+                      className="blog-handwritten mt-2"
+                      style={{ fontFamily: "'Nanum Pen Script', cursive" }}
+                    >
+                      {blog.content
+                        .trim()
+                        .split("\n")
+                        .reduce((acc, line, i, arr) => {
+                          // Skip consecutive blank lines — only allow one gap
+                          if (line.trim() === "" && arr[i - 1]?.trim() === "")
+                            return acc;
+                          if (line.startsWith("## ")) {
+                            acc.push(
+                              <h2
+                                key={i}
+                                style={{
+                                  fontFamily: "'Nanum Pen Script', cursive",
+                                }}
+                              >
+                                {line.replace("## ", "")}
+                              </h2>,
+                            );
+                          } else if (line.trim() === "") {
+                            acc.push(<br key={i} />);
+                          } else {
+                            const parts = line.split(/\*\*(.*?)\*\*/g);
+                            acc.push(
+                              <p
+                                key={i}
+                                style={{
+                                  margin: "0.05rem 0",
+                                  fontFamily: "'Nanum Pen Script', cursive",
+                                }}
+                              >
+                                {parts.map((part, j) =>
+                                  j % 2 === 1 ? (
+                                    <strong
+                                      key={j}
+                                      style={{
+                                        fontFamily:
+                                          "'Nanum Pen Script', cursive",
+                                      }}
+                                    >
+                                      {part}
+                                    </strong>
+                                  ) : (
+                                    part
+                                  ),
+                                )}
+                              </p>,
+                            );
+                          }
+                          return acc;
+                        }, [])}
                     </div>
                   </motion.div>
                 )}

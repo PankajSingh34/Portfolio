@@ -91,7 +91,7 @@ const Hero = () => {
               className="flex flex-col sm:flex-row items-center lg:items-start gap-4"
             >
               <a
-                href="/PSRESUME (5).pdf"
+                href="/PankajNew (1).pdf"
                 download="Pankaj_Singh_Resume.pdf"
                 className="flex items-center justify-center gap-2 px-8 py-3.5 rounded-full font-medium text-base transition-all duration-300 w-full sm:w-auto hover:scale-[1.02]"
                 style={{
